@@ -30,40 +30,42 @@ const FileTextIcon = () => (
   </svg>
 );
 
-// Skills data (exact structure for tabbed section)
+// Skills data with expanded descriptions
 const skills: Record<string, string[]> = {
   "Product & Strategy": [
-    "Product Lifecycle Management",
-    "Product Roadmap Development",
-    "Backlog Management & Sprint Planning",
-    "User Story Development",
-    "Requirements Analysis",
-    "Agile Methodologies"
+    "Product Lifecycle Management: Owned the full product lifecycle from discovery through deployment for fulfillment automation initiatives serving AT&T and Verizon — translating business goals into requirements, managing build, and driving adoption at scale across millions of claims annually.",
+    "Product Roadmap Development: Synthesized pilot results and customer behavior data into a 2026 fulfillment roadmap for senior leadership — making the case for GenAI-driven automation across claim valuation, replacement decisions, and device identification.",
+    "Backlog Management & Sprint Planning: Managed backlog prioritization and coordinated sprint planning across multiple concurrent initiatives with Engineering and Data Science teams, ensuring release objectives were consistently met in a fast-moving environment.",
+    "User Story Development: Translated complex business logic for net-new ATC capabilities — including claim valuation and upgrade offers — into clear, actionable user stories that enabled development teams to build new features across Phones, Appliances, and Connected Devices from the ground up.",
+    "Requirements Analysis: Defined end-to-end fulfillment requirements and customer experience journeys for In-Store Pickup at UBreakIFix — a first-to-market capability — mapping both customer and technician journeys from claim initiation through in-store resolution.",
+    "Agile Methodologies: Applied Agile frameworks throughout product development at Asurion — running sprints, managing priorities, and coordinating cross-functional teams to deliver new customer-facing capabilities including digital payouts, eSIM activation, and Next Day Expert Delivery across 80% of the US."
   ],
   "Automation & Tech": [
-    "Process Automation",
-    "Workflow Automation",
-    "Low-Code Platforms",
-    "AI/GenAI Integration",
-    "Data Analytics",
-    "Jira & Confluence"
+    "Process Automation: Built and deployed a workflow automation tool for 500+ agents using an in-house low-code platform — a decision-based triage system that guides agents through claim scenarios, lifting process compliance by 80% and cutting Supply Chain costs by $5M annually.",
+    "Workflow Automation: Designed the decision logic and claim routing workflows behind the agent tool — replacing inconsistent manual processes with a scalable, repeatable system that delivered the right outcome based on what was actually happening with each claim.",
+    "Low-Code Platforms: Delivered a production-grade automation tool using a low-code platform similar to Power Automate — enabling rapid development and deployment without requiring full engineering resources, and serving as a model for future automation initiatives.",
+    "AI/GenAI Integration: Led a discovery pilot with an external data vendor to validate whether GenAI could normalize device data and improve identification accuracy during claims — building the business case for AI-assisted automation in a step that had historically required significant manual effort.",
+    "Data Analytics: Used pilot data and customer behavior insights to quantify outcomes and inform roadmap decisions — including an 80% drop in buyout completion time, 75% reduction in operations workload, and +5pt NPS lift from the reimbursement pilot.",
+    "Jira & Confluence: Used Jira to manage backlogs, track sprint progress, and maintain visibility across concurrent initiatives; used Confluence to document product requirements, process flows, and decision logs — keeping cross-functional teams aligned throughout build and launch."
   ],
   "AI Tools": [
-    "ChatGPT",
-    "Claude",
-    "VO",
-    "Perplexity"
+    "ChatGPT: Uses ChatGPT daily to accelerate requirements drafting, synthesize research, and pressure-test product thinking — significantly reducing time spent on early-stage discovery and documentation.",
+    "Claude: Leverages Claude for deep analysis, long-form requirements work, and structured thinking on complex product problems — particularly useful for synthesizing large amounts of stakeholder input into clear recommendations.",
+    "VO: Uses VO for AI-powered content and creative work — applying it to prototype development and portfolio building to demonstrate what modern PM execution looks like with GenAI tools.",
+    "Perplexity: Uses Perplexity for real-time research and competitive analysis — quickly surfacing relevant context during discovery and roadmap planning to make faster, better-informed decisions.",
+    "GenAI Workflow Integration: Completed certification in Integrating AI into Team Workflows — actively applies GenAI tools across the full product lifecycle to improve productivity, decision-making speed, and output quality."
   ],
   "Leadership & Collaboration": [
-    "Stakeholder Management",
-    "Cross-Functional Team Leadership",
-    "Customer Experience Optimization",
-    "Client Relationship Management"
+    "Stakeholder Management: Navigated complex cross-functional alignment across Legal, Engineering, Data Science, Supply Chain, and Client teams to socialize concepts, pressure-test approaches, secure sign-off, and maintain momentum — in an environment where competing priorities were constant.",
+    "Cross-Functional Team Leadership: Led product initiatives spanning Engineering, Program Management, Data Science, Legal, Client, and Supply Chain teams — translating strategy into execution across every function involved in the claims lifecycle and consistently delivering on time.",
+    "Customer Experience Optimization: Designed and ran a claim reimbursement pilot embedded directly in the Replacement Portal — resulting in 80% faster buyout completion, 75% reduction in operations center workload, +5pt NPS, and 15% more customers completing claims online.",
+    "Client Relationship Management: Managed product performance and client relationships for Latin American programs at Asurion — defining KPI frameworks, leading new product launches, and optimizing advance exchange processes to improve customer experience and operational efficiency.",
+    "Team Development: Hired, onboarded, and developed new team members while building a collaborative, high-performing team culture — investing in coaching and creating an environment where people could grow alongside the product."
   ],
   "Languages": [
-    "Portuguese (Native)",
-    "English (Fluent)",
-    "Spanish (Conversational)"
+    "Portuguese (Native): Native Brazilian Portuguese speaker — has supported Latin American client programs, cross-border operations, and global logistics throughout her career, bringing cultural fluency alongside language fluency.",
+    "English (Fluent): Fully fluent — all professional work, stakeholder communication, product documentation, and executive presentations conducted in English across Fortune 100 client environments.",
+    "Spanish (Conversational): Conversational Spanish used to support collaboration with Latin American partners, clients, and teams — enabling clearer communication across regional programs."
   ]
 };
 
@@ -105,15 +107,27 @@ function SkillsSection() {
         </div>
 
         {/* Only bullets for active tab; fixed min-height to avoid jump */}
-        <div className="min-h-[220px]">
+        <div className="min-h-[400px]">
           <div key={activeTab} className="animate-fade-in">
-            <ul className="space-y-3 text-gray-700">
-              {skills[activeTab].map((skill, index) => (
-                <li key={skill} className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600" aria-hidden />
-                  <span className="leading-relaxed">{skill}</span>
-                </li>
-              ))}
+            <ul className="space-y-4 text-gray-700">
+              {skills[activeTab].map((skillText, index) => {
+                const [skillName, ...descriptionParts] = skillText.split(": ");
+                const description = descriptionParts.join(": ");
+                return (
+                  <li key={index} className="flex items-start">
+                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600" aria-hidden />
+                    <span className="leading-relaxed">
+                      <span className="font-bold text-gray-900">{skillName}</span>
+                      {description && (
+                        <>
+                          <span className="text-gray-900">: </span>
+                          <span>{description}</span>
+                        </>
+                      )}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
