@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 // LinkedIn Icon SVG
 const LinkedInIcon = () => (
@@ -28,6 +29,104 @@ const FileTextIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
   </svg>
 );
+
+// Skills data
+const skillsData: Record<string, string[]> = {
+  "Product & Strategy": [
+    "Product Lifecycle Management",
+    "Product Roadmap Development",
+    "Backlog Management & Sprint Planning",
+    "User Story Development",
+    "Requirements Analysis",
+    "Agile Methodologies"
+  ],
+  "Automation & Tech": [
+    "Process Automation",
+    "Workflow Automation",
+    "Low-Code Platforms",
+    "AI/GenAI Integration",
+    "Data Analytics",
+    "Jira & Confluence"
+  ],
+  "AI Tools": [
+    "ChatGPT",
+    "Claude",
+    "VO",
+    "Perplexity"
+  ],
+  "Leadership & Collaboration": [
+    "Stakeholder Management",
+    "Cross-Functional Team Leadership",
+    "Customer Experience Optimization",
+    "Client Relationship Management"
+  ],
+  "Languages": [
+    "Portuguese (Native)",
+    "English (Fluent)",
+    "Spanish (Conversational)"
+  ]
+};
+
+const categories = [
+  "Product & Strategy",
+  "Automation & Tech",
+  "AI Tools",
+  "Leadership & Collaboration",
+  "Languages"
+];
+
+// Skills Section Component
+function SkillsSection() {
+  const [activeTab, setActiveTab] = useState("Product & Strategy");
+
+  return (
+    <section className="px-6 py-16 md:py-24">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 md:text-4xl">
+          My Skills
+        </h2>
+        
+        {/* Tab Buttons */}
+        <div className="mb-8 flex flex-wrap justify-center gap-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveTab(category)}
+              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+                activeTab === category
+                  ? "bg-purple-600 text-white shadow-md"
+                  : "bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300 hover:text-purple-600"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Skills Content */}
+        <div className="min-h-[200px]">
+          <div
+            key={activeTab}
+            className="animate-fade-in"
+          >
+            <ul className="space-y-3 text-gray-700">
+              {skillsData[activeTab].map((skill, index) => (
+                <li
+                  key={`${activeTab}-${index}`}
+                  className="flex items-start animate-slide-up"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
+                  <span className="leading-relaxed">{skill}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Resume() {
   return (
@@ -91,141 +190,7 @@ export default function Resume() {
       </section>
 
       {/* My Skills Section */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
-            My Skills
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Product & Strategy */}
-            <div>
-              <h3 className="mb-4 text-xl font-bold text-gray-900">Product & Strategy</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Product Lifecycle Management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Product Roadmap Development</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Backlog Management & Sprint Planning</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>User Story Development</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Requirements Analysis</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Agile Methodologies</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Automation & Tech */}
-            <div>
-              <h3 className="mb-4 text-xl font-bold text-gray-900">Automation & Tech</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Process Automation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Workflow Automation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Low-Code Platforms</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>AI/GenAI Integration</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Data Analytics</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Jira & Confluence</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* AI Tools */}
-            <div>
-              <h3 className="mb-4 text-xl font-bold text-gray-900">AI Tools</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>ChatGPT</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Claude</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>VO</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Perplexity</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Leadership & Collaboration */}
-            <div>
-              <h3 className="mb-4 text-xl font-bold text-gray-900">Leadership & Collaboration</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Stakeholder Management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Cross-Functional Team Leadership</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Customer Experience Optimization</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Client Relationship Management</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Languages */}
-            <div>
-              <h3 className="mb-4 text-xl font-bold text-gray-900">Languages</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Portuguese (Native)</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>English (Fluent)</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
-                  <span>Spanish (Conversational)</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SkillsSection />
 
       {/* See My Work Section */}
       <section className="bg-purple-50 px-6 py-16 md:py-24">
