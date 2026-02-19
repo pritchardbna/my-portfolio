@@ -30,8 +30,8 @@ const FileTextIcon = () => (
   </svg>
 );
 
-// Skills data
-const skillsData: Record<string, string[]> = {
+// Skills data (exact structure for tabbed section)
+const skills: Record<string, string[]> = {
   "Product & Strategy": [
     "Product Lifecycle Management",
     "Product Roadmap Development",
@@ -67,17 +67,17 @@ const skillsData: Record<string, string[]> = {
   ]
 };
 
-const categories = [
+const SKILL_TABS = [
   "Product & Strategy",
   "Automation & Tech",
   "AI Tools",
   "Leadership & Collaboration",
   "Languages"
-];
+] as const;
 
-// Skills Section Component
+// Tabbed Skills Section (useState, one category visible, fade on change)
 function SkillsSection() {
-  const [activeTab, setActiveTab] = useState("Product & Strategy");
+  const [activeTab, setActiveTab] = useState<typeof SKILL_TABS[number]>("Product & Strategy");
 
   return (
     <section className="px-6 py-16 md:py-24">
@@ -85,38 +85,32 @@ function SkillsSection() {
         <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 md:text-4xl">
           My Skills
         </h2>
-        
-        {/* Tab Buttons */}
+
+        {/* Tab row: 5 clickable buttons */}
         <div className="mb-8 flex flex-wrap justify-center gap-3">
-          {categories.map((category) => (
+          {SKILL_TABS.map((tab) => (
             <button
-              key={category}
-              onClick={() => setActiveTab(category)}
+              key={tab}
+              type="button"
+              onClick={() => setActiveTab(tab)}
               className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
-                activeTab === category
+                activeTab === tab
                   ? "bg-purple-600 text-white shadow-md"
-                  : "bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300 hover:text-purple-600"
+                  : "bg-white text-purple-600 border-2 border-purple-600 hover:bg-purple-50"
               }`}
             >
-              {category}
+              {tab}
             </button>
           ))}
         </div>
 
-        {/* Skills Content */}
-        <div className="min-h-[200px]">
-          <div
-            key={activeTab}
-            className="animate-fade-in"
-          >
+        {/* Only bullets for active tab; fixed min-height to avoid jump */}
+        <div className="min-h-[220px]">
+          <div key={activeTab} className="animate-fade-in">
             <ul className="space-y-3 text-gray-700">
-              {skillsData[activeTab].map((skill, index) => (
-                <li
-                  key={`${activeTab}-${index}`}
-                  className="flex items-start animate-slide-up"
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600"></span>
+              {skills[activeTab].map((skill, index) => (
+                <li key={skill} className="flex items-start">
+                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600" aria-hidden />
                   <span className="leading-relaxed">{skill}</span>
                 </li>
               ))}
