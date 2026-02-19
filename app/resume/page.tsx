@@ -17,6 +17,13 @@ const PhoneIcon = () => (
   </svg>
 );
 
+// Email Icon SVG
+const EmailIcon = () => (
+  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  </svg>
+);
+
 // Icons for "See My Work" cards
 const SparklesIcon = () => (
   <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,8 +91,8 @@ function SkillsSection() {
   return (
     <section className="px-6 py-16 md:py-24">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 md:text-4xl">
-          My Skills
+        <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 md:text-3xl">
+          Accomplishments
         </h2>
 
         {/* Tab row: 5 clickable buttons */}
@@ -106,29 +113,29 @@ function SkillsSection() {
           ))}
         </div>
 
-        {/* Only bullets for active tab; fixed min-height to avoid jump */}
+        {/* Callout-style blocks for active tab; fixed min-height to avoid jump */}
         <div className="min-h-[400px]">
-          <div key={activeTab} className="animate-fade-in">
-            <ul className="space-y-4 text-gray-700">
-              {skills[activeTab].map((skillText, index) => {
-                const [skillName, ...descriptionParts] = skillText.split(": ");
-                const description = descriptionParts.join(": ");
-                return (
-                  <li key={index} className="flex items-start">
-                    <span className="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-purple-600" aria-hidden />
-                    <span className="leading-relaxed">
-                      <span className="font-bold text-gray-900">{skillName}</span>
-                      {description && (
-                        <>
-                          <span className="text-gray-900">: </span>
-                          <span>{description}</span>
-                        </>
-                      )}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+          <div key={activeTab} className="animate-fade-in space-y-4">
+            {skills[activeTab].map((skillText, index) => {
+              const [skillName, ...descriptionParts] = skillText.split(": ");
+              const description = descriptionParts.join(": ");
+              return (
+                <div
+                  key={index}
+                  className="rounded-lg border border-gray-200 bg-gray-50 px-5 py-4 text-left"
+                >
+                  <span className="leading-relaxed">
+                    <span className="font-bold text-gray-900">{skillName}</span>
+                    {description && (
+                      <>
+                        <span className="text-gray-900">: </span>
+                        <span className="text-gray-700">{description}</span>
+                      </>
+                    )}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -155,22 +162,23 @@ export default function Resume() {
                 615-707-2358
               </span>
               <span className="hidden md:inline">•</span>
-              <a href="mailto:pritchardbna@gmail.com" className="hover:text-purple-600 transition-colors">
+              <a href="mailto:pritchardbna@gmail.com" className="flex items-center gap-1 hover:text-purple-600 transition-colors">
+                <EmailIcon />
                 pritchardbna@gmail.com
               </a>
               <span className="hidden md:inline">•</span>
               <span>Greater Nashville-TN Area</span>
               <span className="hidden md:inline">•</span>
               <a
-                href="https://linkedin.com/in/thayspritchard-2b92371b"
+                href="https://www.linkedin.com/in/thays-pritchard-2b92371b"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 hover:text-purple-600 transition-colors"
                 aria-label="LinkedIn Profile"
               >
                 <LinkedInIcon />
-                <span className="hidden sm:inline">linkedin.com/in/thayspritchard-2b92371b</span>
-                <span className="sm:hidden">LinkedIn</span>
+                <span className="hidden sm:inline">LinkedIn®</span>
+                <span className="sm:hidden">LinkedIn®</span>
               </a>
             </div>
             <a
@@ -182,9 +190,9 @@ export default function Resume() {
             </a>
           </div>
 
-          <div className="rounded-lg bg-white p-6 shadow-sm border border-purple-100">
-            <h2 className="mb-3 text-xl font-bold text-gray-900">Summary</h2>
-            <p className="leading-relaxed text-gray-700">
+          <div className="rounded-lg bg-white p-6 shadow-sm border border-purple-100 text-center">
+            <h2 className="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">Summary</h2>
+            <p className="leading-relaxed text-gray-700 text-left max-w-3xl mx-auto">
               Product Management professional with 9+ years building customer-facing products and 
               internal tools for Fortune 100 clients including AT&T and Verizon. Proven track record 
               managing the full product lifecycle from discovery through deployment — partnering 
@@ -197,14 +205,14 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* My Skills Section */}
+      {/* Accomplishments Section */}
       <SkillsSection />
 
-      {/* See My Work Section */}
+      {/* AI Projects Section */}
       <section className="bg-purple-50 px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-center text-3xl font-bold text-gray-900 md:text-4xl">
-            See My Work
+          <h2 className="mb-8 text-center text-2xl font-bold text-gray-900 md:text-3xl">
+            AI Projects
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             {/* AI Prototypes Card */}
@@ -273,27 +281,12 @@ export default function Resume() {
               <h3 className="mb-6 border-b-2 border-purple-200 pb-2 text-2xl font-bold text-gray-900">
                 Certifications
               </h3>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <span className="mr-2 text-purple-600">•</span>
-                  <span className="text-gray-700">AI Product Management Certification — Section</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-purple-600">•</span>
-                  <span className="text-gray-700">Digital Product Management Certification — The 280 Group</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-purple-600">•</span>
-                  <span className="text-gray-700">Integrating AI into Team Workflows — Section</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-purple-600">•</span>
-                  <span className="text-gray-700">Agile Project Management with Jira Cloud — LinkedIn Learning</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="mr-2 text-purple-600">•</span>
-                  <span className="text-gray-700">Scrum: The Basics — LinkedIn Learning</span>
-                </div>
+              <div className="space-y-2 text-gray-700">
+                <p>AI Product Management Certification — Section</p>
+                <p>Digital Product Management Certification — The 280 Group</p>
+                <p>Integrating AI into Team Workflows — Section</p>
+                <p>Agile Project Management with Jira Cloud — LinkedIn® Learning</p>
+                <p>Scrum: The Basics — LinkedIn® Learning</p>
               </div>
             </div>
           </div>
