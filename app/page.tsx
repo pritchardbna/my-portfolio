@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const LEFT_MARGIN = "pl-6 md:pl-16 lg:pl-24";
+const LEFT_MARGIN = "pl-6 md:pl-10 lg:pl-16";
 const MAX_W = "max-w-[680px]";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section className="h-screen flex flex-col-reverse md:flex-row bg-white">
         {/* Left 50% — Text */}
-        <div className={`flex flex-col justify-center w-full md:w-1/2 min-w-0 ${LEFT_MARGIN} pr-6 md:pr-12 py-12 md:py-0`}>
+        <div className={`flex flex-col justify-center w-full md:w-1/2 min-w-0 ${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16 py-12 md:py-0`}>
           <div
             className={`${MAX_W} transition-all duration-500 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -39,10 +39,7 @@ export default function Home() {
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-3">
               I AM
             </p>
-            <h1
-              className="text-[#2D2D2D] font-semibold leading-[1.25]"
-              style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)" }}
-            >
+            <h1 className="text-[#2D2D2D] font-semibold leading-[1.25] text-2xl md:text-3xl lg:text-4xl">
               a builder of products that make
               <br />
               <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
@@ -70,74 +67,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 — ABOUT ME */}
+      {/* SECTION 2 — ABOUT ME + NAV CARDS */}
       <section className="py-24 bg-white">
-        <div className={`${LEFT_MARGIN} pr-6 md:pr-16 lg:pr-24`}>
-          <div className={MAX_W}>
-            <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-8">
-              ABOUT ME
-            </p>
-            <div className="text-[#2D2D2D] text-base md:text-lg font-normal space-y-6" style={{ lineHeight: 1.9 }}>
-              <p>
-                I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
-              </p>
-              <p>
-                I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
-              </p>
-              <p>
-                Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
-              </p>
+        <div className={`${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16`}>
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* Left — About Me text */}
+            <div className="flex-1 min-w-0">
+              <div className={MAX_W}>
+                <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-8">
+                  ABOUT ME
+                </p>
+                <div className="text-[#2D2D2D] text-base md:text-lg font-normal space-y-6" style={{ lineHeight: 1.9 }}>
+                  <p>
+                    I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
+                  </p>
+                  <p>
+                    I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
+                  </p>
+                  <p>
+                    Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Right — Nav cards stacked on large, row on small */}
+            <div className="w-full lg:w-[260px] flex-shrink-0 flex flex-row lg:flex-col gap-3 flex-wrap">
+              <Link
+                href="/prototypes"
+                className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
+              >
+                <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="text-[#7B5EA7] text-sm font-semibold">AI Prototypes</span>
+                <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
+              </Link>
+              <Link
+                href="/case-studies"
+                className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
+              >
+                <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="text-[#7B5EA7] text-sm font-semibold">Case Studies</span>
+                <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
+              </Link>
+              <Link
+                href="/resume"
+                className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
+              >
+                <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span className="text-[#7B5EA7] text-sm font-semibold">Resume</span>
+                <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — THREE NAV BUTTONS */}
-      <section className="py-12 bg-white">
-        <div className={`${LEFT_MARGIN} pr-6 md:pr-16 lg:pr-24`}>
-          <div className={`${MAX_W} flex flex-col sm:flex-row gap-4`}>
-            <Link
-              href="/prototypes"
-              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
-            >
-              <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span className="text-[#7B5EA7] text-sm font-semibold">AI Prototypes</span>
-              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
-            </Link>
-            <Link
-              href="/case-studies"
-              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
-            >
-              <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span className="text-[#7B5EA7] text-sm font-semibold">Case Studies</span>
-              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
-            </Link>
-            <Link
-              href="/resume"
-              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-6 flex flex-row items-center gap-3"
-            >
-              <svg className="w-5 h-5 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <span className="text-[#7B5EA7] text-sm font-semibold">Resume</span>
-              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-all duration-200 ml-auto">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 4 — QUOTE */}
-      <section ref={quoteRef} className={`py-24 bg-white ${LEFT_MARGIN} pr-6 md:pr-16 lg:pr-24`}>
+      <section ref={quoteRef} className={`py-24 bg-white ${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16`}>
         <div
           className={`${MAX_W} text-left transition-all duration-500 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          <p className="text-[#7B5EA7] font-serif leading-none opacity-30 mb-[-1.5rem]" style={{ fontSize: "7rem" }}>&quot;</p>
+          <p className="text-[#7B5EA7] font-serif leading-none opacity-30 mb-[-1.5rem]" style={{ fontSize: "7rem" }}>&#8220;</p>
           <p className="text-[#7B5EA7] text-2xl font-light italic leading-[1.9]">
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
           </p>
@@ -147,7 +144,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="bg-white border-t border-[#E8E0F0] py-8">
-        <div className={`${LEFT_MARGIN} pr-6 md:pr-16 lg:pr-24 text-sm text-[#2D2D2D]/60 text-left`}>
+        <div className={`${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16 text-sm text-[#2D2D2D]/60 text-left`}>
           <p>© 2026 Thays Pritchard. All rights reserved.</p>
         </div>
       </footer>

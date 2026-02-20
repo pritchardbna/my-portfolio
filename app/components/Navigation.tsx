@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-6xl mx-auto w-full px-6 md:px-16 lg:px-24">
+      <div className="w-full px-6 md:px-12 lg:px-16">
         <div className="flex flex-row items-center justify-between gap-6 py-4 min-h-[4rem] flex-nowrap overflow-x-auto">
           {/* Left — Name + subtitle */}
           <div className="flex-shrink-0">
