@@ -114,7 +114,7 @@ export default function Home() {
             <div ref={card3Ref} className="fade-in rounded-lg bg-white p-8 shadow-md">
               <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">My Goals</h3>
               <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
-                Always looking to work with teams that build with purpose — where technology serves people and innovation is grounded in real human needs. Passionate about applying GenAI to reduce manual effort, improve customer experiences, and unlock new capabilities. Committed to continuous learning and to building products that make someone&apos;s day a little easier — and someone&apos;s work a little more meaningful.
+                I&apos;m drawn to teams that build with purpose — where technology serves people and innovation is grounded in real human needs. I want to bring my background in automation, cross-functional leadership, and customer experience to a team building something that truly matters, keep pushing the boundaries of what GenAI makes possible in product management, and help the people around me grow along the way.
               </p>
             </div>
 
