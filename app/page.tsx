@@ -59,7 +59,7 @@ export default function Home() {
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[60%_30%]"
+              className="object-cover object-[60%_45%]"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
