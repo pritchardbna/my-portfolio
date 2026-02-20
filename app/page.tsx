@@ -25,7 +25,7 @@ export default function Home() {
   const [typewriterComplete, setTypewriterComplete] = useState(false);
 
   useEffect(() => {
-    const initialDelay = 800;
+    const initialDelay = 4200;
     const charDelay = 85;
     const pauseBetween = 600;
     const timeouts: ReturnType<typeof setTimeout>[] = [];

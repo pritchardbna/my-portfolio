@@ -65,8 +65,8 @@ body {
 
 .hero-title-fade {
   opacity: 0;
-  animation: heroTitleFadeIn 1.2s ease forwards;
-  animation-delay: 0.3s;
+  animation: heroTitleFadeIn 2s ease forwards;
+  animation-delay: 0.2s;
 }
 
 @keyframes slideUp {
