@@ -124,7 +124,7 @@ export default function Home() {
           <div className="text-white text-2xl italic leading-relaxed font-playfair relative z-10 space-y-1 mt-0 pt-0">
             <p>&quot;I build products the way I care for people —&quot;</p>
             <p>&quot;with intention, with heart, and with the belief&quot;</p>
-            <p>&quot;that technology should make someone&apos;s work a little more meaningful.&quot;</p>
+            <p>&quot;that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;</p>
           </div>
           <p className="text-white text-base relative z-10 mt-4">— Thays Pritchard</p>
         </blockquote>
