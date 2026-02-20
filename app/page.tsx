@@ -10,8 +10,6 @@ const TAGLINE_LINES = [
   "a meaningful solution.",
 ];
 
-const TAGLINE_WORDS = TAGLINE_LINES.map((line) => line.split(" "));
-
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
@@ -22,28 +20,40 @@ export default function Home() {
   const quoteRef = useRef<HTMLElement>(null);
   const resumeRef = useRef<HTMLElement>(null);
 
-  const [visibleWordCount, setVisibleWordCount] = useState(0);
+  const [typewriterLineIndex, setTypewriterLineIndex] = useState(-1);
+  const [typewriterCharIndex, setTypewriterCharIndex] = useState(0);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
 
   useEffect(() => {
     const initialDelay = 4200;
-    const wordDelay = 180;
-    const pauseBetweenLines = 500;
+    const charDelay = 85;
+    const pauseBetween = 600;
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     let t = initialDelay;
-    let globalIndex = 0;
 
-    TAGLINE_WORDS.forEach((lineWords, lineIdx) => {
-      lineWords.forEach(() => {
-        const count = globalIndex + 1;
+    TAGLINE_LINES.forEach((line, lineIdx) => {
+      timeouts.push(
+        setTimeout(() => {
+          setTypewriterLineIndex(lineIdx);
+          setTypewriterCharIndex(0);
+        }, t)
+      );
+      for (let c = 1; c <= line.length; c++) {
+        t += charDelay;
+        const charCount = c;
         timeouts.push(
-          setTimeout(() => setVisibleWordCount(count), t)
+          setTimeout(() => {
+            setTypewriterCharIndex(charCount);
+            if (
+              lineIdx === TAGLINE_LINES.length - 1 &&
+              charCount === line.length
+            ) {
+              setTypewriterComplete(true);
+            }
+          }, t)
         );
-        globalIndex += 1;
-        t += wordDelay;
-      });
-      if (lineIdx < TAGLINE_WORDS.length - 1) {
-        t += pauseBetweenLines;
       }
+      t += pauseBetween;
     });
 
     return () => timeouts.forEach(clearTimeout);
@@ -115,32 +125,23 @@ export default function Home() {
                 SENIOR PRODUCT MANAGER
               </h2>
               <div className="mt-8 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
-                {TAGLINE_WORDS.map((lineWords, lineIdx) => {
-                  const lineStartIndex = TAGLINE_WORDS.slice(0, lineIdx).reduce((sum, l) => sum + l.length, 0);
+                {TAGLINE_LINES.map((line, i) => {
+                  const notStarted = typewriterLineIndex < i;
+                  const isActive = typewriterLineIndex === i;
+                  const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
+                  const showCursor = isActive && !typewriterComplete;
                   const lineClass =
-                    lineIdx === 0 || lineIdx === 2
+                    i === 0 || i === 2
                       ? "text-xl font-[700] min-h-[1.6em]"
                       : "text-lg font-[400] min-h-[1.6em]";
                   return (
-                    <p key={lineIdx} className={lineClass}>
-                      {lineWords.map((word, wordIdx) => {
-                        const globalIndex = lineStartIndex + wordIdx;
-                        const isVisible = globalIndex < visibleWordCount;
-                        return (
-                          <span
-                            key={wordIdx}
-                            style={{
-                              opacity: isVisible ? 1 : 0,
-                              transform: isVisible ? "translateY(0)" : "translateY(4px)",
-                              transition: "opacity 0.4s ease, transform 0.4s ease",
-                              display: "inline-block",
-                            }}
-                          >
-                            {wordIdx > 0 ? " " : ""}
-                            {word}
-                          </span>
-                        );
-                      })}
+                    <p
+                      key={i}
+                      className={lineClass}
+                      style={{ opacity: notStarted ? 0 : 1 }}
+                    >
+                      {text}
+                      {showCursor && <span className="animate-pulse opacity-50">|</span>}
                     </p>
                   );
                 })}
