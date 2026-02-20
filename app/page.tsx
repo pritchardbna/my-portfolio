@@ -33,8 +33,8 @@ export default function Home() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [quoteVisible, setQuoteVisible] = useState(false);
   const [statsTrigger, setStatsTrigger] = useState(false);
+  const [statsSection, setStatsSection] = useState<HTMLElement | null>(null);
   const quoteRef = useRef<HTMLElement>(null);
-  const statsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setHeroVisible(true);
@@ -50,13 +50,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (!statsSection) return;
     const observer = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setStatsTrigger(true),
-      { threshold: 0.3 }
+      ([e]) => {
+        if (e.isIntersecting) setStatsTrigger(true);
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
     );
-    if (statsRef.current) observer.observe(statsRef.current);
+    observer.observe(statsSection);
     return () => observer.disconnect();
-  }, []);
+  }, [statsSection]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -89,9 +92,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="flex-1 flex justify-end relative w-full min-w-0">
+        <div className="flex-1 flex justify-end relative w-full min-w-0 h-full min-h-[60vh] md:min-h-0">
           <div
-            className="relative w-full aspect-[3/5] max-h-[85vh] overflow-hidden md:min-w-[50%]"
+            className="relative w-full h-full min-h-[60vh] md:min-h-[85vh] overflow-hidden md:min-w-[50%]"
             style={{
               maskImage: "linear-gradient(to right, transparent 0%, black 40%)",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40%)",
@@ -101,7 +104,7 @@ export default function Home() {
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-top"
+              className="object-cover object-[30%_50%]"
               sizes="(max-width: 768px) 100vw, 60vw"
               priority
             />
@@ -129,38 +132,27 @@ export default function Home() {
 
       {/* SECTION 3 — WHO I AM */}
       <section className="py-16 md:py-24 px-6 bg-[#F5F5F5]">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="relative w-full aspect-[4/5] md:aspect-square max-w-md mx-auto md:mx-0 md:max-w-none rounded-2xl overflow-hidden border-4 border-[#7B5EA7]">
-              <Image
-                src="/images/thays.jpg"
-                alt="Thays Pritchard"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-          </div>
-          <div className="flex flex-col justify-center">
-            <p className="text-[#7B5EA7] text-sm font-bold uppercase tracking-widest mb-6">
-              Who I Am
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-[#7B5EA7] text-sm font-bold uppercase tracking-widest mb-6">
+            Who I Am
+          </p>
+          <div className="space-y-5 text-[#2D2D2D] text-lg md:text-xl leading-relaxed font-medium text-left">
+            <p>
+              I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
             </p>
-            <div className="space-y-5 text-[#2D2D2D] text-lg md:text-xl leading-relaxed font-medium">
-              <p>
-                I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
-              </p>
-              <p>
-                I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
-              </p>
-              <p>
-                Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
-              </p>
-            </div>
+            <p>
+              I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
+            </p>
+            <p>
+              Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
+            </p>
           </div>
         </div>
       </section>
 
       {/* SECTION 4 — QUICK STATS STRIP */}
       <section
-        ref={statsRef}
+        ref={setStatsSection}
         className="py-14 md:py-20 px-6 bg-[#E8E0F0]"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">

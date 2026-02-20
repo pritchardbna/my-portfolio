@@ -170,7 +170,7 @@ export default function Resume() {
               <span>Greater Nashville-TN Area</span>
               <span className="hidden md:inline">•</span>
               <a
-                href="https://www.linkedin.com/in/thays-pritchard-2b92371b"
+                href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 hover:text-purple-600 transition-colors"
