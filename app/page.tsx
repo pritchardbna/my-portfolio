@@ -61,16 +61,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* SECTION 1 — HERO (full screen) */}
-      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 px-6 py-20 md:py-0 md:px-16 bg-white">
+      <section className="min-h-screen flex flex-col md:flex-row items-start md:items-center justify-center gap-12 md:gap-16 px-6 pt-24 md:pt-28 md:pb-16 md:pl-16 md:pr-0 bg-white">
         <div
           className={`flex-1 max-w-xl transition-all duration-700 ${
             heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-[#7B5EA7] mb-4 animate-fade-in">
+          <p className="text-sm uppercase tracking-[0.2em] text-[#7B5EA7] mb-3 animate-fade-in">
             I am
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#2D2D2D] leading-tight mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#2D2D2D] leading-tight mb-8">
             a builder of products that make{" "}
             <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
           </h1>
@@ -89,21 +89,20 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="flex-1 flex justify-center md:justify-end relative max-w-md">
+        <div className="flex-1 flex justify-end relative w-full min-w-0">
           <div
-            className="relative w-full aspect-[3/4] max-h-[80vh] rounded-2xl overflow-hidden"
-            style={{ boxShadow: "0 25px 50px -12px rgba(123, 94, 167, 0.2)" }}
+            className="relative w-full aspect-[3/5] max-h-[85vh] overflow-hidden md:min-w-[50%]"
+            style={{
+              maskImage: "linear-gradient(to right, transparent 0%, black 40%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40%)",
+            }}
           >
-            <div
-              className="absolute -inset-4 rounded-3xl bg-[#E8E0F0] -z-10"
-              aria-hidden
-            />
             <Image
-              src="/images/thays.jpg"
+              src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[50%_25%] rounded-2xl"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 60vw"
               priority
             />
           </div>
@@ -113,15 +112,15 @@ export default function Home() {
       {/* SECTION 2 — PERSONAL QUOTE */}
       <section
         ref={quoteRef}
-        className="py-20 md:py-28 px-6 bg-[#7B5EA7]"
+        className="py-12 px-6 bg-[#7B5EA7]"
       >
         <div
           className={`max-w-3xl mx-auto text-center transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="text-[#E8E0F0]/60 text-5xl md:text-6xl font-serif leading-none block mb-3">&quot;</span>
-          <p className="text-[#F5F0FA] text-base md:text-lg italic leading-relaxed mb-5">
+          <span className="text-[#E8E0F0]/70 text-7xl md:text-8xl font-serif leading-none block mb-2">&quot;</span>
+          <p className="text-[#F5F0FA] text-lg md:text-xl italic leading-relaxed mb-4">
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
           </p>
           <p className="text-[#E8E0F0]/90 text-sm font-medium">— Thays Pritchard</p>
@@ -129,24 +128,22 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — WHO I AM */}
-      <section className="py-20 md:py-28 px-6 bg-[#F5F5F5]">
+      <section className="py-16 md:py-24 px-6 bg-[#F5F5F5]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="relative flex justify-center md:justify-end">
-            <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden border-4 border-[#7B5EA7]">
+          <div className="relative w-full aspect-[4/5] md:aspect-square max-w-md mx-auto md:mx-0 md:max-w-none rounded-2xl overflow-hidden border-4 border-[#7B5EA7]">
               <Image
                 src="/images/thays.jpg"
                 alt="Thays Pritchard"
                 fill
-                className="object-cover object-[50%_25%]"
+                className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
           </div>
-          <div>
-            <p className="text-[#7B5EA7] text-sm font-semibold uppercase tracking-widest mb-6">
+          <div className="flex flex-col justify-center">
+            <p className="text-[#7B5EA7] text-sm font-bold uppercase tracking-widest mb-6">
               Who I Am
             </p>
-            <div className="space-y-5 text-[#2D2D2D] text-lg leading-relaxed">
+            <div className="space-y-5 text-[#2D2D2D] text-lg md:text-xl leading-relaxed font-medium">
               <p>
                 I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
               </p>
@@ -154,19 +151,8 @@ export default function Home() {
                 I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
               </p>
               <p>
-                Away from the screen, you&apos;ll find me on a mountain — either hiking a trail or riding motorcycles with my husband through winding roads. And when I&apos;m home, I love decorative sewing. It&apos;s my way of slowing down and making something beautiful with my hands.
+                Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
               </p>
-            </div>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
-                🏔️ Mountain Hiking
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
-                🏍️ Motorcycle Riding
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
-                🧵 Decorative Sewing
-              </span>
             </div>
           </div>
         </div>
@@ -175,7 +161,7 @@ export default function Home() {
       {/* SECTION 4 — QUICK STATS STRIP */}
       <section
         ref={statsRef}
-        className="py-16 md:py-20 px-6 bg-[#E8E0F0]"
+        className="py-14 md:py-20 px-6 bg-[#E8E0F0]"
       >
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
           <StatBlock label="Years of Experience" value={9} suffix="+" trigger={statsTrigger} />
@@ -186,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 5 — NAVIGATION CARDS */}
-      <section className="py-20 md:py-28 px-6 bg-[#F5F5F5]">
+      <section className="py-16 md:py-24 px-6 bg-[#F5F5F5]">
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
           <Link
             href="/prototypes"
