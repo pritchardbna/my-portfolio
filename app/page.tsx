@@ -6,8 +6,8 @@ import { useRef, useEffect, useState } from "react";
 
 const TAGLINE_LINES = [
   "Every product I build",
-  "starts with a need and",
-  "ends with a meaningful solution.",
+  "starts with a need and ends with",
+  "a meaningful solution.",
 ];
 
 export default function Home() {
