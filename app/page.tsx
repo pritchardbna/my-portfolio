@@ -34,7 +34,7 @@ export default function Home() {
             }`}
           >
             <p
-              className="text-[#7B5EA7] uppercase mb-3"
+              className="text-[#7B5EA7] font-bold uppercase mb-3"
               style={{ fontSize: "0.75rem", letterSpacing: "0.3em" }}
             >
               I AM
@@ -44,29 +44,6 @@ export default function Home() {
               <br />
               <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
             </h1>
-            <div className="flex items-center gap-4 mt-8">
-              <a
-                href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#7B5EA7] hover:opacity-80 transition-opacity"
-                aria-label="LinkedIn"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a
-                href="mailto:pritchardbna@gmail.com"
-                className="text-[#7B5EA7] hover:opacity-80 transition-opacity"
-                aria-label="Email"
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
         {/* Right 55% — Photo (on mobile on top at 50vh) */}
@@ -90,16 +67,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 — WHO I AM */}
+      {/* SECTION 2 — ABOUT ME */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-[780px] mx-auto">
           <p
-            className="text-[#7B5EA7] text-xs uppercase text-center mb-6"
+            className="text-[#7B5EA7] text-xs font-bold uppercase text-center mb-6"
             style={{ letterSpacing: "0.3em" }}
           >
-            WHO I AM
+            ABOUT ME
           </p>
-          <p className="text-[#7B5EA7] text-2xl font-light italic text-center mb-10">
+          <p className="text-[#7B5EA7] text-2xl font-bold italic text-center mb-10 mx-12 md:mx-24">
             A product manager who builds with intention.
           </p>
           <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
@@ -119,16 +96,16 @@ export default function Home() {
       {/* SECTION 3 — QUOTE */}
       <section ref={quoteRef} className="py-24 px-6 bg-[#F5F5F5]">
         <div
-          className={`max-w-[860px] mx-auto rounded-2xl bg-[#7B5EA7] px-16 py-14 text-center transition-all duration-700 delay-150 ${
+          className={`max-w-[860px] mx-auto text-center transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="text-white text-2xl italic leading-[1.8]">
-            <span className="mr-2">&quot;</span>
+          <p className="text-[#7B5EA7] text-2xl font-bold leading-[1.8]">
+            <span className="text-[#7B5EA7] text-5xl md:text-6xl font-serif leading-none align-top mr-2">&quot;</span>
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
-            <span className="ml-2">&quot;</span>
+            <span className="text-[#7B5EA7] text-5xl md:text-6xl font-serif leading-none align-top ml-2">&quot;</span>
           </p>
-          <p className="text-[#E8E0F0] text-sm mt-8">— Thays Pritchard</p>
+          <p className="text-[#2D2D2D]/80 text-sm mt-8">— Thays Pritchard</p>
         </div>
       </section>
 
