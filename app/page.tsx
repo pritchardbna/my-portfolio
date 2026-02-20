@@ -137,7 +137,7 @@ export default function Home() {
           </p>
           <blockquote className="max-w-[700px] mx-auto text-center mt-0">
             <p className="text-[#2D2D2D] text-xl font-normal font-playfair leading-[1.9]">
-              I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+              I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and the work of the people it serves more meaningful.
             </p>
             <p className="font-inter text-sm text-[#7B5EA7] mt-4">— Thays Pritchard</p>
           </blockquote>
