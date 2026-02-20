@@ -66,7 +66,7 @@ export default function Home() {
       <section className="bg-white pt-12 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto">
           {/* Section title */}
-          <h2 className="text-[#4A3068] text-3xl font-bold uppercase font-playfair text-center mb-16">
+          <h2 className="text-[#4A3068] text-4xl font-bold uppercase font-playfair text-center mb-16">
             ABOUT ME
           </h2>
           
@@ -74,40 +74,40 @@ export default function Home() {
           <div className="space-y-16">
             {/* EXPERIENCE */}
             <div className="text-center">
-              <h3 className="text-[#4A3068] text-xl font-bold uppercase font-playfair mb-6">
+              <h3 className="text-[#4A3068] text-2xl font-bold uppercase font-playfair mb-6">
                 EXPERIENCE
               </h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto font-inter">
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[850px] mx-auto font-inter">
                 A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
               </p>
             </div>
             
             {/* SKILLSET */}
             <div className="text-center">
-              <h3 className="text-[#4A3068] text-xl font-bold uppercase font-playfair mb-6">
+              <h3 className="text-[#4A3068] text-2xl font-bold uppercase font-playfair mb-6">
                 SKILLSET
               </h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto font-inter">
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[850px] mx-auto font-inter">
                 Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
               </p>
             </div>
             
             {/* GOALS */}
             <div className="text-center">
-              <h3 className="text-[#4A3068] text-xl font-bold uppercase font-playfair mb-6">
+              <h3 className="text-[#4A3068] text-2xl font-bold uppercase font-playfair mb-6">
                 GOALS
               </h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto font-inter">
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[850px] mx-auto font-inter">
                 Always looking to work with teams that build with purpose — where technology serves people and innovation is grounded in real human needs. Passionate about applying GenAI to reduce manual effort, improve customer experiences, and unlock new capabilities. Committed to continuous learning and to building products that make someone&apos;s day a little easier — and someone&apos;s work a little more meaningful.
               </p>
             </div>
             
             {/* WHAT I DO FOR FUN */}
             <div className="text-center">
-              <h3 className="text-[#4A3068] text-xl font-bold uppercase font-playfair mb-6">
+              <h3 className="text-[#4A3068] text-2xl font-bold uppercase font-playfair mb-6">
                 WHAT I DO FOR FUN
               </h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto font-inter">
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[850px] mx-auto font-inter">
                 When I step away from the screen, I trade roadmaps for mountain trails. You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
               </p>
             </div>
@@ -117,11 +117,11 @@ export default function Home() {
 
       {/* Personal quote banner */}
       <section className="bg-[#9B89B4] mt-16 py-12 px-6 md:px-10 lg:px-16">
-        <blockquote className="max-w-[600px] mx-auto text-center relative">
-          <p className="text-white font-playfair italic leading-none opacity-40 absolute -top-4 left-0 right-0" style={{ fontSize: "6rem" }}>
+        <blockquote className="max-w-[800px] mx-auto text-center relative">
+          <p className="text-white font-playfair italic leading-none opacity-40 absolute -top-4 left-0 right-0" style={{ fontSize: "8rem" }}>
             &quot;
           </p>
-          <p className="text-white text-xl italic leading-relaxed mb-2 font-playfair relative z-10 pt-8">
+          <p className="text-white text-2xl italic leading-relaxed mb-2 font-playfair relative z-10 pt-8">
             I build products the way I care for people —<br />
             with intention, with heart,<br />
             and with the belief that technology should make someone&apos;s day a little easier.
@@ -134,7 +134,7 @@ export default function Home() {
       <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
-          <p className="text-[#4A3068] text-xl font-[700] uppercase mb-8 font-playfair">
+          <p className="text-[#4A3068] text-2xl font-[700] uppercase mb-8 font-playfair">
             LOOKING FOR EXPERIENCE?
           </p>
           
@@ -152,7 +152,7 @@ export default function Home() {
       <footer className="bg-[#4A3068] text-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
-          <p className="font-playfair font-[700] text-xl uppercase mb-8">
+          <p className="font-playfair font-[700] text-2xl uppercase mb-8">
             WANT TO GET IN TOUCH?
           </p>
           
