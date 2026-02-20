@@ -4,36 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const SOFT_PLUM = "#7B5EA7";
-const LIGHT_PLUM = "#E8E0F0";
-const DARK_GRAY = "#2D2D2D";
-
-// Count-up hook for stats
-function useCountUp(end: number, duration: number, trigger: boolean) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!trigger) return;
-    let start = 0;
-    const step = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [end, duration, trigger]);
-  return count;
-}
-
 export default function Home() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [quoteVisible, setQuoteVisible] = useState(false);
-  const [statsTrigger, setStatsTrigger] = useState(false);
-  const [statsSection, setStatsSection] = useState<HTMLElement | null>(null);
   const quoteRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -48,18 +21,6 @@ export default function Home() {
     if (quoteRef.current) observer.observe(quoteRef.current);
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (!statsSection) return;
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) setStatsTrigger(true);
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-    );
-    observer.observe(statsSection);
-    return () => observer.disconnect();
-  }, [statsSection]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -150,49 +111,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4 — QUICK STATS STRIP */}
-      <section
-        ref={setStatsSection}
-        className="py-14 md:py-20 px-6 bg-[#E8E0F0]"
-      >
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
-          <StatBlock label="Years of Experience" value={9} suffix="+" trigger={statsTrigger} />
-          <StatBlock label="Claims Processed Annually" value={2} suffix="M+" trigger={statsTrigger} />
-          <StatBlock label="Cost Savings Delivered" value={5} suffix="M" prefix="$" trigger={statsTrigger} />
-          <StatBlock label="NPS Points Lifted" value={5} suffix="+" trigger={statsTrigger} />
-        </div>
-      </section>
-
-      {/* SECTION 5 — NAVIGATION CARDS */}
-      <section className="py-16 md:py-24 px-6 bg-[#F5F5F5]">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-          <Link
-            href="/prototypes"
-            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
-          >
-            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
-              AI Prototypes
-            </h3>
-            <p className="text-[#2D2D2D]/80">Explore hands-on tools and demos.</p>
-          </Link>
-          <Link
-            href="/case-studies"
-            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
-          >
-            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
-              Case Studies
-            </h3>
-            <p className="text-[#2D2D2D]/80">Real problems, real impact.</p>
-          </Link>
-          <Link
-            href="/resume"
-            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
-          >
-            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
-              Resume
-            </h3>
-            <p className="text-[#2D2D2D]/80">Experience and accomplishments.</p>
-          </Link>
+      {/* NAVIGATION CARDS */}
+      <section className="py-16 md:py-24 px-6 bg-[#7B5EA7]">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-white text-xs uppercase tracking-[0.3em] mb-8">
+            WHERE TO NEXT?
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Link
+              href="/prototypes"
+              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+                <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">
+                AI Prototypes
+              </h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
+                Hands-on AI tools I&apos;ve built to show what&apos;s possible when product thinking meets GenAI — from requirement generators to claims workflow simulators.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              href="/case-studies"
+              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+                <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">
+                Case Studies
+              </h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
+                Deep dives into real product problems I&apos;ve solved — including $5M in cost savings, a +5pt NPS lift, and a GenAI pilot that shaped a 2026 roadmap.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              href="/resume"
+              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+                <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">
+                Resume
+              </h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
+                9+ years of product experience across Fortune 100 clients — full lifecycle ownership from discovery through deployment.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -201,30 +172,6 @@ export default function Home() {
           <p>© {new Date().getFullYear()} Thays Pritchard. All rights reserved.</p>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function StatBlock({
-  label,
-  value,
-  suffix = "",
-  prefix = "",
-  trigger,
-}: {
-  label: string;
-  value: number;
-  suffix?: string;
-  prefix?: string;
-  trigger: boolean;
-}) {
-  const count = useCountUp(value, 1500, trigger);
-  return (
-    <div>
-      <p className="text-3xl md:text-4xl font-bold text-[#7B5EA7] mb-1">
-        {prefix}{count}{suffix}
-      </p>
-      <p className="text-[#2D2D2D] text-sm md:text-base">{label}</p>
     </div>
   );
 }
