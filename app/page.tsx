@@ -27,7 +27,7 @@ export default function Home() {
       {/* SECTION 1 — HERO (full viewport height) */}
       <section className="min-h-screen flex flex-col-reverse md:flex-row bg-white">
         {/* Left 45% — Text (on mobile appears below photo) */}
-        <div className="flex flex-col justify-center w-full md:w-[45%] px-6 md:pl-16 md:pr-12 py-12 md:py-0">
+        <div className="flex flex-col justify-center w-full md:w-[45%] px-6 md:px-8 lg:px-16 py-12 md:py-0">
           <div
             className={`transition-all duration-700 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -68,8 +68,8 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ABOUT ME (left) + NAV CARDS (right) */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-0 md:px-8 lg:px-16 flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* Left — About Me, left-aligned */}
           <div className="flex-1 min-w-0">
             <p
@@ -81,7 +81,7 @@ export default function Home() {
             <p className="text-[#7B5EA7] text-2xl font-bold italic text-left mb-10">
               A product manager who builds with intention.
             </p>
-            <div className="text-[#2D2D2D] text-lg font-bold text-left space-y-8" style={{ lineHeight: 2 }}>
+            <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
               <p>
                 I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
               </p>
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="w-full lg:w-[280px] flex-shrink-0 flex flex-col gap-3">
             <Link
               href="/prototypes"
-              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
+              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] p-3 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
               <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -107,7 +107,7 @@ export default function Home() {
             </Link>
             <Link
               href="/case-studies"
-              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
+              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] p-3 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
               <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -117,7 +117,7 @@ export default function Home() {
             </Link>
             <Link
               href="/resume"
-              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
+              className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] p-3 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
               <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -130,9 +130,9 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — QUOTE (bottom) — narrower max-width so 2–3 lines when expanded, more lines when smaller */}
-      <section ref={quoteRef} className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+      <section ref={quoteRef} className="py-24 px-6 md:px-8 lg:px-16 bg-white">
         <div
-          className={`max-w-[min(600px,90vw)] mx-auto text-left transition-all duration-700 delay-150 ${
+          className={`max-w-[600px] ml-0 md:ml-8 lg:ml-16 text-left transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       <footer className="bg-white border-t border-[#E8E0F0] px-6 py-8">
-        <div className="max-w-4xl mx-auto text-center text-sm text-[#2D2D2D]/70">
+        <div className="max-w-6xl mx-auto px-0 md:px-8 lg:px-16 text-left text-sm text-[#2D2D2D]/70">
           <p>© {new Date().getFullYear()} Thays Pritchard. All rights reserved.</p>
         </div>
       </footer>
