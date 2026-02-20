@@ -52,7 +52,7 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section ref={heroRef} className="fade-in bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="text-center mb-6">
-          <h1 className="text-[#4A3068] text-3xl font-bold font-playfair">
+          <h1 className="hero-title-fade text-[#4A3068] text-3xl font-bold font-playfair">
             Hey, I&apos;m Thays
           </h1>
         </div>

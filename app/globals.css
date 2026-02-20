@@ -52,6 +52,23 @@ body {
   }
 }
 
+@keyframes heroTitleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title-fade {
+  opacity: 0;
+  animation: heroTitleFadeIn 1.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
