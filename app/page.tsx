@@ -8,39 +8,51 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Small line */}
-          <p className="text-[#7B5EA7] text-sm uppercase tracking-[0.2em] mb-6">
-            HEY, I&apos;M THAYS 👋
-          </p>
-          
-          {/* Large bold heading */}
-          <h1 className="text-[#2D2D2D] font-bold uppercase text-4xl md:text-5xl lg:text-6xl mb-12 leading-tight">
-            SENIOR PRODUCT MANAGER
-          </h1>
-          
-          {/* Photo */}
-          <div className="flex justify-center mb-12">
-            <div className="relative w-full max-w-[500px] aspect-[4/5] rounded-lg overflow-hidden border-2 border-[#7B5EA7]">
-              <Image
-                src="/images/thays2.jpg"
-                alt="Thays Pritchard"
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </div>
-          </div>
-          
-          {/* Quote */}
-          <blockquote className="max-w-[600px] mx-auto">
-            <p className="text-[#2D2D2D] text-lg md:text-xl italic leading-relaxed mb-2">
-              &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
-            </p>
-            <p className="text-[#2D2D2D] text-base">— Thays Pritchard</p>
-          </blockquote>
+      <section className="relative w-full h-[85vh]">
+        {/* Full-width photo */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/images/thays2.jpg"
+            alt="Thays Pritchard"
+            fill
+            className="object-cover"
+            style={{ objectPosition: "center 60%" }}
+            priority
+          />
         </div>
+        
+        {/* Dark gradient overlay on left side */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)"
+          }}
+        />
+        
+        {/* Text overlay - positioned on left, vertically centered */}
+        <div className="relative h-full flex items-center pl-8 md:pl-16">
+          <div className="max-w-[480px]">
+            {/* Small line */}
+            <p className="text-white text-sm uppercase tracking-[0.2em] mb-4 font-medium">
+              HEY, I&apos;M THAYS 👋
+            </p>
+            
+            {/* Large bold heading */}
+            <h1 className="text-white uppercase text-5xl md:text-6xl font-extrabold leading-[1.1]">
+              SENIOR PRODUCT MANAGER
+            </h1>
+          </div>
+        </div>
+      </section>
+      
+      {/* Quote section below hero */}
+      <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
+        <blockquote className="max-w-[600px] mx-auto text-center">
+          <p className="text-[#2D2D2D] text-lg md:text-xl italic leading-relaxed mb-2">
+            &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
+          </p>
+          <p className="text-[#2D2D2D] text-base">— Thays Pritchard</p>
+        </blockquote>
       </section>
 
       {/* SECTION 2 — ABOUT */}

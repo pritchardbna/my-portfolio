@@ -7,7 +7,7 @@ export default function Navigation() {
         <div className="flex flex-row items-center justify-between gap-6 py-4 min-h-[4rem]">
           {/* Left — Name */}
           <div className="flex-shrink-0">
-            <p className="text-[#2D2D2D] text-base md:text-lg font-bold">
+            <p className="text-[#2D2D2D] text-base font-semibold">
               Thays Pritchard
             </p>
           </div>
