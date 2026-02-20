@@ -26,7 +26,7 @@ export default function Home() {
   const [typewriterComplete, setTypewriterComplete] = useState(false);
 
   useEffect(() => {
-    const initialDelay = 4200;
+    const initialDelay = 3200;
     const charDelay = 85;
     const pauseBetween = 600;
     const timeouts: ReturnType<typeof setTimeout>[] = [];
@@ -122,8 +122,9 @@ export default function Home() {
           />
           <div className="relative h-full flex items-center pl-8 md:pl-16">
             <div className="max-w-[480px]">
-              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-raleway">
-                SENIOR PRODUCT MANAGER
+              <h2 className="text-white uppercase text-2xl lg:text-3xl font-[800] leading-[1.1] font-raleway flex flex-col lg:flex-row lg:items-baseline lg:gap-x-2">
+                <span>SENIOR PRODUCT</span>
+                <span>MANAGER</span>
               </h2>
               <div className="mt-8 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
                 {TAGLINE_LINES.map((line, i) => {
