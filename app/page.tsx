@@ -25,9 +25,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="min-h-screen flex flex-col md:flex-row bg-white">
+      <section className="min-h-screen flex flex-col-reverse md:flex-row bg-white">
         {/* LEFT — Text column */}
-        <div className="flex flex-col justify-center w-full md:w-[65%] bg-white px-6 md:px-10 lg:px-16 py-12 md:py-0">
+        <div className="flex flex-col justify-center w-full md:w-[55%] bg-white px-6 md:px-10 lg:px-16 py-12 md:py-0">
           <div
             className={`transition-all duration-500 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -36,12 +36,12 @@ export default function Home() {
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-3">
               I AM
             </p>
-            <h1 className="text-[#2D2D2D] font-semibold leading-[1.25] text-2xl sm:text-3xl lg:text-4xl">
+            <h1 className="text-[#2D2D2D] font-semibold leading-[1.25] text-2xl md:text-3xl lg:text-4xl">
               a builder of products that make
               <br />
               <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
             </h1>
-            <div className="mt-6 flex flex-col gap-3 max-w-md">
+            <div className="mt-6 flex flex-col gap-3 max-w-sm">
               <Link
                 href="/prototypes"
                 className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-5 flex flex-row items-center gap-3"
@@ -76,7 +76,7 @@ export default function Home() {
           </div>
         </div>
         {/* RIGHT — Photo column */}
-        <div className="relative w-full md:w-[35%] h-[40vh] md:h-screen overflow-hidden">
+        <div className="relative w-full md:w-[45%] h-[50vh] md:h-screen overflow-hidden">
           <div
             className="absolute inset-0 w-full h-full overflow-hidden"
             style={{
@@ -85,12 +85,11 @@ export default function Home() {
             }}
           >
             <Image
-              src="/images/thays2.jpg"
+              src="/images/thays3.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover"
-              style={{ objectPosition: "30% 40%" }}
-              sizes="(max-width: 768px) 100vw, 35vw"
+              className="object-cover object-[50%_25%]"
+              sizes="(max-width: 768px) 100vw, 45vw"
               priority
             />
           </div>
