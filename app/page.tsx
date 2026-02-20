@@ -31,7 +31,7 @@ export default function Home() {
             heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-[#7B5EA7] mb-3 animate-fade-in">
+          <p className="text-base font-bold uppercase tracking-[0.2em] text-[#7B5EA7] mb-3 animate-fade-in">
             I am
           </p>
           <h1 className="text-2xl md:text-3xl font-bold text-[#2D2D2D] leading-tight mb-8">
