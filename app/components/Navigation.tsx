@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm">
-      <div className="mx-auto max-w-7xl px-6 md:pl-16 md:pr-6">
+      <div className="w-full px-6 md:pl-16 md:pr-6">
         <div className="flex h-16 items-center justify-between">
           <span className="text-xl font-bold text-[#7B5EA7]">
             Thays Pritchard
