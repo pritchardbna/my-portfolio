@@ -116,9 +116,9 @@ export default function Home() {
       </section>
 
       {/* Personal quote banner */}
-      <section className="bg-[#9B89B4] mt-16 py-8 px-6 md:px-10 lg:px-16">
+      <section className="bg-[#9B89B4] mt-16 pt-6 pb-6 px-6 md:px-10 lg:px-16">
         <blockquote className="max-w-[800px] mx-auto text-center relative">
-          <p className="text-white font-playfair italic leading-none opacity-40 mb-0 pb-0" style={{ fontSize: "8rem", lineHeight: 1 }}>
+          <p className="text-white font-playfair italic opacity-40" style={{ fontSize: "4rem", lineHeight: 1, marginBottom: "4px", display: "block" }}>
             &quot;
           </p>
           <div className="text-white text-2xl italic leading-relaxed font-playfair relative z-10 space-y-1 mt-0 pt-0">
