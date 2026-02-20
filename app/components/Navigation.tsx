@@ -4,29 +4,25 @@ import Link from "next/link";
 import { Mail, Linkedin } from "lucide-react";
 
 export default function Navigation() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      <div className="w-full px-6 md:px-12 lg:px-16">
-        <div className="flex flex-row items-center justify-between gap-6 py-4 min-h-[4rem]">
+    <nav className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      <div className="w-full px-8 py-4">
+        <div className="flex flex-row items-center justify-between gap-6">
           {/* Left — Name */}
           <div className="flex-shrink-0">
-            <p className="text-[#2D2D2D] text-base font-semibold">
+            <Link href="/" className="text-[#2D2D2D] text-base font-semibold font-inter">
               Thays Pritchard
-            </p>
+            </Link>
           </div>
           
           {/* Right — Links and Icons */}
           <div className="flex flex-row items-center gap-6 flex-shrink-0">
-            <button
-              onClick={scrollToTop}
+            <Link
+              href="/"
               className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
             >
               Home
-            </button>
+            </Link>
             <Link
               href="/prototypes"
               className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
