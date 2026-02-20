@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO (full viewport height) */}
-      <section className="min-h-screen flex flex-col md:flex-row bg-white">
-        {/* Left 45% — Text */}
+      <section className="min-h-screen flex flex-col-reverse md:flex-row bg-white">
+        {/* Left 45% — Text (on mobile appears below photo) */}
         <div className="flex flex-col justify-center w-full md:w-[45%] px-6 md:pl-16 md:pr-12 py-12 md:py-0">
           <div
             className={`transition-all duration-700 ${
@@ -69,10 +69,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Right 55% — Photo */}
-        <div className="relative w-full md:w-[55%] min-h-[50vh] md:min-h-screen flex-shrink-0">
+        {/* Right 55% — Photo (on mobile on top at 50vh) */}
+        <div className="relative w-full md:w-[55%] h-[50vh] md:h-screen min-h-[50vh] md:min-h-0 flex-shrink-0 overflow-hidden">
           <div
-            className="absolute inset-0 overflow-hidden"
+            className="absolute inset-0 w-full h-full overflow-hidden"
             style={{
               maskImage: "linear-gradient(to right, transparent 0%, black 35%)",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 35%)",
@@ -82,7 +82,7 @@ export default function Home() {
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[30%_50%] md:object-[30%_75%]"
+              className="object-cover object-[60%_30%]"
               sizes="(max-width: 768px) 100vw, 55vw"
               priority
             />
