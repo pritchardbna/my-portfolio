@@ -122,9 +122,10 @@ export default function Home() {
             &quot;
           </p>
           <p className="text-white text-2xl italic leading-relaxed mb-2 font-playfair relative z-10 pt-8">
-            I build products the way I care for people —<br />
-            with intention, with heart,<br />
-            and with the belief that technology should make someone&apos;s day a little easier.
+            &quot;I build products the way I care for people —<br />
+            with intention, with heart, and with the belief<br />
+            that technology should make someone&apos;s day a little<br />
+            easier and someone&apos;s work a little more meaningful.&quot;
           </p>
           <p className="text-white text-base relative z-10 mt-4">— Thays Pritchard</p>
         </blockquote>
