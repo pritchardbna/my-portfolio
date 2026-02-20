@@ -124,7 +124,7 @@ export default function Home() {
               <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-raleway">
                 SENIOR PRODUCT MANAGER
               </h2>
-              <div className="mt-4 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
+              <div className="mt-8 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
                 {TAGLINE_LINES.map((line, i) => {
                   if (typewriterLineIndex < i) return null;
                   const isActive = typewriterLineIndex === i;
@@ -135,8 +135,8 @@ export default function Home() {
                       key={i}
                       className={
                         i === 0 || i === 2
-                          ? "text-2xl font-[700]"
-                          : "text-base font-[300]"
+                          ? "text-xl font-[700]"
+                          : "text-lg font-[400]"
                       }
                     >
                       {text}
