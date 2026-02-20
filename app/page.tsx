@@ -118,10 +118,10 @@ export default function Home() {
       {/* Personal quote banner */}
       <section className="bg-[#9B89B4] mt-16 py-12 px-6 md:px-10 lg:px-16">
         <blockquote className="max-w-[800px] mx-auto text-center relative">
-          <p className="text-white font-playfair italic leading-none opacity-40 absolute -top-4 left-0 right-0" style={{ fontSize: "8rem" }}>
+          <p className="text-white font-playfair italic leading-none opacity-40 mb-4" style={{ fontSize: "8rem" }}>
             &quot;
           </p>
-          <p className="text-white text-2xl italic leading-relaxed mb-2 font-playfair relative z-10 pt-8">
+          <p className="text-white text-2xl italic leading-relaxed mb-2 font-playfair relative z-10">
             &quot;I build products the way I care for people —<br />
             with intention, with heart, and with the belief<br />
             that technology should make someone&apos;s day a little<br />
