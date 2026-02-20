@@ -85,7 +85,7 @@ export default function Home() {
             }}
           >
             <Image
-              src="/images/thays3.jpg"
+              src="/images/thays4.jpg"
               alt="Thays Pritchard"
               fill
               className="object-cover object-[50%_25%]"
