@@ -52,8 +52,8 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section ref={heroRef} className="fade-in bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="text-center mb-6">
-          <h1 className="text-[#4A3068] text-3xl font-bold uppercase font-playfair">
-            HEY, I&apos;M THAYS
+          <h1 className="text-[#4A3068] text-3xl font-bold font-playfair">
+            Hey, I&apos;m Thays
           </h1>
         </div>
 
@@ -76,12 +76,12 @@ export default function Home() {
           />
           <div className="relative h-full flex items-center pl-8 md:pl-16">
             <div className="max-w-[480px]">
-              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-playfair">
+              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-raleway">
                 SENIOR PRODUCT MANAGER
               </h2>
-              <div className="mt-4 font-playfair text-white not-italic" style={{ lineHeight: "1.6" }}>
+              <div className="mt-4 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
                 <p className="text-2xl font-[700]">I am a builder of products</p>
-                <p className="text-xl font-normal">that make people&apos;s lives</p>
+                <p className="text-xl font-[300]">that make people&apos;s lives</p>
                 <p className="text-2xl font-[700]">a little easier.</p>
               </div>
             </div>

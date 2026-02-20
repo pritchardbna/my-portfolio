@@ -39,6 +39,10 @@ body {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
+.font-raleway {
+  font-family: var(--font-raleway), sans-serif;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

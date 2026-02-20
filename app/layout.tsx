@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Inter, Geist_Mono, Playfair_Display, Raleway } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -20,6 +20,12 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
 });
 
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["300", "400", "700", "800"],
+  variable: "--font-raleway",
+});
+
 export const metadata: Metadata = {
   title: "Thays Pritchard - Senior Product Manager",
   description: "Experienced Product Manager with Agile expertise, building AI-powered prototypes to transform product development workflows.",
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} ${playfairDisplay.variable} font-sans antialiased`}
+        className={`${inter.variable} ${geistMono.variable} ${playfairDisplay.variable} ${raleway.variable} font-sans antialiased`}
       >
         <Navigation />
         {children}
