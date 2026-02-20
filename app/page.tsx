@@ -33,17 +33,12 @@ export default function Home() {
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <p
-              className="text-[#7B5EA7] font-bold uppercase mb-3"
-              style={{ fontSize: "0.75rem", letterSpacing: "0.3em" }}
-            >
-              I AM
-            </p>
-            <h1 className="text-[#2D2D2D] font-bold leading-[1.2]" style={{ fontSize: "2.5rem" }}>
-              a builder of products that make
-              <br />
-              <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
+            <h1 className="text-[#2D2D2D] font-bold leading-tight mb-3" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
+              Thays Pritchard
             </h1>
+            <p className="text-[#7B5EA7] text-base font-medium mb-6" style={{ letterSpacing: "0.05em" }}>
+              Sr. Product Manager · GenAI · Product Strategy · Customer Experience
+            </p>
           </div>
         </div>
         {/* Right 55% — Photo (on mobile on top at 50vh) */}
@@ -77,9 +72,6 @@ export default function Home() {
               style={{ letterSpacing: "0.3em" }}
             >
               ABOUT ME
-            </p>
-            <p className="text-[#7B5EA7] text-2xl font-bold italic text-left mb-10">
-              A product manager who builds with intention.
             </p>
             <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
               <p>
