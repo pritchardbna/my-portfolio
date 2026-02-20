@@ -27,8 +27,9 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Thays Pritchard - Senior Product Manager",
+  title: "Thays Pritchard - Senior Product Manager | thayspritchard.com",
   description: "Experienced Product Manager with Agile expertise, building AI-powered prototypes to transform product development workflows.",
+  metadataBase: new URL("https://thayspritchard.com"),
 };
 
 export default function RootLayout({

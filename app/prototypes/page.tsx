@@ -4,7 +4,7 @@ export default function Prototypes() {
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-inter">
       {/* Page Header */}
-      <section className="bg-[#F5F5F5] px-6 py-16">
+      <section className="bg-[#F5F5F5] px-4 md:px-6 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <p className="font-playfair text-xs uppercase tracking-[0.2em] text-[#4A3068] mb-2">
             AI PROJECTS
@@ -19,7 +19,7 @@ export default function Prototypes() {
       </section>
 
       {/* Project Cards */}
-      <section className="px-6 py-16">
+      <section className="px-4 md:px-6 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 md:grid-cols-2">
             {/* PRD Generator */}

@@ -17,7 +17,7 @@ export default function Resume() {
           `,
         }}
       />
-      <div className="mx-auto max-w-[800px] px-4 py-8">
+      <div className="mx-auto w-full max-w-[800px] px-4 py-8">
         <div className="no-print mb-6 text-center">
           <button
             type="button"

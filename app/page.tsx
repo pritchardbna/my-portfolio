@@ -91,27 +91,37 @@ export default function Home() {
               opacity: 1;
               transform: translateY(0);
             }
+            .hero-img-position {
+              object-position: right center;
+            }
+            @media (min-width: 768px) {
+              .hero-img-position {
+                object-position: center 60%;
+              }
+            }
           `,
         }}
       />
 
       {/* SECTION 1 — HERO */}
-      <section ref={heroRef} className="fade-in bg-white py-16 px-6 md:px-10 lg:px-16">
-        <div className="text-center mb-6">
+      <section ref={heroRef} className="fade-in bg-white pt-0 pb-0 md:py-16 px-0 md:px-10 lg:px-16">
+        {/* Desktop: title above image */}
+        <div className="hidden md:block text-center mb-6">
           <h1 className="hero-title-fade text-[#4A3068] text-3xl font-bold font-playfair">
             Hey, I&apos;m Thays
           </h1>
         </div>
 
-        <div className="relative w-full h-[80vh]">
+        {/* Mobile: full-width hero with overlay title + tagline */}
+        <div className="relative w-full h-[70vh] min-h-[500px] md:h-[80vh] md:min-h-0">
           <div className="absolute inset-0 w-full h-full">
             <Image
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover"
-              style={{ objectPosition: "center 60%" }}
+              className="object-cover hero-img-position"
               priority
+              sizes="100vw"
             />
           </div>
           <div
@@ -120,7 +130,12 @@ export default function Home() {
               background: "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)",
             }}
           />
-          <div className="relative h-full flex items-center pl-8 md:pl-16">
+          {/* Mobile: Hey I'm Thays overlay on image */}
+          <h1 className="hero-title-fade absolute top-6 left-4 z-10 text-white text-2xl font-bold font-playfair md:hidden drop-shadow-md">
+            Hey, I&apos;m Thays
+          </h1>
+          {/* Tagline block: overlay on image, left-aligned (mobile pl-6, desktop pl-8/16) */}
+          <div className="absolute inset-0 flex items-center pl-6 pr-4 md:pl-8 lg:pl-16">
             <div className="max-w-[480px]">
               <h2 className="text-white uppercase text-2xl lg:text-3xl font-[800] leading-[1.1] font-raleway flex flex-col lg:flex-row lg:items-baseline lg:gap-x-2">
                 <span>SENIOR PRODUCT</span>
@@ -154,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-16 pb-8 px-6 md:px-10 lg:px-16">
+      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-16 pb-8 px-4 md:px-10 lg:px-16">
         <div className="max-w-[1000px] mx-auto">
           <h2 className="text-[#4A3068] text-3xl font-bold font-playfair text-center mb-12">
             About Me
@@ -193,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Personal quote */}
-      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-10 px-6 md:px-10 lg:px-16">
+      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-10 px-4 md:px-10 lg:px-16">
         <div className="flex flex-col items-center">
           <div className="w-10 h-0.5 bg-[#7B5EA7] rounded-full" aria-hidden />
           <p className="text-[#9B89B4] font-playfair text-center opacity-40 mt-8" style={{ fontSize: "5rem", lineHeight: 1 }}>
@@ -210,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — RESUME */}
-      <section ref={resumeRef} className="fade-in bg-[#F5F5F5] py-16 px-6 md:px-10 lg:px-16">
+      <section ref={resumeRef} className="fade-in bg-[#F5F5F5] py-16 px-4 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-[#4A3068] text-xl font-bold mb-8 font-playfair">
             Looking for Experience?

@@ -2,7 +2,7 @@ export default function CaseStudies() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-50 via-white to-purple-50 px-6 py-20 md:py-32">
+      <section className="bg-gradient-to-br from-purple-50 via-white to-purple-50 px-4 md:px-6 py-20 md:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-4 text-5xl font-bold tracking-tight text-gray-900 md:text-6xl">
             Case Studies
@@ -14,7 +14,7 @@ export default function CaseStudies() {
       </section>
 
       {/* Case Studies */}
-      <section className="px-6 py-16 md:py-24">
+      <section className="px-4 md:px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="space-y-12">
             {/* Case Study 1 */}
