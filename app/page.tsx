@@ -25,29 +25,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="min-h-0 md:h-screen flex flex-col-reverse md:flex-row bg-white">
-        {/* Left — Photo 35% */}
-        <div className="relative w-full md:w-[35%] h-[40vh] md:h-full flex-shrink-0 overflow-hidden">
-          <div
-            className="absolute inset-0 w-full h-full overflow-hidden"
-            style={{
-              maskImage: "linear-gradient(to left, transparent 0%, black 30%)",
-              WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 30%)",
-            }}
-          >
-            <Image
-              src="/images/thays2.jpg"
-              alt="Thays Pritchard"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "60% 50%" }}
-              sizes="(max-width: 768px) 100vw, 35vw"
-              priority
-            />
-          </div>
-        </div>
-        {/* Right — Text 65% */}
-        <div className="flex flex-col justify-center w-full md:w-[65%] min-w-0 pl-8 md:pl-10 lg:pl-12 pr-6 py-12 md:py-0">
+      <section className="min-h-screen flex flex-col md:flex-row bg-white">
+        {/* LEFT — Text column */}
+        <div className="flex flex-col justify-center w-full md:w-[65%] bg-white px-6 md:px-10 lg:px-16 py-12 md:py-0">
           <div
             className={`transition-all duration-500 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -95,10 +75,30 @@ export default function Home() {
             </div>
           </div>
         </div>
+        {/* RIGHT — Photo column */}
+        <div className="relative w-full md:w-[35%] h-[40vh] md:h-screen overflow-hidden">
+          <div
+            className="absolute inset-0 w-full h-full overflow-hidden"
+            style={{
+              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
+            }}
+          >
+            <Image
+              src="/images/thays2.jpg"
+              alt="Thays Pritchard"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "30% 40%" }}
+              sizes="(max-width: 768px) 100vw, 35vw"
+              priority
+            />
+          </div>
+        </div>
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section className="pt-10 pb-16 bg-white px-6 md:px-10 lg:px-16">
+      <section className="pt-8 pb-16 bg-white px-6 md:px-10 lg:px-16">
         <div className="max-w-3xl">
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-8">
               ABOUT ME
