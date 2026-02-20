@@ -128,19 +128,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Personal quote banner */}
-      <section ref={quoteRef} className="fade-in bg-[#9B89B4] mt-16 pt-6 pb-6 px-6 md:px-10 lg:px-16">
-        <blockquote className="max-w-[800px] mx-auto text-center relative">
-          <p className="text-white font-playfair italic opacity-40" style={{ fontSize: "4rem", lineHeight: 1, marginBottom: "4px", display: "block" }}>
+      {/* Personal quote */}
+      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-16 px-6 md:px-10 lg:px-16">
+        <div className="flex flex-col items-center">
+          <div className="w-10 h-0.5 bg-[#9B89B4] rounded-full" aria-hidden />
+          <p className="text-[#9B89B4] font-playfair text-center opacity-40 mt-8" style={{ fontSize: "5rem", lineHeight: 1 }}>
             &quot;
           </p>
-          <div className="text-white text-2xl italic leading-relaxed font-playfair relative z-10 space-y-1 mt-0 pt-0">
-            <p>&quot;I build products the way I care for people —&quot;</p>
-            <p>&quot;with intention, with heart, and with the belief&quot;</p>
-            <p>&quot;that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;</p>
-          </div>
-          <p className="text-white text-base relative z-10 mt-4">— Thays Pritchard</p>
-        </blockquote>
+          <blockquote className="max-w-[700px] mx-auto text-center mt-0">
+            <p className="text-[#2D2D2D] text-xl italic font-playfair leading-[1.9]">
+              &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
+            </p>
+            <p className="font-inter text-sm text-[#9B89B4] mt-4">— Thays Pritchard</p>
+          </blockquote>
+          <div className="w-10 h-0.5 bg-[#9B89B4] rounded-full mt-8" aria-hidden />
+        </div>
       </section>
 
       {/* SECTION 3 — RESUME */}
