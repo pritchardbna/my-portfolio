@@ -120,11 +120,11 @@ export default function Home() {
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="text-[#E8E0F0] text-7xl md:text-8xl font-serif leading-none block mb-4">&quot;</span>
-          <p className="text-white text-xl md:text-2xl italic leading-relaxed mb-6">
+          <span className="text-[#E8E0F0]/60 text-5xl md:text-6xl font-serif leading-none block mb-3">&quot;</span>
+          <p className="text-[#F5F0FA] text-base md:text-lg italic leading-relaxed mb-5">
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
           </p>
-          <p className="text-[#E8E0F0] font-semibold">— Thays Pritchard</p>
+          <p className="text-[#E8E0F0]/90 text-sm font-medium">— Thays Pritchard</p>
         </div>
       </section>
 
