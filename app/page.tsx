@@ -116,15 +116,17 @@ export default function Home() {
       </section>
 
       {/* Personal quote banner */}
-      <section className="bg-[#7B5EA7] py-16 px-6 md:px-10 lg:px-16">
+      <section className="bg-[#9B89B4] py-12 px-6 md:px-10 lg:px-16">
         <blockquote className="max-w-[600px] mx-auto text-center relative">
-          <p className="text-white text-6xl md:text-7xl font-playfair italic leading-none opacity-30 absolute -top-4 left-0 right-0" style={{ fontSize: "6rem" }}>
+          <p className="text-white text-4xl font-playfair italic leading-none opacity-30 absolute -top-2 left-0 right-0">
             &quot;
           </p>
-          <p className="text-white text-lg md:text-xl italic leading-relaxed mb-2 font-inter relative z-10 pt-8">
-            I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+          <p className="text-white text-lg italic leading-relaxed mb-2 font-playfair relative z-10 pt-6">
+            I build products the way I care for people —<br />
+            with intention, with heart,<br />
+            and with the belief that technology should make someone&apos;s day a little easier.
           </p>
-          <p className="text-white text-base font-inter relative z-10">— Thays Pritchard</p>
+          <p className="text-white text-sm opacity-80 relative z-10">— Thays Pritchard</p>
         </blockquote>
       </section>
 
@@ -132,7 +134,7 @@ export default function Home() {
       <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
-          <p className="text-[#4A3068] text-sm uppercase tracking-[0.2em] mb-8 font-playfair font-bold">
+          <p className="text-[#4A3068] text-xl font-[700] uppercase mb-8 font-playfair">
             LOOKING FOR EXPERIENCE?
           </p>
           
