@@ -13,7 +13,7 @@ export default function Prototypes() {
             What I&apos;m Building
           </h1>
           <p className="mx-auto max-w-[600px] font-inter text-base text-[#666666] leading-[1.8]">
-            Hands-on tools and prototypes built to show what&apos;s possible when product thinking meets GenAI.
+            These prototypes and proof of concepts were built to tackle some of the most challenging and time-consuming tasks Product Managers face every day. Each one demonstrates how GenAI can increase productivity and unlock new possibilities in product management — and reflects my personal journey exploring AI, learning how it makes products better and helps teams excel.
           </p>
         </div>
       </section>
