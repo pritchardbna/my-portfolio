@@ -45,20 +45,17 @@ export default function Home() {
               <h2 className="text-white uppercase text-3xl font-bold leading-[1.1] font-playfair">
                 SENIOR PRODUCT MANAGER
               </h2>
+              {/* Tagline inside photo */}
+              <p className="text-white text-base font-normal font-playfair mt-2">
+                I am a builder of products that make people&apos;s lives a little easier.
+              </p>
             </div>
           </div>
-        </div>
-        
-        {/* Tagline below photo */}
-        <div className="py-10 px-6 md:px-10 lg:px-16">
-          <p className="text-[#4A3068] text-2xl italic font-normal font-playfair text-center max-w-[700px] mx-auto">
-            I am a builder of products that make people&apos;s lives a little easier.
-          </p>
         </div>
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
+      <section className="bg-white pt-12 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto">
           {/* Section title */}
           <h2 className="text-[#4A3068] text-3xl font-bold uppercase font-playfair text-center mb-16">
