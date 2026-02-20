@@ -81,9 +81,11 @@ export default function Home() {
           }`}
         >
           <p className="text-[#F5F0FA] text-2xl italic leading-[1.8]">
-            <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top">&quot;</span>
-            I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
-            <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top">&quot;</span>
+            <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top mr-2">&quot;</span>
+            I build products the way I care for people — with intention, with heart,
+            <br className="hidden md:block" />
+            and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+            <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top ml-2">&quot;</span>
           </p>
           <p className="text-[#E8E0F0] text-base mt-6">— Thays Pritchard</p>
         </div>
