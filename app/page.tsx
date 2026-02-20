@@ -26,8 +26,8 @@ export default function Home() {
 
   useEffect(() => {
     const initialDelay = 800;
-    const charDelay = 45;
-    const pauseBetween = 400;
+    const charDelay = 85;
+    const pauseBetween = 600;
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     let t = initialDelay;
 
@@ -140,7 +140,7 @@ export default function Home() {
                       }
                     >
                       {text}
-                      {showCursor && <span className="animate-pulse">|</span>}
+                      {showCursor && <span className="animate-pulse opacity-50">_</span>}
                     </p>
                   );
                 })}
