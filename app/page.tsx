@@ -39,7 +39,7 @@ export default function Home() {
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-3">
               I AM
             </p>
-            <h1 className="text-[#2D2D2D] font-semibold leading-[1.25] text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-[#2D2D2D] font-semibold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl">
               a builder of products that make
               <br />
               <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
@@ -79,19 +79,20 @@ export default function Home() {
           </div>
         </div>
         {/* Right 50% — Photo */}
-        <div className="relative w-full md:w-1/2 h-[50vh] md:h-full min-h-[50vh] flex-shrink-0 overflow-hidden">
+        <div className="relative w-full md:w-[50%] lg:w-[50%] h-[50vh] md:h-full min-h-[50vh] flex-shrink-0 overflow-hidden">
           <div
             className="absolute inset-0 w-full h-full overflow-hidden"
             style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
+              maskImage: "linear-gradient(to right, transparent 0%, black 25%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 25%)",
             }}
           >
             <Image
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[60%_30%]"
+              className="object-cover"
+              style={{ objectPosition: "75% 35%" }}
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
