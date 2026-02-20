@@ -67,33 +67,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2 — ABOUT ME */}
+      {/* SECTION 2 — ABOUT ME (left) + NAV CARDS (right) */}
       <section className="py-24 px-6 bg-white">
-        <div className="max-w-[780px] mx-auto">
-          <p
-            className="text-[#7B5EA7] text-xs font-bold uppercase text-center mb-6"
-            style={{ letterSpacing: "0.3em" }}
-          >
-            ABOUT ME
-          </p>
-          <p className="text-[#7B5EA7] text-2xl font-bold italic text-center mb-10 mx-12 md:mx-24">
-            A product manager who builds with intention.
-          </p>
-          <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
-            <p>
-              I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left — About Me, left-aligned */}
+          <div className="flex-1 min-w-0">
+            <p
+              className="text-[#7B5EA7] text-xs font-bold uppercase text-left mb-6"
+              style={{ letterSpacing: "0.3em" }}
+            >
+              ABOUT ME
             </p>
-            <p>
-              I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
+            <p className="text-[#7B5EA7] text-2xl font-bold italic text-left mb-10">
+              A product manager who builds with intention.
             </p>
-            <p>
-              Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
-            </p>
+            <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
+              <p>
+                I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
+              </p>
+              <p>
+                I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
+              </p>
+              <p>
+                Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
+              </p>
+            </div>
+          </div>
+          {/* Right — Nav cards under the image area, descriptions on hover only */}
+          <div className="w-full lg:w-[380px] flex-shrink-0 flex flex-col gap-6">
+            <Link
+              href="/prototypes"
+              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">AI Prototypes</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
+                Hands-on AI tools I&apos;ve built to show what&apos;s possible when product thinking meets GenAI — from requirement generators to claims workflow simulators.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              href="/case-studies"
+              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">Case Studies</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
+                Deep dives into real product problems I&apos;ve solved — including $5M in cost savings, a +5pt NPS lift, and a GenAI pilot that shaped a 2026 roadmap.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              href="/resume"
+              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+            >
+              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">Resume</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
+                9+ years of product experience across Fortune 100 clients — full lifecycle ownership from discovery through deployment.
+              </p>
+              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — QUOTE */}
+      {/* SECTION 3 — QUOTE (bottom) */}
       <section ref={quoteRef} className="py-24 px-6 bg-[#F5F5F5]">
         <div
           className={`max-w-[860px] mx-auto text-center transition-all duration-700 delay-150 ${
@@ -106,56 +151,6 @@ export default function Home() {
             <span className="text-[#7B5EA7] text-5xl md:text-6xl font-serif leading-none align-top ml-2">&quot;</span>
           </p>
           <p className="text-[#2D2D2D]/80 text-sm mt-8">— Thays Pritchard</p>
-        </div>
-      </section>
-
-      {/* SECTION 4 — NAVIGATION CARDS */}
-      <section className="py-24 px-6 bg-[#7B5EA7]">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-center text-white text-xs uppercase tracking-[0.3em] mb-8">
-            WHERE TO NEXT?
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Link
-              href="/prototypes"
-              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
-            >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">AI Prototypes</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
-                Hands-on AI tools I&apos;ve built to show what&apos;s possible when product thinking meets GenAI — from requirement generators to claims workflow simulators.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </Link>
-            <Link
-              href="/case-studies"
-              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
-            >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">Case Studies</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
-                Deep dives into real product problems I&apos;ve solved — including $5M in cost savings, a +5pt NPS lift, and a GenAI pilot that shaped a 2026 roadmap.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </Link>
-            <Link
-              href="/resume"
-              className="group rounded-2xl bg-white p-8 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
-            >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-3">Resume</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] flex-1">
-                9+ years of product experience across Fortune 100 clients — full lifecycle ownership from discovery through deployment.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-            </Link>
-          </div>
         </div>
       </section>
 
