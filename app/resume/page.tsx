@@ -1,55 +1,34 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-
 export default function Resume() {
-  const resumeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    console.log("[Resume] ref attached:", !!resumeRef.current);
-  }, []);
-
-  const exportToPDF = async () => {
-    console.log("[Resume] exportToPDF clicked, ref:", resumeRef.current);
-    if (!resumeRef.current) {
-      console.warn("[Resume] resumeRef.current is null, cannot export");
-      return;
-    }
-    try {
-      const canvas = await html2canvas(resumeRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        logging: false,
-      });
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("Thays_Pritchard_Resume.pdf");
-      console.log("[Resume] PDF saved successfully");
-    } catch (err) {
-      console.error("[Resume] PDF export failed:", err);
-    }
+  const exportResume = () => {
+    window.print();
   };
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-inter">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @media print {
+              nav { display: none !important; }
+              .no-print { display: none !important; }
+            }
+          `,
+        }}
+      />
       <div className="mx-auto max-w-[800px] px-4 py-8">
-        <div className="mb-6 text-center">
+        <div className="no-print mb-6 text-center">
           <button
             type="button"
-            onClick={exportToPDF}
+            onClick={exportResume}
             className="text-sm font-inter text-[#4A3068] hover:underline focus:outline-none"
           >
-            Export to PDF ↓
+            Export Resume ↓
           </button>
         </div>
 
-        <article ref={resumeRef} className="document-card mx-auto max-w-[800px] rounded-none bg-white p-12 shadow-md">
+        <article className="document-card mx-auto max-w-[800px] rounded-none bg-white p-12 shadow-md">
           {/* Name & Header */}
           <header className="text-center">
             <h1 className="font-playfair text-3xl font-extrabold uppercase tracking-tight text-[#2D2D2D]">
@@ -95,7 +74,7 @@ export default function Resume() {
                   Asurion | Nashville, TN | 2021 – Present
                 </p>
                 <ul className="mt-2 list-none space-y-1 pl-0 font-inter text-sm leading-[1.7] text-[#2D2D2D] [&>li]:pl-4 [&>li]:relative [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['•'] [&>li]:before:text-[#4A3068]">
-                  <li>Defined business and product requirements for net-new ATC capabilities — including claim valuation and upgrade offers — translating complex business logic into user stories that enabled development teams to build features from the ground up across Phones, Appliances, and Connected Devices.</li>
+                  <li>Defined business and product requirements for Asurion Tech Care (ATC) — a product offering that covers customers&apos; electronics and mobile devices — including claim valuation and upgrade offers, translating complex business logic into user stories that enabled development teams to build features from the ground up across Phones, Appliances, and Connected Devices.</li>
                   <li>Built and deployed workflow automation tool for 500+ agents using an in-house low-code platform — a decision-based triage workflow that guides agents through claim scenarios, lifting process compliance by 80% and cutting Supply Chain costs by $5M annually.</li>
                   <li>Designed and ran a claim reimbursement pilot directly within the Replacement Portal — buyout completion time dropped 80%, operations center workload reduced 75%, delivered +5pt NPS and 15% more customers completing claims online. Findings directly shaped the 2026 product roadmap for connected home fulfillment.</li>
                   <li>Defined fulfillment requirements and end-to-end customer experience journeys for In-Store Pickup at UBreakIFix — a first-to-market fulfillment option requiring detailed mapping of both customer and technician journeys from claim initiation through in-store resolution.</li>
