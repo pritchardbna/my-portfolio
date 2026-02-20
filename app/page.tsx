@@ -56,16 +56,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-      
-      {/* Quote section below hero */}
-      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
-        <blockquote className="max-w-[600px] mx-auto text-center">
-          <p className="text-[#2D2D2D] text-lg md:text-xl italic leading-relaxed mb-2 font-inter">
-            &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
-          </p>
-          <p className="text-[#2D2D2D] text-base font-inter">— Thays Pritchard</p>
-        </blockquote>
-      </section>
 
       {/* SECTION 2 — ABOUT ME */}
       <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
@@ -118,6 +108,19 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Personal quote banner */}
+      <section className="bg-[#7B5EA7] py-16 px-6 md:px-10 lg:px-16">
+        <blockquote className="max-w-[600px] mx-auto text-center relative">
+          <p className="text-white text-6xl md:text-7xl font-playfair italic leading-none opacity-30 absolute -top-4 left-0 right-0" style={{ fontSize: "6rem" }}>
+            &quot;
+          </p>
+          <p className="text-white text-lg md:text-xl italic leading-relaxed mb-2 font-inter relative z-10 pt-8">
+            I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+          </p>
+          <p className="text-white text-base font-inter relative z-10">— Thays Pritchard</p>
+        </blockquote>
       </section>
 
       {/* SECTION 3 — RESUME */}
