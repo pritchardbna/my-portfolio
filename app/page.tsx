@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
 const TAGLINE_LINES = [
-  "I am a builder of products",
-  "that make people's lives",
-  "a little easier.",
+  "Every product I build",
+  "starts with a need and",
+  "ends with a meaningful solution.",
 ];
 
 export default function Home() {
@@ -136,7 +136,7 @@ export default function Home() {
                       className={
                         i === 0 || i === 2
                           ? "text-2xl font-[700]"
-                          : "text-xl font-[300]"
+                          : "text-base font-[300]"
                       }
                     >
                       {text}
