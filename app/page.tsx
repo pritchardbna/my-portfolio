@@ -81,7 +81,7 @@ export default function Home() {
             <p className="text-[#7B5EA7] text-2xl font-bold italic text-left mb-10">
               A product manager who builds with intention.
             </p>
-            <div className="text-[#2D2D2D] text-lg font-normal text-left space-y-8" style={{ lineHeight: 2 }}>
+            <div className="text-[#2D2D2D] text-lg font-bold text-left space-y-8" style={{ lineHeight: 2 }}>
               <p>
                 I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
               </p>
@@ -93,55 +93,46 @@ export default function Home() {
               </p>
             </div>
           </div>
-          {/* Right — Nav cards under the image area, descriptions on hover only */}
-          <div className="w-full lg:w-[380px] flex-shrink-0 flex flex-col gap-6">
+          {/* Right — Nav cards: compact, icon + title only, light lavender on hover, arrow on hover */}
+          <div className="w-full lg:w-[280px] flex-shrink-0 flex flex-col gap-3">
             <Link
               href="/prototypes"
-              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">AI Prototypes</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
-                Hands-on AI tools I&apos;ve built to show what&apos;s possible when product thinking meets GenAI — from requirement generators to claims workflow simulators.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              <h3 className="text-[#7B5EA7] font-bold text-base flex-1">AI Prototypes</h3>
+              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </Link>
             <Link
               href="/case-studies"
-              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">Case Studies</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
-                Deep dives into real product problems I&apos;ve solved — including $5M in cost savings, a +5pt NPS lift, and a GenAI pilot that shaped a 2026 roadmap.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              <h3 className="text-[#7B5EA7] font-bold text-base flex-1">Case Studies</h3>
+              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </Link>
             <Link
               href="/resume"
-              className="group rounded-2xl bg-[#F5F5F5] hover:bg-white p-6 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.3)] flex flex-col"
+              className="group rounded-xl bg-white hover:bg-[#E8E0F0] p-4 border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-300 flex flex-row items-center gap-3"
             >
-              <svg className="w-8 h-8 text-[#7B5EA7] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+              <svg className="w-6 h-6 text-[#7B5EA7] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
-              <h3 className="text-[#7B5EA7] font-bold text-xl mb-2">Resume</h3>
-              <p className="text-[#2D2D2D] text-sm leading-[1.7] opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[200px] overflow-hidden transition-all duration-300">
-                9+ years of product experience across Fortune 100 clients — full lifecycle ownership from discovery through deployment.
-              </p>
-              <span className="text-[#7B5EA7] font-medium mt-3 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              <h3 className="text-[#7B5EA7] font-bold text-base flex-1">Resume</h3>
+              <span className="text-[#7B5EA7] font-medium opacity-0 group-hover:opacity-100 transition-opacity">→</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3 — QUOTE (bottom) */}
-      <section ref={quoteRef} className="py-24 px-6 bg-white">
+      {/* SECTION 3 — QUOTE (bottom) — narrower max-width so 2–3 lines when expanded, more lines when smaller */}
+      <section ref={quoteRef} className="py-24 px-6 md:px-12 lg:px-24 bg-white">
         <div
-          className={`max-w-[760px] mx-auto text-left transition-all duration-700 delay-150 ${
+          className={`max-w-[min(600px,90vw)] mx-auto text-left transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
