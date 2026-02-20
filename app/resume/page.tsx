@@ -95,12 +95,13 @@ export default function Resume() {
                   Asurion | Nashville, TN | 2021 – Present
                 </p>
                 <ul className="mt-2 list-none space-y-1 pl-0 font-inter text-sm leading-[1.7] text-[#2D2D2D] [&>li]:pl-4 [&>li]:relative [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['•'] [&>li]:before:text-[#4A3068]">
-                  <li>Launched proprietary claim valuation methodology — now processing 2M+ claims annually across global clients.</li>
-                  <li>Built workflow automation for 500+ agents — improved process compliance 80% and reduced Supply Chain costs $5M/year.</li>
-                  <li>Claim reimbursement pilot: 80% faster buyout completion, 75% ops workload reduction, +5pt NPS, 15% more online completions.</li>
-                  <li>Pioneered In-Store Pickup at UBreakIFix — first-to-market fulfillment option — led end-to-end from journey design to launch.</li>
-                  <li>Ran GenAI discovery pilot validating AI-assisted device identification during claims.</li>
-                  <li>Contributed to 2026 roadmap recommending GenAI automation across claim valuation and device identification.</li>
+                  <li>Defined business and product requirements for net-new ATC capabilities — including claim valuation and upgrade offers — translating complex business logic into user stories that enabled development teams to build features from the ground up across Phones, Appliances, and Connected Devices.</li>
+                  <li>Built and deployed workflow automation tool for 500+ agents using an in-house low-code platform — a decision-based triage workflow that guides agents through claim scenarios, lifting process compliance by 80% and cutting Supply Chain costs by $5M annually.</li>
+                  <li>Designed and ran a claim reimbursement pilot directly within the Replacement Portal — buyout completion time dropped 80%, operations center workload reduced 75%, delivered +5pt NPS and 15% more customers completing claims online. Findings directly shaped the 2026 product roadmap for connected home fulfillment.</li>
+                  <li>Defined fulfillment requirements and end-to-end customer experience journeys for In-Store Pickup at UBreakIFix — a first-to-market fulfillment option requiring detailed mapping of both customer and technician journeys from claim initiation through in-store resolution.</li>
+                  <li>Led significant cross-functional alignment across Legal, Engineering, Data Science, Supply Chain, and Client teams to socialize concepts, pressure-test approaches, secure sign-off, and maintain momentum through build and launch in an environment where competing priorities were constant.</li>
+                  <li>Ran a discovery pilot with an external data vendor to validate whether GenAI could normalize device data and improve identification accuracy during claims — building the business case for AI-assisted automation before committing to full integration.</li>
+                  <li>Contributed to the 2026 fulfillment roadmap by synthesizing pilot results and customer behavior insights into recommendations for senior leadership — making the case for automation across claim valuation, replacement decisions, and GenAI-driven device identification.</li>
                 </ul>
               </div>
 
@@ -112,9 +113,11 @@ export default function Resume() {
                   Asurion | Nashville, TN | 2016 – 2021
                 </p>
                 <ul className="mt-2 list-none space-y-1 pl-0 font-inter text-sm leading-[1.7] text-[#2D2D2D] [&>li]:pl-4 [&>li]:relative [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['•'] [&>li]:before:text-[#4A3068]">
-                  <li>Delivered digital payouts, eSIM activation, and Next Day Expert Delivery across 80% of the US.</li>
-                  <li>Managed backlog and sprint planning across multiple concurrent initiatives.</li>
-                  <li>Hired, onboarded, and developed new team members.</li>
+                  <li>Launched digital payouts, eSIM new device activation, and Next Day Expert Delivery to customers across 80% of the US — meaningfully improving operational efficiency and customer satisfaction for millions of customers.</li>
+                  <li>Led discovery sessions with stakeholders to define product roadmap, managed backlog prioritization, and coordinated sprint planning with development teams to meet release objectives across multiple concurrent initiatives.</li>
+                  <li>Managed cross-functional initiatives from concept through launch, delivering new customer experiences across mobility insurance and connected home programs.</li>
+                  <li>Wrote and maintained requirements from discovery through release — ensuring development teams had clear, actionable user stories at every stage.</li>
+                  <li>Hired, onboarded, and developed new team members; invested in coaching and building a collaborative team culture.</li>
                 </ul>
               </div>
 
@@ -126,8 +129,10 @@ export default function Resume() {
                   Panalpina | Multiple Locations | 2012 – 2016
                 </p>
                 <ul className="mt-2 list-none space-y-1 pl-0 font-inter text-sm leading-[1.7] text-[#2D2D2D] [&>li]:pl-4 [&>li]:relative [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['•'] [&>li]:before:text-[#4A3068]">
-                  <li>Led US logistics operations transition to the Philippines.</li>
-                  <li>Managed team of 21 running daily import logistics.</li>
+                  <li>Owned strategy and implementation for logistics operations across global locations — including hands-on process design, team training, and standardization work.</li>
+                  <li>Led the transition of US logistics operations to the Philippines — on the ground for training, process design, and standardization across two sites.</li>
+                  <li>Managed a team of 21 running daily import logistics; centralized and standardized how ocean-freight cargo moved into the US.</li>
+                  <li>Built foundation in international freight operations, client service, and global supply chain execution that informs operational perspective brought to product work today.</li>
                 </ul>
               </div>
             </div>
