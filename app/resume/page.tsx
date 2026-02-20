@@ -1,26 +1,39 @@
 "use client";
 
-import { useRef } from "react";
-import { jsPDF } from "jspdf";
+import { useRef, useEffect } from "react";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 export default function Resume() {
   const resumeRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    console.log("[Resume] ref attached:", !!resumeRef.current);
+  }, []);
+
   const exportToPDF = async () => {
-    if (!resumeRef.current) return;
-    const canvas = await html2canvas(resumeRef.current, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff",
-      logging: false,
-    });
-    const imgData = canvas.toDataURL("image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("Thays_Pritchard_Resume.pdf");
+    console.log("[Resume] exportToPDF clicked, ref:", resumeRef.current);
+    if (!resumeRef.current) {
+      console.warn("[Resume] resumeRef.current is null, cannot export");
+      return;
+    }
+    try {
+      const canvas = await html2canvas(resumeRef.current, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+      });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("Thays_Pritchard_Resume.pdf");
+      console.log("[Resume] PDF saved successfully");
+    } catch (err) {
+      console.error("[Resume] PDF export failed:", err);
+    }
   };
 
   return (
