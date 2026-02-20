@@ -23,19 +23,25 @@ export default function Navigation() {
           <div className="flex flex-row items-center gap-6 flex-shrink-0">
             <button
               onClick={scrollToTop}
-              className="text-[#2D2D2D] text-sm font-medium hover:text-[#7B5EA7] transition-colors"
+              className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
             >
               Home
             </button>
             <Link
               href="/prototypes"
-              className="text-[#2D2D2D] text-sm font-medium hover:text-[#7B5EA7] transition-colors"
+              className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
             >
               AI Projects
             </Link>
+            <Link
+              href="/resume"
+              className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
+            >
+              Resume
+            </Link>
             <a
               href="mailto:pritchardbna@gmail.com"
-              className="text-[#2D2D2D] hover:text-[#7B5EA7] transition-colors"
+              className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors"
               aria-label="Email"
             >
               <Mail size={20} />
@@ -44,7 +50,7 @@ export default function Navigation() {
               href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2D2D2D] hover:text-[#7B5EA7] transition-colors"
+              className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
