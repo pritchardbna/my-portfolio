@@ -6,8 +6,9 @@ import { useRef, useEffect, useState } from "react";
 
 const TAGLINE_LINES = [
   "Every product I build",
-  "starts with a need and ends with",
-  "a meaningful solution.",
+  "starts with a need",
+  "that evolves into",
+  "meaningful solutions.",
 ];
 
 export default function Home() {
@@ -131,7 +132,7 @@ export default function Home() {
                   const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
                   const showCursor = isActive && !typewriterComplete;
                   const lineClass =
-                    i === 0 || i === 2
+                    i === 0 || i === 3
                       ? "text-xl font-[700] min-h-[1.6em]"
                       : "text-lg font-[400] min-h-[1.6em]";
                   return (
