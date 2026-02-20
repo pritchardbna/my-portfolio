@@ -70,7 +70,8 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden flex-shrink-0 p-2 text-[#2D2D2D] text-2xl leading-none hover:text-[#4A3068] transition-colors aria-label="Open menu"
+              className="md:hidden flex-shrink-0 p-2 text-[#2D2D2D] text-2xl leading-none hover:text-[#4A3068] transition-colors"
+              aria-label="Open menu"
             >
               ☰
             </button>
@@ -90,7 +91,8 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2 text-2xl text-[#2D2D2D] hover:text-[#4A3068] transition-colors aria-label="Close menu"
+              className="p-2 text-2xl text-[#2D2D2D] hover:text-[#4A3068] transition-colors"
+              aria-label="Close menu"
             >
               ✕
             </button>
