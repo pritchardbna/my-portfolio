@@ -126,18 +126,19 @@ export default function Home() {
               </h2>
               <div className="mt-8 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
                 {TAGLINE_LINES.map((line, i) => {
-                  if (typewriterLineIndex < i) return null;
+                  const notStarted = typewriterLineIndex < i;
                   const isActive = typewriterLineIndex === i;
-                  const text = isActive ? line.slice(0, typewriterCharIndex) : line;
+                  const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
                   const showCursor = isActive && !typewriterComplete;
+                  const lineClass =
+                    i === 0 || i === 2
+                      ? "text-xl font-[700] min-h-[1.6em]"
+                      : "text-lg font-[400] min-h-[1.6em]";
                   return (
                     <p
                       key={i}
-                      className={
-                        i === 0 || i === 2
-                          ? "text-xl font-[700]"
-                          : "text-lg font-[400]"
-                      }
+                      className={lineClass}
+                      style={{ opacity: notStarted ? 0 : 1 }}
                     >
                       {text}
                       {showCursor && <span className="animate-pulse opacity-50">_</span>}
