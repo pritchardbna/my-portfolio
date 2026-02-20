@@ -62,10 +62,10 @@ export default function Home() {
             }}
           >
             <Image
-              src="/images/hero.png"
+              src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[30%_50%]"
+              className="object-cover object-[45%_50%]"
               sizes="(max-width: 768px) 100vw, 60vw"
               priority
             />
