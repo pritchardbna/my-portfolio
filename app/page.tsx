@@ -4,9 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const LEFT_MARGIN = "pl-6 md:pl-10 lg:pl-16";
-const MAX_W = "max-w-[680px]";
-
 export default function Home() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [quoteVisible, setQuoteVisible] = useState(false);
@@ -28,23 +25,43 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="h-screen flex flex-col-reverse md:flex-row bg-white">
-        {/* Left 50% — Text */}
-        <div className={`flex flex-col justify-center w-full md:w-1/2 min-w-0 ${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16 py-12 md:py-0`}>
+      <section className="min-h-0 md:h-screen flex flex-col-reverse md:flex-row bg-white">
+        {/* Left — Photo 35% */}
+        <div className="relative w-full md:w-[35%] h-[40vh] md:h-full flex-shrink-0 overflow-hidden">
           <div
-            className={`${MAX_W} transition-all duration-500 ${
+            className="absolute inset-0 w-full h-full overflow-hidden"
+            style={{
+              maskImage: "linear-gradient(to left, transparent 0%, black 30%)",
+              WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 30%)",
+            }}
+          >
+            <Image
+              src="/images/thays2.jpg"
+              alt="Thays Pritchard"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "60% 50%" }}
+              sizes="(max-width: 768px) 100vw, 35vw"
+              priority
+            />
+          </div>
+        </div>
+        {/* Right — Text 65% */}
+        <div className="flex flex-col justify-center w-full md:w-[65%] min-w-0 pl-8 md:pl-10 lg:pl-12 pr-6 py-12 md:py-0">
+          <div
+            className={`transition-all duration-500 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-3">
               I AM
             </p>
-            <h1 className="text-[#2D2D2D] font-semibold leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl">
+            <h1 className="text-[#2D2D2D] font-semibold leading-[1.25] text-2xl sm:text-3xl lg:text-4xl">
               a builder of products that make
               <br />
               <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
             </h1>
-            <div className="mt-8 flex flex-col gap-3 max-w-sm">
+            <div className="mt-6 flex flex-col gap-3 max-w-md">
               <Link
                 href="/prototypes"
                 className="group rounded-xl bg-[#F5F5F5] hover:bg-[#E8E0F0] border-2 border-transparent hover:border-[#7B5EA7] transition-all duration-200 py-3 px-5 flex flex-row items-center gap-3"
@@ -78,32 +95,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Right 50% — Photo */}
-        <div className="relative w-full md:w-[50%] lg:w-[50%] h-[50vh] md:h-full min-h-[50vh] flex-shrink-0 overflow-hidden">
-          <div
-            className="absolute inset-0 w-full h-full overflow-hidden"
-            style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 25%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 25%)",
-            }}
-          >
-            <Image
-              src="/images/thays2.jpg"
-              alt="Thays Pritchard"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "75% 35%" }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
-          </div>
-        </div>
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section className="py-24 bg-white">
-        <div className={`${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16`}>
-          <div className={MAX_W}>
+      <section className="pt-10 pb-16 bg-white px-6 md:px-10 lg:px-16">
+        <div className="max-w-3xl">
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-8">
               ABOUT ME
             </p>
@@ -118,19 +114,18 @@ export default function Home() {
                 Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
               </p>
             </div>
-          </div>
         </div>
       </section>
 
       {/* SECTION 4 — QUOTE */}
-      <section ref={quoteRef} className={`py-24 bg-white ${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16`}>
+      <section ref={quoteRef} className="py-24 bg-white px-6 md:px-10 lg:px-16">
         <div
-          className={`${MAX_W} text-left transition-all duration-500 ${
+          className={`text-left transition-all duration-500 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
           <p className="text-[#7B5EA7] font-serif leading-none opacity-30 mb-[-1.5rem]" style={{ fontSize: "7rem" }}>&#8220;</p>
-          <p className="text-[#7B5EA7] text-2xl font-light italic leading-[1.9]">
+          <p className="text-[#7B5EA7] text-xl md:text-2xl font-light italic leading-[1.9]">
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
           </p>
           <p className="text-[#2D2D2D]/60 text-sm text-right mt-6">— Thays Pritchard</p>
@@ -139,7 +134,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="bg-white border-t border-[#E8E0F0] py-8">
-        <div className={`${LEFT_MARGIN} pr-6 md:pr-10 lg:pr-16 text-sm text-[#2D2D2D]/60 text-left`}>
+        <div className="px-6 md:px-10 lg:px-16 text-sm text-[#2D2D2D]/60 text-left">
           <p>© 2026 Thays Pritchard. All rights reserved.</p>
         </div>
       </footer>
