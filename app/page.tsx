@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Linkedin } from "lucide-react";
 
 export default function Home() {
   return (
@@ -147,41 +146,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      {/* SECTION 5 — CONTACT FOOTER */}
-      <footer className="bg-[#4A3068] text-white py-16 px-6 md:px-10 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Label */}
-          <p className="font-playfair font-[700] text-2xl uppercase mb-8">
-            WANT TO GET IN TOUCH?
-          </p>
-          
-          {/* Icon buttons */}
-          <div className="flex justify-center items-center gap-6 mb-12">
-            <a
-              href="mailto:pritchardbna@gmail.com"
-              className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center hover:bg-[#E8E0F0] transition-all group"
-              aria-label="Email"
-            >
-              <Mail size={32} className="text-white group-hover:text-[#4A3068] transition-colors" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-16 h-16 rounded-full border-2 border-white flex items-center justify-center hover:bg-[#E8E0F0] transition-all group"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={32} className="text-white group-hover:text-[#4A3068] transition-colors" />
-            </a>
-          </div>
-          
-          {/* Copyright */}
-          <p className="text-sm opacity-90">
-            © 2026 Thays Pritchard. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
