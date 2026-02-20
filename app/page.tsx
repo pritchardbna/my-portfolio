@@ -118,7 +118,7 @@ export default function Home() {
       {/* Personal quote banner */}
       <section className="bg-[#9B89B4] mt-16 py-12 px-6 md:px-10 lg:px-16">
         <blockquote className="max-w-[800px] mx-auto text-center relative">
-          <p className="text-white font-playfair italic leading-none opacity-40 mb-4" style={{ fontSize: "8rem" }}>
+          <p className="text-white font-playfair italic leading-none opacity-40 mb-6" style={{ fontSize: "8rem" }}>
             &quot;
           </p>
           <p className="text-white text-2xl italic leading-relaxed mb-2 font-playfair relative z-10">
