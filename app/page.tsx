@@ -59,7 +59,8 @@ export default function Home() {
               src="/images/thays2.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[60%_45%]"
+              className="object-cover"
+              style={{ objectPosition: "60% calc(30% + 120px)" }}
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
