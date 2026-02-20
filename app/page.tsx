@@ -102,7 +102,7 @@ export default function Home() {
               src="/images/thays.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover rounded-2xl"
+              className="object-cover object-[50%_25%] rounded-2xl"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
@@ -137,7 +137,7 @@ export default function Home() {
                 src="/images/thays.jpg"
                 alt="Thays Pritchard"
                 fill
-                className="object-cover"
+                className="object-cover object-[50%_25%]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
