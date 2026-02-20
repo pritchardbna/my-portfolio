@@ -1,37 +1,42 @@
 "use client";
 
+import { useRef } from "react";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+
 export default function Resume() {
-  const handlePrint = () => window.print();
+  const resumeRef = useRef<HTMLDivElement>(null);
+
+  const exportToPDF = async () => {
+    if (!resumeRef.current) return;
+    const canvas = await html2canvas(resumeRef.current, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      logging: false,
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("Thays_Pritchard_Resume.pdf");
+  };
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-inter">
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @page {
-              margin: 0.75in;
-            }
-            @media print {
-              nav, .no-print { display: none !important; }
-              body { background: white !important; }
-              .document-card { box-shadow: none !important; padding: 0 !important; }
-            }
-          `,
-        }}
-      />
-
       <div className="mx-auto max-w-[800px] px-4 py-8">
-        <div className="no-print mb-6 text-center">
+        <div className="mb-6 text-center">
           <button
             type="button"
-            onClick={handlePrint}
+            onClick={exportToPDF}
             className="text-sm font-inter text-[#4A3068] hover:underline focus:outline-none"
           >
             Export to PDF ↓
           </button>
         </div>
 
-        <article className="document-card mx-auto max-w-[800px] rounded-none bg-white p-12 shadow-md">
+        <article ref={resumeRef} className="document-card mx-auto max-w-[800px] rounded-none bg-white p-12 shadow-md">
           {/* Name & Header */}
           <header className="text-center">
             <h1 className="font-playfair text-3xl font-extrabold uppercase tracking-tight text-[#2D2D2D]">
