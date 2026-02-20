@@ -1,155 +1,252 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+const SOFT_PLUM = "#7B5EA7";
+const LIGHT_PLUM = "#E8E0F0";
+const DARK_GRAY = "#2D2D2D";
+
+// Count-up hook for stats
+function useCountUp(end: number, duration: number, trigger: boolean) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!trigger) return;
+    let start = 0;
+    const step = end / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [end, duration, trigger]);
+  return count;
+}
+
 export default function Home() {
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [quoteVisible, setQuoteVisible] = useState(false);
+  const [statsTrigger, setStatsTrigger] = useState(false);
+  const quoteRef = useRef<HTMLElement>(null);
+  const statsRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => e.isIntersecting && setQuoteVisible(true),
+      { threshold: 0.2 }
+    );
+    if (quoteRef.current) observer.observe(quoteRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => e.isIntersecting && setStatsTrigger(true),
+      { threshold: 0.3 }
+    );
+    if (statsRef.current) observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-50 via-white to-purple-50 px-6 py-20 md:py-32">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
-            Thays Pritchard
+      {/* SECTION 1 — HERO (full screen) */}
+      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 px-6 py-20 md:py-0 md:px-16 bg-white">
+        <div
+          className={`flex-1 max-w-xl transition-all duration-700 ${
+            heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          <p className="text-sm uppercase tracking-[0.2em] text-[#7B5EA7] mb-4 animate-fade-in">
+            I am
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#2D2D2D] leading-tight mb-8">
+            a builder of products that make{" "}
+            <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
           </h1>
-          <h2 className="mb-8 text-2xl font-semibold text-purple-600 md:text-3xl">
-            Senior Product Manager
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-600 md:text-xl">
-            Experienced Product Manager with deep expertise in Agile methodologies, 
-            dedicated to building innovative AI-powered prototypes that transform 
-            product development workflows and drive meaningful user value.
-          </p>
-        </div>
-      </section>
-
-      {/* Bio Section */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-            About Me
-          </h2>
-          <div className="space-y-4 text-lg leading-relaxed text-gray-700">
-            <p>
-              As a Senior Product Manager, I combine strategic thinking with hands-on 
-              execution to deliver products that users love. My passion lies in leveraging 
-              AI and modern technology to solve complex product challenges and streamline 
-              workflows.
-            </p>
-            <p>
-              With extensive experience in Agile methodologies, I excel at translating 
-              user needs into actionable product roadmaps, prioritizing features that 
-              drive business impact, and building prototypes that validate ideas quickly 
-              and effectively.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Prototypes Section */}
-      <section className="bg-purple-50 px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl">
-            AI-Powered Prototypes
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-            {/* PRD Generator Card */}
-            <div className="group rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-gray-900">
-                PRD Generator
-              </h3>
-              <p className="text-gray-600">
-                Streamline product requirements documentation with AI-powered generation 
-                that captures user stories, acceptance criteria, and technical specifications.
-              </p>
-            </div>
-
-            {/* User Interview Analyzer Card */}
-            <div className="group rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-gray-900">
-                User Interview Analyzer
-              </h3>
-              <p className="text-gray-600">
-                Extract actionable insights from user interviews using AI to identify 
-                patterns, pain points, and opportunities for product improvement.
-              </p>
-            </div>
-
-            {/* Feature Prioritization Assistant Card */}
-            <div className="group rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-gray-900">
-                Feature Prioritization Assistant
-              </h3>
-              <p className="text-gray-600">
-                Make data-driven prioritization decisions with AI that analyzes impact, 
-                effort, and strategic alignment to help you focus on what matters most.
-              </p>
-            </div>
-
-            {/* AI Roadmap Planner Card */}
-            <div className="group rounded-2xl bg-white p-8 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-gray-900">
-                AI Roadmap Planner
-              </h3>
-              <p className="text-gray-600">
-                Build comprehensive product roadmaps with AI assistance that considers 
-                dependencies, timelines, and resource constraints for strategic planning.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
-            Let's Connect
-          </h2>
-          <p className="mb-8 text-lg text-gray-600">
-            Interested in collaborating or learning more about my work? 
-            I'd love to hear from you.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="mailto:pritchardbna@gmail.com"
-              className="rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-purple-700 hover:shadow-lg"
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/prototypes"
+              className="inline-block rounded-full bg-[#7B5EA7] px-8 py-3.5 font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
             >
-              Get in Touch
-            </a>
-            <a
-              href="https://www.linkedin.com/in/thays-pritchard-2b92371b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border-2 border-purple-600 px-8 py-3 font-semibold text-purple-600 transition-all duration-300 hover:bg-purple-50"
+              View My Work
+            </Link>
+            <Link
+              href="/resume"
+              className="inline-block rounded-full border-2 border-[#7B5EA7] px-8 py-3.5 font-semibold text-[#7B5EA7] transition-all duration-300 hover:bg-[#E8E0F0]"
             >
-              LinkedIn
-            </a>
+              Read My Resume
+            </Link>
+          </div>
+        </div>
+        <div className="flex-1 flex justify-center md:justify-end relative max-w-md">
+          <div
+            className="relative w-full aspect-[3/4] max-h-[80vh] rounded-2xl overflow-hidden"
+            style={{ boxShadow: "0 25px 50px -12px rgba(123, 94, 167, 0.2)" }}
+          >
+            <div
+              className="absolute -inset-4 rounded-3xl bg-[#E8E0F0] -z-10"
+              aria-hidden
+            />
+            <Image
+              src="/images/thays.jpg"
+              alt="Thays Pritchard"
+              fill
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white px-6 py-8">
-        <div className="mx-auto max-w-4xl text-center text-sm text-gray-600">
+      {/* SECTION 2 — PERSONAL QUOTE */}
+      <section
+        ref={quoteRef}
+        className="py-20 md:py-28 px-6 bg-[#7B5EA7]"
+      >
+        <div
+          className={`max-w-3xl mx-auto text-center transition-all duration-700 delay-150 ${
+            quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          <span className="text-[#E8E0F0] text-7xl md:text-8xl font-serif leading-none block mb-4">&quot;</span>
+          <p className="text-white text-xl md:text-2xl italic leading-relaxed mb-6">
+            I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+          </p>
+          <p className="text-[#E8E0F0] font-semibold">— Thays Pritchard</p>
+        </div>
+      </section>
+
+      {/* SECTION 3 — WHO I AM */}
+      <section className="py-20 md:py-28 px-6 bg-[#F5F5F5]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="relative flex justify-center md:justify-end">
+            <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden border-4 border-[#7B5EA7]">
+              <Image
+                src="/images/thays.jpg"
+                alt="Thays Pritchard"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+          <div>
+            <p className="text-[#7B5EA7] text-sm font-semibold uppercase tracking-widest mb-6">
+              Who I Am
+            </p>
+            <div className="space-y-5 text-[#2D2D2D] text-lg leading-relaxed">
+              <p>
+                I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
+              </p>
+              <p>
+                I lead with curiosity, move with intention, and believe the best products are built when technology serves people — not the other way around. Whether I&apos;m piloting a GenAI initiative, aligning cross-functional teams, or mapping a customer journey end to end, I bring the same energy to everything I build: care, precision, and a deep commitment to getting it right.
+              </p>
+              <p>
+                Away from the screen, you&apos;ll find me on a mountain — either hiking a trail or riding motorcycles with my husband through winding roads. And when I&apos;m home, I love decorative sewing. It&apos;s my way of slowing down and making something beautiful with my hands.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4 mt-8">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
+                🏔️ Mountain Hiking
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
+                🏍️ Motorcycle Riding
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[#2D2D2D] border border-[#E8E0F0]">
+                🧵 Decorative Sewing
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — QUICK STATS STRIP */}
+      <section
+        ref={statsRef}
+        className="py-16 md:py-20 px-6 bg-[#E8E0F0]"
+      >
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+          <StatBlock label="Years of Experience" value={9} suffix="+" trigger={statsTrigger} />
+          <StatBlock label="Claims Processed Annually" value={2} suffix="M+" trigger={statsTrigger} />
+          <StatBlock label="Cost Savings Delivered" value={5} suffix="M" prefix="$" trigger={statsTrigger} />
+          <StatBlock label="NPS Points Lifted" value={5} suffix="+" trigger={statsTrigger} />
+        </div>
+      </section>
+
+      {/* SECTION 5 — NAVIGATION CARDS */}
+      <section className="py-20 md:py-28 px-6 bg-[#F5F5F5]">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+          <Link
+            href="/prototypes"
+            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
+          >
+            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
+              AI Prototypes
+            </h3>
+            <p className="text-[#2D2D2D]/80">Explore hands-on tools and demos.</p>
+          </Link>
+          <Link
+            href="/case-studies"
+            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
+          >
+            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
+              Case Studies
+            </h3>
+            <p className="text-[#2D2D2D]/80">Real problems, real impact.</p>
+          </Link>
+          <Link
+            href="/resume"
+            className="group rounded-2xl bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_20px_40px_-12px_rgba(123,94,167,0.25)] hover:-translate-y-1 border border-gray-100"
+          >
+            <h3 className="text-xl font-bold text-[#2D2D2D] group-hover:text-[#7B5EA7] transition-colors mb-2">
+              Resume
+            </h3>
+            <p className="text-[#2D2D2D]/80">Experience and accomplishments.</p>
+          </Link>
+        </div>
+      </section>
+
+      <footer className="bg-white border-t border-[#E8E0F0] px-6 py-8">
+        <div className="max-w-4xl mx-auto text-center text-sm text-[#2D2D2D]/70">
           <p>© {new Date().getFullYear()} Thays Pritchard. All rights reserved.</p>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function StatBlock({
+  label,
+  value,
+  suffix = "",
+  prefix = "",
+  trigger,
+}: {
+  label: string;
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  trigger: boolean;
+}) {
+  const count = useCountUp(value, 1500, trigger);
+  return (
+    <div>
+      <p className="text-3xl md:text-4xl font-bold text-[#7B5EA7] mb-1">
+        {prefix}{count}{suffix}
+      </p>
+      <p className="text-[#2D2D2D] text-sm md:text-base">{label}</p>
     </div>
   );
 }

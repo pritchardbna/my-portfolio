@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Portfolio palette */
+  --soft-plum: #7B5EA7;
+  --light-plum: #E8E0F0;
+  --light-gray: #F5F5F5;
+  --dark-gray: #2D2D2D;
 }
 
 @theme inline {
