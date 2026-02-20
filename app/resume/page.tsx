@@ -1,17 +1,32 @@
 "use client";
 
+import { useEffect } from "react";
+
 export default function Resume() {
   const handlePrint = () => window.print();
+
+  useEffect(() => {
+    document.title = "Thays Pritchard - Resume";
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] font-inter">
       <style
         dangerouslySetInnerHTML={{
           __html: `
+            @page {
+              margin: 0.75in;
+              size: letter;
+            }
             @media print {
               nav, .no-print { display: none !important; }
               body { background: white !important; }
               .document-card { box-shadow: none !important; padding: 0 !important; }
+              .education-section { page-break-before: always; }
+              html {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
             }
           `,
         }}
@@ -143,7 +158,7 @@ export default function Resume() {
           </section>
 
           {/* Education */}
-          <section className="mt-6">
+          <section className="education-section mt-6">
             <h2 className="font-playfair text-xs font-normal uppercase tracking-[0.2em] text-[#4A3068] mb-2">
               Education
             </h2>
