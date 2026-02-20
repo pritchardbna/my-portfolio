@@ -8,6 +8,9 @@ export default function Resume() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
+            @page {
+              margin: 0.75in;
+            }
             @media print {
               nav, .no-print { display: none !important; }
               body { background: white !important; }
