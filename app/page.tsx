@@ -8,39 +8,44 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="relative w-full h-[85vh]">
-        {/* Full-width photo */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/images/thays2.jpg"
-            alt="Thays Pritchard"
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center 60%" }}
-            priority
-          />
+      <section className="bg-white py-12 md:py-16 px-6 md:px-10 lg:px-16">
+        {/* "HEY, I'M THAYS 👋" above photo */}
+        <div className="text-center mb-6">
+          <h1 className="text-[#2D2D2D] text-5xl font-[800] uppercase font-montserrat">
+            HEY, I&apos;M THAYS 👋
+          </h1>
         </div>
         
-        {/* Dark gradient overlay on left side */}
-        <div 
-          className="absolute inset-0 w-full h-full"
-          style={{
-            background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)"
-          }}
-        />
-        
-        {/* Text overlay - positioned on left, vertically centered */}
-        <div className="relative h-full flex items-center pl-8 md:pl-16">
-          <div className="max-w-[480px]">
-            {/* Small line */}
-            <p className="text-white text-sm uppercase tracking-[0.2em] mb-4 font-medium">
-              HEY, I&apos;M THAYS 👋
-            </p>
-            
-            {/* Large bold heading */}
-            <h1 className="text-white uppercase text-5xl md:text-6xl font-extrabold leading-[1.1]">
-              SENIOR PRODUCT MANAGER
-            </h1>
+        {/* Photo banner */}
+        <div className="relative w-full h-[80vh]">
+          {/* Full-width photo */}
+          <div className="absolute inset-0 w-full h-full">
+            <Image
+              src="/images/thays2.jpg"
+              alt="Thays Pritchard"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 60%" }}
+              priority
+            />
+          </div>
+          
+          {/* Dark gradient overlay on left side */}
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{
+              background: "linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)"
+            }}
+          />
+          
+          {/* Text overlay - positioned on left, vertically centered */}
+          <div className="relative h-full flex items-center pl-8 md:pl-16">
+            <div className="max-w-[480px]">
+              {/* Large bold heading */}
+              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-montserrat">
+                SENIOR PRODUCT MANAGER
+              </h2>
+            </div>
           </div>
         </div>
       </section>
@@ -55,43 +60,43 @@ export default function Home() {
         </blockquote>
       </section>
 
-      {/* SECTION 2 — ABOUT */}
+      {/* SECTION 2 — ALL ABOUT THAYS */}
       <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
-        <div className="max-w-[700px] mx-auto">
-          {/* Label */}
-          <p className="text-[#7B5EA7] text-sm uppercase tracking-[0.2em] mb-12 text-center">
+        <div className="max-w-4xl mx-auto">
+          {/* Section title */}
+          <h2 className="text-[#2D2D2D] text-5xl font-[800] uppercase font-montserrat text-center mb-16">
             ALL ABOUT THAYS
-          </p>
+          </h2>
           
           {/* Three subsections */}
-          <div className="space-y-12">
-            {/* WHO I AM */}
-            <div>
-              <h2 className="text-[#2D2D2D] font-bold text-lg md:text-xl mb-4">
-                WHO I AM
-              </h2>
-              <p className="text-[#2D2D2D] text-base md:text-lg leading-relaxed">
-                I&apos;m a Senior Product Manager with 9+ years of experience building products that solve real problems for real people — from the moment a customer files a claim, to the automated systems that make that experience seamless at scale. I&apos;ve spent my career working with Fortune 100 companies like AT&T and Verizon, turning complex business challenges into elegant, human-centered solutions.
+          <div className="space-y-16">
+            {/* EXPERIENCE */}
+            <div className="text-center">
+              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+                EXPERIENCE
+              </h3>
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+                A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
               </p>
             </div>
             
-            {/* WHAT I DO */}
-            <div>
-              <h2 className="text-[#2D2D2D] font-bold text-lg md:text-xl mb-4">
-                WHAT I DO
-              </h2>
-              <p className="text-[#2D2D2D] text-base md:text-lg leading-relaxed">
-                I lead product strategy and execution for fulfillment automation and customer experience initiatives. I own the full product lifecycle — from discovery and roadmap definition through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain. I bring the same care and precision to every product I build, whether I&apos;m piloting a GenAI initiative or mapping a customer journey end to end.
+            {/* SKILLSET */}
+            <div className="text-center">
+              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+                SKILLSET
+              </h3>
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+                Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
               </p>
             </div>
             
-            {/* BEYOND WORK */}
-            <div>
-              <h2 className="text-[#2D2D2D] font-bold text-lg md:text-xl mb-4">
-                BEYOND WORK
-              </h2>
-              <p className="text-[#2D2D2D] text-base md:text-lg leading-relaxed">
-                Away from the screen, you&apos;ll find me on a mountain — hiking trails or riding motorcycles with my husband through winding roads — or at home doing what I love: decorative sewing, one stitch at a time.
+            {/* GOALS */}
+            <div className="text-center">
+              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+                GOALS
+              </h3>
+              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+                Always looking to work with teams that build with purpose — where technology serves people and innovation is grounded in real human needs. Passionate about applying GenAI to reduce manual effort, improve customer experiences, and unlock new capabilities. Committed to continuous learning and to building products that make someone&apos;s day a little easier — and someone&apos;s work a little more meaningful.
               </p>
             </div>
           </div>
