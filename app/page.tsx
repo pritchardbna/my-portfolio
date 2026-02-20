@@ -129,19 +129,19 @@ export default function Home() {
       </section>
 
       {/* Personal quote */}
-      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-16 px-6 md:px-10 lg:px-16">
+      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-10 px-6 md:px-10 lg:px-16">
         <div className="flex flex-col items-center">
-          <div className="w-10 h-0.5 bg-[#9B89B4] rounded-full" aria-hidden />
+          <div className="w-10 h-0.5 bg-[#7B5EA7] rounded-full" aria-hidden />
           <p className="text-[#9B89B4] font-playfair text-center opacity-40 mt-8" style={{ fontSize: "5rem", lineHeight: 1 }}>
             &quot;
           </p>
           <blockquote className="max-w-[700px] mx-auto text-center mt-0">
-            <p className="text-[#2D2D2D] text-xl italic font-playfair leading-[1.9]">
-              &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
+            <p className="text-[#2D2D2D] text-xl font-normal font-playfair leading-[1.9]">
+              I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
             </p>
-            <p className="font-inter text-sm text-[#9B89B4] mt-4">— Thays Pritchard</p>
+            <p className="font-inter text-sm text-[#7B5EA7] mt-4">— Thays Pritchard</p>
           </blockquote>
-          <div className="w-10 h-0.5 bg-[#9B89B4] rounded-full mt-8" aria-hidden />
+          <div className="w-10 h-0.5 bg-[#7B5EA7] rounded-full mt-8" aria-hidden />
         </div>
       </section>
 
