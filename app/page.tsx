@@ -76,15 +76,15 @@ export default function Home() {
       {/* SECTION 2 — PERSONAL QUOTE */}
       <section ref={quoteRef} className="py-7 md:py-8 px-6 bg-[#7B5EA7]">
         <div
-          className={`max-w-[720px] mx-auto text-center transition-all duration-700 delay-150 ${
+          className={`max-w-[1000px] mx-auto text-center transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           <p className="text-[#F5F0FA] text-2xl italic leading-[1.8]">
             <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top mr-2">&quot;</span>
-            I build products the way I care for people — with intention, with heart,
+            I build products the way I care for people — with intention, with heart, and with the belief
             <br className="hidden md:block" />
-            and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
+            that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
             <span className="text-[#F5F0FA] text-5xl md:text-6xl font-serif leading-none align-top ml-2">&quot;</span>
           </p>
           <p className="text-[#E8E0F0] text-base mt-6">— Thays Pritchard</p>
