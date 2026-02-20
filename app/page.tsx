@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="min-h-screen flex flex-col-reverse md:flex-row bg-white">
+      <section className="flex flex-col md:flex-row bg-white">
         {/* LEFT — Text column */}
         <div className="flex flex-col justify-center w-full md:w-[55%] bg-white px-6 md:px-10 lg:px-16 py-12 md:py-0">
           <div
@@ -88,7 +88,8 @@ export default function Home() {
               src="/images/thays4.jpg"
               alt="Thays Pritchard"
               fill
-              className="object-cover object-[50%_25%]"
+              className="object-cover"
+              style={{ objectPosition: "70% 30%" }}
               sizes="(max-width: 768px) 100vw, 45vw"
               priority
             />
@@ -97,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section className="pt-8 pb-16 bg-white px-6 md:px-10 lg:px-16">
+      <section className="pt-0 pb-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-3xl">
             <p className="text-[#7B5EA7] text-xs uppercase tracking-widest mb-8">
               ABOUT ME
