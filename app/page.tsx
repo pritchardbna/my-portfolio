@@ -55,15 +55,16 @@ export default function Home() {
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
             }}
           >
-            <Image
-              src="/images/thays2.jpg"
-              alt="Thays Pritchard"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "60% calc(30% + 120px)" }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
+            <div className="absolute inset-0 w-full" style={{ height: "135%", top: "-35%" }}>
+              <Image
+                src="/images/thays2.jpg"
+                alt="Thays Pritchard"
+                fill
+                className="object-cover object-[60%_50%]"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
