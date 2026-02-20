@@ -139,18 +139,17 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — QUOTE (bottom) */}
-      <section ref={quoteRef} className="py-24 px-6 bg-[#F5F5F5]">
+      <section ref={quoteRef} className="py-24 px-6 bg-white">
         <div
-          className={`max-w-[860px] mx-auto text-center transition-all duration-700 delay-150 ${
+          className={`max-w-[760px] mx-auto text-left transition-all duration-700 delay-150 ${
             quoteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <p className="text-[#7B5EA7] text-2xl font-bold leading-[1.8]">
-            <span className="text-[#7B5EA7] text-5xl md:text-6xl font-serif leading-none align-top mr-2">&quot;</span>
+          <p className="text-[#7B5EA7] font-serif leading-none opacity-40 mb-[-2rem]" style={{ fontSize: "8rem" }}>&quot;</p>
+          <p className="text-[#7B5EA7] text-3xl font-light italic leading-[1.8]">
             I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.
-            <span className="text-[#7B5EA7] text-5xl md:text-6xl font-serif leading-none align-top ml-2">&quot;</span>
           </p>
-          <p className="text-[#2D2D2D]/80 text-sm mt-8">— Thays Pritchard</p>
+          <p className="text-[#2D2D2D]/70 text-sm mt-8 text-right">— Thays Pritchard</p>
         </div>
       </section>
 
