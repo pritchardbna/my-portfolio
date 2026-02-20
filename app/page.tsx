@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="bg-white py-12 md:py-16 px-6 md:px-10 lg:px-16">
-        {/* "HEY, I'M THAYS 👋" above photo */}
+      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
+        {/* "HEY, I'M THAYS" above photo */}
         <div className="text-center mb-6">
-          <h1 className="text-[#2D2D2D] text-5xl font-[800] uppercase font-montserrat">
-            HEY, I&apos;M THAYS 👋
+          <h1 className="text-[#2D2D2D] text-3xl font-[800] uppercase font-montserrat">
+            HEY, I&apos;M THAYS
           </h1>
         </div>
         
@@ -42,7 +42,7 @@ export default function Home() {
           <div className="relative h-full flex items-center pl-8 md:pl-16">
             <div className="max-w-[480px]">
               {/* Large bold heading */}
-              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-montserrat">
+              <h2 className="text-white uppercase text-3xl font-[800] leading-[1.1] font-montserrat">
                 SENIOR PRODUCT MANAGER
               </h2>
             </div>
@@ -51,7 +51,7 @@ export default function Home() {
       </section>
       
       {/* Quote section below hero */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
         <blockquote className="max-w-[600px] mx-auto text-center">
           <p className="text-[#2D2D2D] text-lg md:text-xl italic leading-relaxed mb-2">
             &quot;I build products the way I care for people — with intention, with heart, and with the belief that technology should make someone&apos;s day a little easier and someone&apos;s work a little more meaningful.&quot;
@@ -61,42 +61,52 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ALL ABOUT THAYS */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto">
           {/* Section title */}
-          <h2 className="text-[#2D2D2D] text-5xl font-[800] uppercase font-montserrat text-center mb-16">
+          <h2 className="text-[#2D2D2D] text-3xl font-[800] uppercase font-montserrat text-center mb-16">
             ALL ABOUT THAYS
           </h2>
           
-          {/* Three subsections */}
+          {/* Four subsections */}
           <div className="space-y-16">
             {/* EXPERIENCE */}
             <div className="text-center">
-              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+              <h3 className="text-[#7B5EA7] text-xl font-[700] uppercase font-montserrat mb-6">
                 EXPERIENCE
               </h3>
-              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto">
                 A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
               </p>
             </div>
             
             {/* SKILLSET */}
             <div className="text-center">
-              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+              <h3 className="text-[#7B5EA7] text-xl font-[700] uppercase font-montserrat mb-6">
                 SKILLSET
               </h3>
-              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto">
                 Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
               </p>
             </div>
             
             {/* GOALS */}
             <div className="text-center">
-              <h3 className="text-[#7B5EA7] text-xl font-[800] uppercase font-montserrat mb-6">
+              <h3 className="text-[#7B5EA7] text-xl font-[700] uppercase font-montserrat mb-6">
                 GOALS
               </h3>
-              <p className="text-[#2D2D2D] text-lg leading-[1.9] max-w-[750px] mx-auto">
+              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto">
                 Always looking to work with teams that build with purpose — where technology serves people and innovation is grounded in real human needs. Passionate about applying GenAI to reduce manual effort, improve customer experiences, and unlock new capabilities. Committed to continuous learning and to building products that make someone&apos;s day a little easier — and someone&apos;s work a little more meaningful.
+              </p>
+            </div>
+            
+            {/* WHAT I DO FOR FUN */}
+            <div className="text-center">
+              <h3 className="text-[#7B5EA7] text-xl font-[700] uppercase font-montserrat mb-6">
+                WHAT I DO FOR FUN
+              </h3>
+              <p className="text-[#2D2D2D] text-base leading-[1.9] max-w-[700px] mx-auto">
+                When I step away from the screen, I trade roadmaps for mountain trails. You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
               </p>
             </div>
           </div>
@@ -104,7 +114,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — AI PROJECTS */}
-      <section className="bg-white md:bg-[#F5F5F5] py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <section className="bg-white md:bg-[#F5F5F5] py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
           <p className="text-[#7B5EA7] text-sm uppercase tracking-[0.2em] mb-6">
@@ -127,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 4 — RESUME */}
-      <section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <section className="bg-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
           <p className="text-[#7B5EA7] text-sm uppercase tracking-[0.2em] mb-8">
@@ -147,7 +157,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 5 — CONTACT FOOTER */}
-      <footer className="bg-[#7B5EA7] text-white py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <footer className="bg-[#7B5EA7] text-white py-16 px-6 md:px-10 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
           {/* Label */}
           <p className="font-bold text-lg md:text-xl mb-8">
