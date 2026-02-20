@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+
+const TAGLINE_LINES = [
+  "I am a builder of products",
+  "that make people's lives",
+  "a little easier.",
+];
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -13,6 +19,45 @@ export default function Home() {
   const card4Ref = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLElement>(null);
   const resumeRef = useRef<HTMLElement>(null);
+
+  const [typewriterLineIndex, setTypewriterLineIndex] = useState(-1);
+  const [typewriterCharIndex, setTypewriterCharIndex] = useState(0);
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
+
+  useEffect(() => {
+    const initialDelay = 800;
+    const charDelay = 45;
+    const pauseBetween = 400;
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    let t = initialDelay;
+
+    TAGLINE_LINES.forEach((line, lineIdx) => {
+      timeouts.push(
+        setTimeout(() => {
+          setTypewriterLineIndex(lineIdx);
+          setTypewriterCharIndex(0);
+        }, t)
+      );
+      for (let c = 1; c <= line.length; c++) {
+        t += charDelay;
+        const charCount = c;
+        timeouts.push(
+          setTimeout(() => {
+            setTypewriterCharIndex(charCount);
+            if (
+              lineIdx === TAGLINE_LINES.length - 1 &&
+              charCount === line.length
+            ) {
+              setTypewriterComplete(true);
+            }
+          }, t)
+        );
+      }
+      t += pauseBetween;
+    });
+
+    return () => timeouts.forEach(clearTimeout);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -80,9 +125,25 @@ export default function Home() {
                 SENIOR PRODUCT MANAGER
               </h2>
               <div className="mt-4 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
-                <p className="text-2xl font-[700]">I am a builder of products</p>
-                <p className="text-xl font-[300]">that make people&apos;s lives</p>
-                <p className="text-2xl font-[700]">a little easier.</p>
+                {TAGLINE_LINES.map((line, i) => {
+                  if (typewriterLineIndex < i) return null;
+                  const isActive = typewriterLineIndex === i;
+                  const text = isActive ? line.slice(0, typewriterCharIndex) : line;
+                  const showCursor = isActive && !typewriterComplete;
+                  return (
+                    <p
+                      key={i}
+                      className={
+                        i === 0 || i === 2
+                          ? "text-2xl font-[700]"
+                          : "text-xl font-[300]"
+                      }
+                    >
+                      {text}
+                      {showCursor && <span className="animate-pulse">|</span>}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           </div>
