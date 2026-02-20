@@ -34,7 +34,7 @@ export default function Home() {
           <div 
             className="absolute inset-0 w-full h-full"
             style={{
-              background: "linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)"
+              background: "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)"
             }}
           />
           
@@ -42,13 +42,21 @@ export default function Home() {
           <div className="relative h-full flex items-center pl-8 md:pl-16">
             <div className="max-w-[480px]">
               {/* Large bold heading */}
-              <h2 className="text-white uppercase text-3xl font-bold leading-[1.1] font-playfair">
+              <h2 className="text-white uppercase text-4xl font-[800] leading-[1.1] font-playfair">
                 SENIOR PRODUCT MANAGER
               </h2>
-              {/* Tagline inside photo */}
-              <p className="text-white text-base font-normal font-playfair mt-2">
-                I am a builder of products that make people&apos;s lives a little easier.
-              </p>
+              {/* Tagline inside photo - three lines */}
+              <div className="mt-4 font-playfair text-white not-italic" style={{ lineHeight: "1.6" }}>
+                <p className="text-2xl font-[700]">
+                  I am a builder of products
+                </p>
+                <p className="text-xl font-normal">
+                  that make people&apos;s lives
+                </p>
+                <p className="text-2xl font-[700]">
+                  a little easier.
+                </p>
+              </div>
             </div>
           </div>
         </div>
