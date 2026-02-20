@@ -15,7 +15,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-montserrat: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-playfair: var(--font-playfair), Georgia, serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,8 +31,12 @@ body {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-.font-montserrat {
-  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+.font-playfair {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes fadeIn {
