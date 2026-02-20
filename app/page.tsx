@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -25,9 +24,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white font-sans">
       {/* SECTION 1 — HERO */}
-      <section className="flex flex-col md:flex-row bg-white">
-        {/* LEFT — Text column */}
-        <div className="flex flex-col justify-center w-full md:w-[55%] bg-white px-6 md:px-10 lg:px-16 py-12 md:py-0">
+      <section className="bg-white py-24 px-6 md:px-10 lg:px-16">
+        <div className="max-w-3xl">
           <div
             className={`transition-all duration-500 ${
               heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -73,26 +71,6 @@ export default function Home() {
                 <span className="text-[#7B5EA7] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </Link>
             </div>
-          </div>
-        </div>
-        {/* RIGHT — Photo column */}
-        <div className="relative w-full md:w-[45%] h-[50vh] md:h-screen overflow-hidden">
-          <div
-            className="absolute inset-0 w-full h-full overflow-hidden"
-            style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-            }}
-          >
-            <Image
-              src="/images/thays4.jpg"
-              alt="Thays Pritchard"
-              fill
-              className="object-cover"
-              style={{ objectPosition: "70% 30%" }}
-              sizes="(max-width: 768px) 100vw, 45vw"
-              priority
-            />
           </div>
         </div>
       </section>
