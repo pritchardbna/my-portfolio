@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* SECTION 1 — HERO (full screen) */}
-      <section className="min-h-screen flex flex-col md:flex-row items-start md:items-center justify-center gap-12 md:gap-16 px-6 pt-24 md:pt-28 md:pb-16 md:pl-16 md:pr-0 bg-white">
+      <section className="min-h-screen flex flex-col md:flex-row items-start md:items-center justify-center gap-12 md:gap-16 px-6 pt-6 md:pt-8 md:pb-16 md:pl-16 md:pr-0 bg-white">
         <div
           className={`flex-1 max-w-xl transition-all duration-700 ${
             heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -34,7 +34,7 @@ export default function Home() {
           <p className="text-sm uppercase tracking-[0.2em] text-[#7B5EA7] mb-3 animate-fade-in">
             I am
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#2D2D2D] leading-tight mb-8">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#2D2D2D] leading-tight mb-8">
             a builder of products that make{" "}
             <span className="text-[#7B5EA7]">people&apos;s lives a little easier.</span>
           </h1>
