@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 
 // LinkedIn Icon SVG
 const LinkedInIcon = () => (
@@ -144,51 +146,104 @@ function SkillsSection() {
 }
 
 export default function Resume() {
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const coverLetterRef = useRef<HTMLDivElement>(null);
+
+  const downloadResume = async () => {
+    const element = resumeRef.current;
+    if (!element) return;
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("Thays_Pritchard_Resume.pdf");
+  };
+
+  const downloadCoverLetter = async () => {
+    const element = coverLetterRef.current;
+    if (!element) return;
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+    });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("Thays_Pritchard_Cover_Letter.pdf");
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
       <section className="bg-gradient-to-br from-purple-50 via-white to-purple-50 px-6 py-12 md:py-16">
         <div className="mx-auto max-w-4xl">
           <div className="mb-6 text-center">
-            <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-              Thays Pritchard
-            </h1>
-            <p className="mb-4 text-xl font-semibold text-purple-600 md:text-2xl">
-              Sr. Product Manager | AI Product Management Certified
-            </p>
-            <div className="mb-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600 md:text-base">
-              <span className="flex items-center gap-1">
-                <PhoneIcon />
-                615-707-2358
-              </span>
-              <span className="hidden md:inline">•</span>
-              <a href="mailto:pritchardbna@gmail.com" className="flex items-center gap-1 hover:text-purple-600 transition-colors">
-                <EmailIcon />
-                pritchardbna@gmail.com
-              </a>
-              <span className="hidden md:inline">•</span>
-              <span>Greater Nashville-TN Area</span>
-              <span className="hidden md:inline">•</span>
-              <a
-                href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 hover:text-purple-600 transition-colors"
-                aria-label="LinkedIn Profile"
+            <div className="flex flex-wrap justify-center gap-3">
+              <button
+                type="button"
+                onClick={downloadResume}
+                className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-purple-700 hover:shadow-lg"
               >
-                <LinkedInIcon />
-                <span className="hidden sm:inline">LinkedIn®</span>
-                <span className="sm:hidden">LinkedIn®</span>
-              </a>
+                DOWNLOAD RESUME ↓
+              </button>
+              <button
+                type="button"
+                onClick={downloadCoverLetter}
+                className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-purple-700 hover:shadow-lg"
+              >
+                DOWNLOAD COVER LETTER ↓
+              </button>
             </div>
-            <a
-              href="/resume/Thays_Pritchard_Resume.pdf"
-              download
-              className="inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-purple-700 hover:shadow-lg"
-            >
-              Download Resume
-            </a>
           </div>
+        </div>
+      </section>
+
+      {/* Resume document card — source of truth for PDF */}
+      <div ref={resumeRef} className="space-y-0 bg-gradient-to-br from-purple-50 via-white to-purple-50">
+        <section className="px-6 py-12 md:py-16">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-6 text-center">
+              <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+                Thays Pritchard
+              </h1>
+              <p className="mb-4 text-xl font-semibold text-purple-600 md:text-2xl">
+                Sr. Product Manager | AI Product Management Certified
+              </p>
+              <div className="mb-6 flex flex-wrap items-center justify-center gap-3 text-sm text-gray-600 md:text-base">
+                <span className="flex items-center gap-1">
+                  <PhoneIcon />
+                  615-707-2358
+                </span>
+                <span className="hidden md:inline">•</span>
+                <a href="mailto:pritchardbna@gmail.com" className="flex items-center gap-1 hover:text-purple-600 transition-colors">
+                  <EmailIcon />
+                  pritchardbna@gmail.com
+                </a>
+                <span className="hidden md:inline">•</span>
+                <span>Greater Nashville-TN Area</span>
+                <span className="hidden md:inline">•</span>
+                <a
+                  href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-purple-600 transition-colors"
+                  aria-label="LinkedIn Profile"
+                >
+                  <LinkedInIcon />
+                  <span className="hidden sm:inline">LinkedIn®</span>
+                  <span className="sm:hidden">LinkedIn®</span>
+                </a>
+              </div>
+            </div>
 
           <div className="rounded-lg bg-white p-6 shadow-sm border border-purple-100 text-center">
             <h2 className="mb-3 text-2xl font-bold text-gray-900 md:text-3xl">Summary</h2>
@@ -202,8 +257,8 @@ export default function Resume() {
               efficient products that drive real business value.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Accomplishments Section */}
       <SkillsSection />
@@ -292,6 +347,48 @@ export default function Resume() {
           </div>
         </div>
       </section>
+      </div>
+
+      {/* Hidden cover letter for PDF generation */}
+      <div
+        ref={coverLetterRef}
+        style={{ visibility: "hidden", position: "absolute" }}
+        className="left-0 top-0 w-[210mm] bg-white p-8 text-gray-900"
+      >
+        <p className="text-xl font-bold">THAYS PRITCHARD</p>
+        <p className="mb-4 text-sm">615-707-2358 | pritchardbna@gmail.com | Fairview, TN</p>
+        <p className="mb-6 text-sm">February 2026</p>
+        <p className="mb-2">Dear Hiring Manager,</p>
+        <p className="mb-4">
+          I am excited to apply for a Senior Product Manager role at your organization. With over nine years of
+          hands-on experience managing product backlogs, driving sprint execution, and delivering automation
+          solutions for Fortune 100 clients, I bring the experience needed to make an immediate impact.
+        </p>
+        <p className="mb-4">
+          In my current role as Senior Product Development Manager at Asurion, I lead product strategy for
+          fulfillment automation initiatives serving AT&T and Verizon. I own the full product lifecycle — from
+          discovery and roadmap definition through deployment — partnering cross-functionally with Engineering,
+          Data Science, Legal, and Supply Chain teams.
+        </p>
+        <p className="mb-4">
+          My recent accomplishments demonstrate my ability to deliver automation solutions that drive measurable
+          business value. I built and deployed a workflow automation solution improving process compliance by
+          80% and reducing annual costs by $5M for 500+ agents. I also pioneered a first-to-market In-Store Pickup
+          capability, leading end-to-end delivery from customer journey design through launch.
+        </p>
+        <p className="mb-4">
+          I am passionate about building solutions that work for real people — where technology serves customers
+          and teams alike. I am committed to continuous learning, recently completing AI Product Management
+          certification and actively applying GenAI tools to improve productivity and decision-making.
+        </p>
+        <p className="mb-4">
+          I would welcome the opportunity to discuss how my experience in automation, Agile product ownership,
+          and cross-functional leadership can deliver immediate value to your team. Thank you for considering my
+          application.
+        </p>
+        <p className="mb-2">Sincerely,</p>
+        <p className="font-semibold">Thays Pritchard</p>
+      </div>
     </div>
   );
 }
