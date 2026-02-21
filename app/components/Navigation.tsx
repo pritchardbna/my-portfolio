@@ -58,7 +58,7 @@ export default function Navigation() {
           <div className="flex flex-row items-center justify-between gap-6">
             {/* Left — Name */}
             <div className="flex-shrink-0">
-              <Link href="/" className="text-[#4A3068] text-lg font-bold font-inter">
+              <Link href="/" className="text-[#4A3068] text-lg font-bold font-playfair">
                 Thays Pritchard
               </Link>
             </div>

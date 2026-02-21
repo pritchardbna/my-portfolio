@@ -132,28 +132,30 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column — 50% on desktop; image on top on mobile */}
-        <div className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0 lg:pr-16">
-          {/* Mobile: image with bottom-edge fade */}
-          <img
-            src="/images/thays-headshot.jpg"
-            alt="Thays Pritchard"
-            className="lg:hidden w-full h-[280px] object-cover object-[center_20%] block"
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-            }}
-          />
-          {/* Desktop: image fills column, left-edge fade into white */}
-          <img
-            src="/images/thays-headshot.jpg"
-            alt="Thays Pritchard"
-            className="hidden lg:block absolute inset-0 w-full h-full object-cover object-top"
-            style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
-            }}
-          />
+        {/* Right column — responsive padding; image scales with 100% width/height */}
+        <div
+          className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0 px-6 pt-5 pb-0 md:pr-10 md:pt-[30px] md:pb-[30px] lg:pl-0 lg:pr-[60px] lg:pt-10 lg:pb-10"
+        >
+          <div className="absolute top-5 right-6 bottom-0 left-6 md:top-[30px] md:right-10 md:bottom-[30px] md:left-6 lg:top-10 lg:right-[60px] lg:bottom-10 lg:left-0">
+            <img
+              src="/images/thays-headshot.jpg"
+              alt="Thays Pritchard"
+              className="lg:hidden w-full h-full object-cover object-[center_20%] block"
+              style={{
+                WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+                maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              }}
+            />
+            <img
+              src="/images/thays-headshot.jpg"
+              alt="Thays Pritchard"
+              className="hidden lg:block w-full h-full object-cover object-top"
+              style={{
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+                maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+              }}
+            />
+          </div>
         </div>
       </section>
 
