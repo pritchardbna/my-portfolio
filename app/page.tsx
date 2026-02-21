@@ -98,11 +98,11 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section
         ref={heroRef}
-        className="fade-in min-h-[70vh] overflow-hidden flex flex-col lg:flex-row"
+        className="fade-in min-h-[60vh] overflow-hidden flex flex-col lg:flex-row bg-[#F5F5F5]"
       >
-        {/* Left column — 50% on desktop, white bg, vertically centered */}
+        {/* Left column — 50% on desktop */}
         <div
-          className="lg:w-1/2 bg-white flex flex-col justify-center lg:min-h-[88vh] px-8 pb-12 pt-8 lg:py-0 lg:pl-16 lg:pr-12"
+          className="lg:w-1/2 bg-[#F5F5F5] flex flex-col justify-start lg:min-h-[88vh] px-8 pb-12 pt-16 lg:pt-20 lg:pb-0 lg:pl-12 lg:pr-8"
           style={{ alignItems: "flex-start" }}
         >
           <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
@@ -135,8 +135,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column — soft faded corners */}
-        <div className="lg:w-1/2 bg-white flex items-center justify-center py-12 lg:py-0">
+        {/* Right column — soft faded corners, image with breathing room */}
+        <div className="lg:w-1/2 bg-[#F5F5F5] flex items-center justify-center py-12 lg:py-0 p-5 lg:p-10">
           <img
             src="/images/thays-headshot.jpg"
             alt="Thays Pritchard"
@@ -153,7 +153,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-16 pb-8 px-8 md:px-10 lg:px-16">
+      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-10 pb-8 px-8 md:px-10 lg:px-16">
         <div className="w-full">
           <h2 className="text-[#4A3068] text-3xl font-bold font-playfair text-center mb-12">
             About Me
