@@ -59,7 +59,6 @@ export default function WebsiteCaseStudy() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white border border-[#E8E0F0] rounded-lg p-6">
-              <p className="text-2xl mb-2">🧠</p>
               <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">
                 Claude — The Strategist
               </h3>
@@ -67,11 +66,10 @@ export default function WebsiteCaseStudy() {
                 My AI co-pilot for the entire project. Claude explained concepts I didn&apos;t understand, gave me step-by-step terminal commands, troubleshooted errors when builds failed, and walked me through connecting my domain to Vercel screen-by-screen. Think of it as having a patient senior developer on call 24/7.
               </p>
               <p className="font-inter text-xs text-[#9B89B4] mt-3">
-                💰 Cost: $22/month (already subscribed)
+                Cost: $22/month (already subscribed)
               </p>
             </div>
             <div className="bg-white border border-[#E8E0F0] rounded-lg p-6">
-              <p className="text-2xl mb-2">✨</p>
               <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">
                 Cursor — The Code Writer
               </h3>
@@ -79,11 +77,10 @@ export default function WebsiteCaseStudy() {
                 An AI-powered code editor where I describe what I want in plain English — &quot;add a hamburger menu on mobile&quot; or &quot;make the skills section interactive&quot; — and it generates the actual code. I never wrote a line manually.
               </p>
               <p className="font-inter text-xs text-[#9B89B4] mt-3">
-                💰 Cost: $22/month
+                Cost: $22/month
               </p>
             </div>
             <div className="bg-white border border-[#E8E0F0] rounded-lg p-6">
-              <p className="text-2xl mb-2">🚀</p>
               <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">
                 Vercel — The Publisher
               </h3>
@@ -91,11 +88,10 @@ export default function WebsiteCaseStudy() {
                 Free hosting that connects to GitHub. Every time I push code, Vercel automatically rebuilds and deploys my site — usually in about 60 seconds. No server configuration, no FTP, no complexity.
               </p>
               <p className="font-inter text-xs text-[#9B89B4] mt-3">
-                💰 Cost: Free
+                Cost: Free
               </p>
             </div>
             <div className="bg-white border border-[#E8E0F0] rounded-lg p-6">
-              <p className="text-2xl mb-2">🌐</p>
               <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">
                 Cloudflare — The Domain
               </h3>
@@ -103,7 +99,7 @@ export default function WebsiteCaseStudy() {
                 Where I registered thayspritchard.com. Cloudflare sells domains at wholesale prices with free WHOIS privacy. Connecting it to Vercel required adding some DNS records, which Claude walked me through.
               </p>
               <p className="font-inter text-xs text-[#9B89B4] mt-3">
-                💰 Cost: $52 for 5 years
+                Cost: $52 for 5 years
               </p>
             </div>
           </div>
@@ -158,28 +154,24 @@ export default function WebsiteCaseStudy() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <span className="text-2xl">🧠</span>
               <div>
                 <p className="font-playfair text-base font-bold text-[#4A3068]">Claude</p>
                 <p className="font-inter text-sm text-[#666666]">AI assistant for guidance and prompts</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <span className="text-2xl">✨</span>
               <div>
                 <p className="font-playfair text-base font-bold text-[#4A3068]">Cursor</p>
                 <p className="font-inter text-sm text-[#666666]">AI-powered code editor</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <span className="text-2xl">🚀</span>
               <div>
                 <p className="font-playfair text-base font-bold text-[#4A3068]">Vercel</p>
                 <p className="font-inter text-sm text-[#666666]">Free hosting and deployment</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <span className="text-2xl">🌐</span>
               <div>
                 <p className="font-playfair text-base font-bold text-[#4A3068]">Cloudflare</p>
                 <p className="font-inter text-sm text-[#666666]">Domain registration</p>
@@ -196,35 +188,35 @@ export default function WebsiteCaseStudy() {
           </p>
           <div className="space-y-6">
             <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
-              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🚀 THE STARTER — Your First Homepage</h3>
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">THE STARTER — Your First Homepage</h3>
               <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
                 This was the very first prompt I gave Cursor after creating my project. It built the entire homepage structure in one go.
               </p>
               <div className="bg-gray-50 border border-gray-200 text-gray-700 italic text-sm p-4 rounded-lg whitespace-pre-wrap font-inter">{`Please replace the contents of app/page.tsx with a professional portfolio homepage for a Senior Product Manager named Thays Pritchard. Include: a hero section with my name and title, a short bio about being an experienced PM with Agile expertise who builds AI-powered prototypes, 4 prototype cards (PRD Generator, User Interview Analyzer, Feature Prioritization Assistant, AI Roadmap Planner), and a contact section. Use Tailwind CSS with a purple and white color scheme. Make it look modern and professional.`}</div>
             </div>
             <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
-              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🧭 ADDING STRUCTURE — Navigation & Pages</h3>
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">ADDING STRUCTURE — Navigation & Pages</h3>
               <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
                 Once the homepage existed, I needed to add multiple pages. This prompt created the full site architecture.
               </p>
               <div className="bg-gray-50 border border-gray-200 text-gray-700 italic text-sm p-4 rounded-lg whitespace-pre-wrap font-inter">{`Please update my portfolio to add navigation with 4 pages: About, Prototypes, Case Studies, and Resume. Create a navigation bar at the top of the homepage with links to each page. Create separate pages for each section: app/about/page.tsx, app/prototypes/page.tsx, app/case-studies/page.tsx, and app/resume/page.tsx. Add placeholder content to each page that matches the purple and white color scheme. Make the navigation look clean and professional.`}</div>
             </div>
             <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
-              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">✨ ADDING INTERACTIVITY — Tabbed Skills Section</h3>
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">ADDING INTERACTIVITY — Tabbed Skills Section</h3>
               <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
                 I wanted something that felt dynamic, not just static text. This prompt created clickable tabs that show different skill categories.
               </p>
               <div className="bg-gray-50 border border-gray-200 text-gray-700 italic text-sm p-4 rounded-lg whitespace-pre-wrap font-inter">{`Replace the skills section in app/resume/page.tsx with a clean interactive tabbed skills section titled 'My Skills'. Display 5 tab buttons: Product & Strategy, Automation & Tech, AI Tools, Leadership & Collaboration, Languages. When a tab is clicked, the bullet points for that category animate in below. First tab is active by default. Active tab should be filled with accent color, others are outline style. Use React useState for the interaction.`}</div>
             </div>
             <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
-              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">📱 FIXING MOBILE — Responsive Layout</h3>
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">FIXING MOBILE — Responsive Layout</h3>
               <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
                 The site looked great on desktop but broken on phones. This prompt tackled multiple mobile issues at once.
               </p>
               <div className="bg-gray-50 border border-gray-200 text-gray-700 italic text-sm p-4 rounded-lg whitespace-pre-wrap font-inter">{`Fix mobile layout issues across the entire site. NAVIGATION: Convert to hamburger menu on mobile — hide nav links, show hamburger icon, open full-screen overlay when tapped. HERO IMAGE: Make full viewport width on mobile, use object-cover, position so the person appears on the right side of the frame. GLOBAL: On mobile, content should be full-width with small padding. Apply these fixes to ALL pages.`}</div>
             </div>
             <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
-              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🔧 QUICK FIXES — Single-Purpose Prompts</h3>
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">QUICK FIXES — Single-Purpose Prompts</h3>
               <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
                 I learned that shorter, focused prompts worked better than long ones.
               </p>
@@ -238,7 +230,7 @@ Shorten the typewriter animation delay from 100ms to 50ms so it feels snappier.`
 
           {/* What I Learned */}
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
-            💡 What Made Prompts Work
+            What Made Prompts Work
           </h2>
           <div className="rounded-lg border-2 border-[#E8E0F0] bg-[#F5F5F5] p-6 shadow-md">
             <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
