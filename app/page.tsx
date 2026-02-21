@@ -98,62 +98,68 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section
         ref={heroRef}
-        className="fade-in bg-white min-h-[88vh] flex flex-col md:flex-row md:items-center md:justify-center py-10 px-6 md:py-0 md:px-20"
+        className="fade-in min-h-[88vh] overflow-hidden flex flex-col lg:flex-row"
       >
-        <div className="w-full max-w-[1100px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-[40px]">
-          {/* Mobile: image first, centered. Desktop: right column */}
-          <div className="flex flex-col items-center md:order-2 md:flex-shrink-0">
-            <div
-              className="w-full max-w-[300px] h-[340px] md:w-[420px] md:h-[500px] md:max-w-none"
-              style={{ flexShrink: 0 }}
-            >
-              <img
-                src="/images/thays-headshot.jpg"
-                alt="Thays Pritchard"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                  WebkitMaskImage: "radial-gradient(ellipse 88% 88% at 50% 44%, black 50%, transparent 100%)",
-                  maskImage: "radial-gradient(ellipse 88% 88% at 50% 44%, black 50%, transparent 100%)",
-                  display: "block",
-                }}
-              />
-            </div>
+        {/* Left column — 50% on desktop, white bg, vertically centered */}
+        <div className="lg:w-1/2 bg-white flex flex-col justify-center py-8 px-6 lg:py-0 lg:pl-16 lg:pr-12">
+          <h1 className="hero-title-fade font-playfair text-3xl font-extrabold text-[#4A3068] mb-4">
+            Hey, I&apos;m Thays
+          </h1>
+          <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
+            SENIOR PRODUCT MANAGER
+          </h2>
+          <div className="font-raleway text-[#2D2D2D] not-italic" style={{ lineHeight: "1.6" }}>
+            {TAGLINE_LINES.map((line, i) => {
+              const notStarted = typewriterLineIndex < i;
+              const isActive = typewriterLineIndex === i;
+              const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
+              const showCursor = isActive && !typewriterComplete;
+              const lineClass =
+                i === 0 || i === 3
+                  ? "text-xl font-bold min-h-[1.6em]"
+                  : "text-lg font-light min-h-[1.6em]";
+              return (
+                <p
+                  key={i}
+                  className={lineClass}
+                  style={{ opacity: notStarted ? 0 : 1 }}
+                >
+                  {text}
+                  {showCursor && <span className="animate-pulse opacity-50">|</span>}
+                </p>
+              );
+            })}
           </div>
+          <p
+            className="font-inter text-xs text-[#9B89B4] mt-8"
+            style={{ letterSpacing: "0.15em" }}
+          >
+            9+ years · Fortune 100 · AI-certified
+          </p>
+        </div>
 
-          {/* Left column: text — on mobile below image */}
-          <div className="flex flex-col md:w-[60%] md:order-1">
-            <h1 className="hero-title-fade font-playfair text-3xl font-extrabold text-[#4A3068] mb-6">
-              Hey, I&apos;m Thays
-            </h1>
-            <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
-              SENIOR PRODUCT MANAGER
-            </h2>
-            <div className="font-raleway text-[#2D2D2D] not-italic" style={{ lineHeight: "1.6" }}>
-              {TAGLINE_LINES.map((line, i) => {
-                const notStarted = typewriterLineIndex < i;
-                const isActive = typewriterLineIndex === i;
-                const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
-                const showCursor = isActive && !typewriterComplete;
-                const lineClass =
-                  i === 0 || i === 3
-                    ? "text-xl font-bold min-h-[1.6em]"
-                    : "text-lg font-light min-h-[1.6em]";
-                return (
-                  <p
-                    key={i}
-                    className={lineClass}
-                    style={{ opacity: notStarted ? 0 : 1 }}
-                  >
-                    {text}
-                    {showCursor && <span className="animate-pulse opacity-50">|</span>}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
+        {/* Right column — 50% on desktop; image on top on mobile */}
+        <div className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0">
+          {/* Mobile: image with bottom-edge fade */}
+          <img
+            src="/images/thays-headshot.jpg"
+            alt="Thays Pritchard"
+            className="lg:hidden w-full h-[280px] object-cover object-[center_20%] block"
+            style={{
+              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+            }}
+          />
+          {/* Desktop: image fills column, left-edge fade into white */}
+          <img
+            src="/images/thays-headshot.jpg"
+            alt="Thays Pritchard"
+            className="hidden lg:block absolute inset-0 w-full h-full object-cover object-top"
+            style={{
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+            }}
+          />
         </div>
       </section>
 
