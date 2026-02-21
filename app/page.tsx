@@ -98,31 +98,32 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section
         ref={heroRef}
-        className="fade-in bg-white min-h-0 md:min-h-[85vh] flex flex-col md:flex-row md:items-center md:justify-center px-8 py-12 md:py-16"
+        className="fade-in bg-white min-h-[88vh] flex flex-col md:flex-row md:items-center md:justify-center py-10 px-6 md:py-0 md:px-20"
       >
-        <div className="max-w-[1100px] w-full mx-auto flex flex-col md:flex-row md:items-center gap-10 md:gap-12">
-          {/* Mobile: photo on top, centered */}
-          <div className="flex flex-col items-center md:order-2 md:w-[40%] md:flex-shrink-0">
+        <div className="w-full max-w-[1100px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-[40px]">
+          {/* Mobile: image first, centered. Desktop: right column */}
+          <div className="flex flex-col items-center md:order-2 md:flex-shrink-0">
             <div
-              className="relative w-full max-w-[260px] h-[320px] md:w-[320px] md:h-[380px] md:max-w-none"
-              style={{
-                WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
-                maskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
-                overflow: "hidden",
-              }}
+              className="w-full max-w-[300px] h-[340px] md:w-[420px] md:h-[500px] md:max-w-none"
+              style={{ flexShrink: 0 }}
             >
-              <Image
+              <img
                 src="/images/thays-headshot.jpg"
                 alt="Thays Pritchard"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 260px, 320px"
-                priority
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                  WebkitMaskImage: "radial-gradient(ellipse 88% 88% at 50% 44%, black 50%, transparent 100%)",
+                  maskImage: "radial-gradient(ellipse 88% 88% at 50% 44%, black 50%, transparent 100%)",
+                  display: "block",
+                }}
               />
             </div>
           </div>
 
-          {/* Left column: text (60%) — on mobile appears below photo */}
+          {/* Left column: text — on mobile below image */}
           <div className="flex flex-col md:w-[60%] md:order-1">
             <h1 className="hero-title-fade font-playfair text-3xl font-extrabold text-[#4A3068] mb-6">
               Hey, I&apos;m Thays
