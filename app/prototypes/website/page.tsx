@@ -18,7 +18,7 @@ export default function WebsiteCaseStudy() {
             AI PROJECTS
           </p>
           <h1 className="font-playfair text-3xl font-extrabold text-[#2D2D2D]">
-            I Built a Website in 15 Hours
+            I Built a Website in 10 Hours
           </h1>
           <p className="font-inter text-base text-[#666666] italic mt-1">
             With Zero Coding Experience
@@ -31,7 +31,7 @@ export default function WebsiteCaseStudy() {
 
         {/* Stats — single line */}
         <p className="font-inter text-sm text-[#666666] text-left mt-4">
-          <span className="font-bold text-[#4A3068]">15 hrs</span>
+          <span className="font-bold text-[#4A3068]">10 hrs</span>
           <span className="px-3" aria-hidden>·</span>
           <span className="font-bold text-[#4A3068]">~$75</span>/setup cost
           <span className="font-inter text-xs text-[#9B89B4] italic ml-1">(domain $52/5 yrs + tools)</span>
@@ -50,7 +50,7 @@ export default function WebsiteCaseStudy() {
             A few weeks ago, I decided to build a professional portfolio website. Not with Squarespace or Wix — I wanted something custom, something that would actually showcase AI prototypes I&apos;d built. There was just one problem: I don&apos;t know how to code.
           </p>
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D] mt-4">
-            Fifteen hours and about $96 later, I have a live site at www.thayspritchard.com — complete with animated sections, interactive skill tabs, a mobile hamburger menu, and automatic deployments whenever I push changes.
+            Ten hours and about $96 later, I have a live site at www.thayspritchard.com — complete with animated sections, interactive skill tabs, a mobile hamburger menu, and automatic deployments whenever I push changes.
           </p>
 
           {/* The Toolkit */}
