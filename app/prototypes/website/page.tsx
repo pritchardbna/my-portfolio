@@ -12,8 +12,35 @@ export default function WebsiteCaseStudy() {
           ← Back to AI Projects
         </Link>
 
+        {/* Summary stats */}
+        <div className="flex flex-wrap items-center justify-center gap-12 py-8">
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">15</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              Hours to Build
+            </p>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">~$96</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              First Month Cost
+            </p>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">1</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              Site I&apos;m Proud Of
+            </p>
+          </div>
+        </div>
+        <p className="font-inter text-sm text-[#9B89B4] italic mt-4 text-center">
+          A year ago, this would have meant months of learning or hundreds in developer fees.
+        </p>
+
         {/* Page header (above card) */}
-        <header className="mb-8">
+        <header className="mb-8 mt-8">
           <p className="font-playfair text-xs uppercase tracking-[0.2em] text-[#4A3068] mb-2">
             AI PROJECTS
           </p>
@@ -131,16 +158,6 @@ export default function WebsiteCaseStudy() {
             Keep prompts short. Asking Cursor for one thing at a time produced more reliable results than long, multi-section requests.
           </p>
         </article>
-
-        {/* Bottom summary card */}
-        <div className="bg-[#4A3068] text-white rounded-lg p-8 max-w-[600px] mx-auto mt-8 text-center">
-          <p className="font-inter text-base font-medium">
-            ⏱️ 15 hours  💰 ~$96 first month  🎯 A site I&apos;m proud of
-          </p>
-          <p className="font-inter text-sm italic text-white/90 mt-3">
-            A year ago, this would have meant months of learning or hundreds in developer fees.
-          </p>
-        </div>
       </div>
     </div>
   );
