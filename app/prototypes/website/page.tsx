@@ -53,6 +53,17 @@ export default function WebsiteCaseStudy() {
             Ten hours and about $96 later, I have a live site at www.thayspritchard.com — complete with animated sections, interactive skill tabs, a mobile hamburger menu, and automatic deployments whenever I push changes.
           </p>
 
+          {/* The Challenge */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
+            The Challenge
+          </h2>
+          <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
+            <li>I needed a professional portfolio site to showcase my PM skills and AI prototypes.</li>
+            <li>I didn&apos;t know how to code.</li>
+            <li>I wanted something custom — not a generic template.</li>
+            <li>Budget: minimal (free tools where possible).</li>
+          </ul>
+
           {/* The Toolkit */}
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
             The Toolkit
@@ -136,48 +147,6 @@ export default function WebsiteCaseStudy() {
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D] mt-4">
             Keep prompts short. Asking Cursor for one thing at a time produced more reliable results than long, multi-section requests.
           </p>
-
-          {/* The Challenge */}
-          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
-            The Challenge
-          </h2>
-          <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
-            <li>I needed a professional portfolio site to showcase my PM skills and AI prototypes.</li>
-            <li>I didn&apos;t know how to code.</li>
-            <li>I wanted something custom — not a generic template.</li>
-            <li>Budget: minimal (free tools where possible).</li>
-          </ul>
-
-          {/* The Tools — quick reference */}
-          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
-            The Tools
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <div>
-                <p className="font-playfair text-base font-bold text-[#4A3068]">Claude</p>
-                <p className="font-inter text-sm text-[#666666]">AI assistant for guidance and prompts</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <div>
-                <p className="font-playfair text-base font-bold text-[#4A3068]">Cursor</p>
-                <p className="font-inter text-sm text-[#666666]">AI-powered code editor</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <div>
-                <p className="font-playfair text-base font-bold text-[#4A3068]">Vercel</p>
-                <p className="font-inter text-sm text-[#666666]">Free hosting and deployment</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
-              <div>
-                <p className="font-playfair text-base font-bold text-[#4A3068]">Cloudflare</p>
-                <p className="font-inter text-sm text-[#666666]">Domain registration</p>
-              </div>
-            </div>
-          </div>
 
           {/* The Prompts That Built It */}
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-2">
