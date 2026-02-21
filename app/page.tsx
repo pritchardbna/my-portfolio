@@ -95,23 +95,30 @@ export default function Home() {
         }}
       />
 
-      {/* SECTION 1 — HERO */}
-      <section
-        ref={heroRef}
-        className="fade-in min-h-[60vh] overflow-hidden flex flex-col lg:flex-row bg-[#F5F5F5]"
-      >
-        {/* Left column — 50% on desktop */}
-        <div
-          className="lg:w-1/2 bg-[#F5F5F5] flex flex-col justify-start lg:min-h-[88vh] px-8 pb-12 pt-16 lg:pt-20 lg:pb-0 lg:pl-12 lg:pr-8"
-          style={{ alignItems: "flex-start" }}
-        >
+      <div className="mx-auto max-w-[900px] px-4 md:px-6">
+      {/* SECTION 1 — HERO — stacked: image then text */}
+      <section ref={heroRef} className="fade-in overflow-hidden flex flex-col bg-[#F5F5F5]">
+        <img
+          src="/images/thays-headshot.jpg"
+          alt="Thays Pritchard"
+          className="mx-auto mb-8 block"
+          style={{
+            width: "180px",
+            height: "180px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            objectPosition: "center top",
+            boxShadow: "0 4px 20px rgba(74,48,104,0.12)",
+          }}
+        />
+        <div className="text-center pt-8 pb-4">
           <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
             Hey, I&apos;m Thays
           </h1>
           <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
             SENIOR PRODUCT MANAGER
           </h2>
-          <div className="font-raleway text-[#2D2D2D] not-italic" style={{ lineHeight: "1.6" }}>
+          <div className="font-raleway text-[#2D2D2D] not-italic text-center" style={{ lineHeight: "1.6" }}>
             {TAGLINE_LINES.map((line, i) => {
               const notStarted = typewriterLineIndex < i;
               const isActive = typewriterLineIndex === i;
@@ -134,56 +141,40 @@ export default function Home() {
             })}
           </div>
         </div>
-
-        {/* Right column — soft faded corners, image with breathing room */}
-        <div className="lg:w-1/2 bg-[#F5F5F5] flex items-center justify-center py-12 lg:py-0 p-5 lg:p-10">
-          <img
-            src="/images/thays-headshot.jpg"
-            alt="Thays Pritchard"
-            className="w-[280px] h-[340px] md:w-[340px] md:h-[400px] lg:w-[420px] lg:h-[500px]"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center top",
-              flexShrink: 0,
-              WebkitMaskImage: "radial-gradient(ellipse 85% 88% at 50% 50%, black 55%, transparent 100%)",
-              maskImage: "radial-gradient(ellipse 85% 88% at 50% 50%, black 55%, transparent 100%)",
-            }}
-          />
-        </div>
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-10 pb-8 px-8 md:px-10 lg:px-16">
+      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-10 pb-8 px-0">
         <div className="w-full">
           <h2 className="text-[#4A3068] text-3xl font-bold font-playfair text-center mb-12">
             About Me
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-            <div ref={card1Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
-              <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">Experience</h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
+            <div ref={card1Ref} className="fade-in rounded-lg bg-white p-6 shadow-md">
+              <h3 className="text-[#4A3068] text-base font-bold font-playfair mb-4">Experience</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.8] font-inter">
                 A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
               </p>
             </div>
 
-            <div ref={card2Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
-              <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">Skillset</h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
+            <div ref={card2Ref} className="fade-in rounded-lg bg-white p-6 shadow-md">
+              <h3 className="text-[#4A3068] text-base font-bold font-playfair mb-4">Skillset</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.8] font-inter">
                 Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
               </p>
             </div>
 
-            <div ref={card3Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
-              <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">My Goals</h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
+            <div ref={card3Ref} className="fade-in rounded-lg bg-white p-6 shadow-md">
+              <h3 className="text-[#4A3068] text-base font-bold font-playfair mb-4">My Goals</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.8] font-inter">
                 I&apos;m drawn to teams that build with purpose — where technology serves people and innovation is grounded in real human needs. I want to bring my background in automation, cross-functional leadership, and customer experience to a team building something that truly matters, keep pushing the boundaries of what GenAI makes possible in product management, and help the people around me grow along the way.
               </p>
             </div>
 
-            <div ref={card4Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
-              <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">What I Do for Fun</h3>
-              <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
+            <div ref={card4Ref} className="fade-in rounded-lg bg-white p-6 shadow-md">
+              <h3 className="text-[#4A3068] text-base font-bold font-playfair mb-4">What I Do for Fun</h3>
+              <p className="text-[#2D2D2D] text-sm leading-[1.8] font-inter">
                 When I step away from the screen, I trade roadmaps for mountain trails. You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
               </p>
             </div>
@@ -192,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* Personal quote */}
-      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-10 px-4 md:px-10 lg:px-16">
+      <section ref={quoteRef} className="fade-in bg-[#F5F5F5] py-10 px-0">
         <div className="flex flex-col items-center">
           <div className="w-10 h-0.5 bg-[#7B5EA7] rounded-full" aria-hidden />
           <p className="text-[#9B89B4] font-playfair text-center opacity-40 mt-8" style={{ fontSize: "5rem", lineHeight: 1 }}>
@@ -209,7 +200,7 @@ export default function Home() {
       </section>
 
       {/* SECTION 3 — RESUME */}
-      <section ref={resumeRef} className="fade-in bg-[#F5F5F5] py-16 px-4 md:px-10 lg:px-16">
+      <section ref={resumeRef} className="fade-in bg-[#F5F5F5] py-16 px-0">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-[#4A3068] text-xl font-bold mb-8 font-playfair">
             Looking for Experience?
@@ -222,6 +213,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      </div>
     </div>
   );
 }
