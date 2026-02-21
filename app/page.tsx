@@ -101,8 +101,8 @@ export default function Home() {
         className="fade-in min-h-[88vh] overflow-hidden flex flex-col lg:flex-row"
       >
         {/* Left column — 50% on desktop, white bg, vertically centered */}
-        <div className="lg:w-1/2 bg-white flex flex-col justify-center py-8 px-6 lg:py-0 lg:pl-16 lg:pr-12">
-          <h1 className="hero-title-fade font-playfair text-3xl font-extrabold text-[#4A3068] mb-4">
+        <div className="lg:w-1/2 bg-white flex flex-col justify-center h-full py-8 px-6 lg:py-0 lg:pl-16 lg:pr-12">
+          <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
             Hey, I&apos;m Thays
           </h1>
           <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
@@ -130,16 +130,10 @@ export default function Home() {
               );
             })}
           </div>
-          <p
-            className="font-inter text-xs text-[#9B89B4] mt-8"
-            style={{ letterSpacing: "0.15em" }}
-          >
-            9+ years · Fortune 100 · AI-certified
-          </p>
         </div>
 
         {/* Right column — 50% on desktop; image on top on mobile */}
-        <div className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0">
+        <div className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0 lg:pr-16">
           {/* Mobile: image with bottom-edge fade */}
           <img
             src="/images/thays-headshot.jpg"
