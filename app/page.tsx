@@ -112,6 +112,25 @@ export default function Home() {
           </h1>
         </div>
 
+        {/* Profile photo: between title and hero banner */}
+        <div
+          className="relative w-[120px] h-[120px] md:w-[160px] md:h-[160px] mx-auto mb-4"
+          style={{
+            WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
+            maskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
+            borderRadius: "4px",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src="/images/thays-headshot.jpg"
+            alt="Thays Pritchard"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 120px, 160px"
+          />
+        </div>
+
         {/* Mobile: full-width hero with overlay title + tagline */}
         <div className="relative w-full h-[70vh] min-h-[500px] md:h-[80vh] md:min-h-0">
           <div className="absolute inset-0 w-full h-full">
