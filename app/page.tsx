@@ -101,7 +101,7 @@ export default function Home() {
         className="fade-in min-h-[88vh] overflow-hidden flex flex-col lg:flex-row"
       >
         {/* Left column — 50% on desktop, white bg, vertically centered */}
-        <div className="lg:w-1/2 bg-white flex flex-col justify-center h-full py-8 px-6 lg:py-0 lg:pl-16 lg:pr-12">
+        <div className="lg:w-1/2 bg-white flex flex-col justify-center lg:min-h-[88vh] py-12 px-8 lg:py-0 lg:pl-16 lg:pr-12">
           <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
             Hey, I&apos;m Thays
           </h1>
@@ -132,30 +132,39 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column — responsive padding; image scales with 100% width/height */}
-        <div
-          className="lg:w-1/2 relative min-h-[280px] lg:min-h-[88vh] flex-shrink-0 px-6 pt-5 pb-0 md:pr-10 md:pt-[30px] md:pb-[30px] lg:pl-0 lg:pr-[60px] lg:pt-10 lg:pb-10"
-        >
-          <div className="absolute top-5 right-6 bottom-0 left-6 md:top-[30px] md:right-10 md:bottom-[30px] md:left-6 lg:top-10 lg:right-[60px] lg:bottom-10 lg:left-0">
-            <img
-              src="/images/thays-headshot.jpg"
-              alt="Thays Pritchard"
-              className="lg:hidden w-full h-full object-cover object-[center_20%] block"
-              style={{
-                WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-                maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              }}
-            />
-            <img
-              src="/images/thays-headshot.jpg"
-              alt="Thays Pritchard"
-              className="hidden lg:block w-full h-full object-cover object-top"
-              style={{
-                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
-                maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
-              }}
-            />
-          </div>
+        {/* Right column */}
+        <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-[88vh]">
+          {/* Mobile image — top fade */}
+          <img
+            src="/images/thays-headshot.jpg"
+            alt="Thays Pritchard"
+            className="lg:hidden w-full h-full object-cover object-[center_20%] block"
+            style={{
+              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
+              height: "300px",
+              width: "100%",
+            }}
+          />
+          {/* Desktop image — left fade, right margin */}
+          <img
+            src="/images/thays-headshot.jpg"
+            alt="Thays Pritchard"
+            className="hidden lg:block"
+            style={{
+              position: "absolute",
+              top: "40px",
+              left: "0",
+              right: "60px",
+              bottom: "40px",
+              width: "calc(100% - 60px)",
+              height: "calc(100% - 80px)",
+              objectFit: "cover",
+              objectPosition: "center top",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 100%)",
+              maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 100%)",
+            }}
+          />
         </div>
       </section>
 
