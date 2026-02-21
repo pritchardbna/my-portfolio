@@ -101,7 +101,10 @@ export default function Home() {
         className="fade-in min-h-[88vh] overflow-hidden flex flex-col lg:flex-row"
       >
         {/* Left column — 50% on desktop, white bg, vertically centered */}
-        <div className="lg:w-1/2 bg-white flex flex-col justify-center lg:min-h-[88vh] py-12 px-8 lg:py-0 lg:pl-16 lg:pr-12">
+        <div
+          className="lg:w-1/2 bg-white flex flex-col justify-center lg:min-h-[88vh] px-8 pb-12 pt-8 lg:py-0 lg:pl-16 lg:pr-12"
+          style={{ alignItems: "flex-start" }}
+        >
           <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
             Hey, I&apos;m Thays
           </h1>
@@ -153,12 +156,12 @@ export default function Home() {
             className="hidden lg:block"
             style={{
               position: "absolute",
-              top: "40px",
-              left: "0",
-              right: "60px",
-              bottom: "40px",
-              width: "calc(100% - 60px)",
-              height: "calc(100% - 80px)",
+              top: "60px",
+              left: "40px",
+              right: "80px",
+              bottom: "60px",
+              width: "calc(100% - 120px)",
+              height: "calc(100% - 120px)",
               objectFit: "cover",
               objectPosition: "center top",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 100%)",
