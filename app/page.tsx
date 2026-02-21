@@ -135,18 +135,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column — circle headshot */}
+        {/* Right column — soft faded corners */}
         <div className="lg:w-1/2 bg-white flex items-center justify-center py-12 lg:py-0">
           <img
             src="/images/thays-headshot.jpg"
             alt="Thays Pritchard"
-            className="w-[200px] h-[200px] md:w-[260px] md:h-[260px] lg:w-[340px] lg:h-[340px]"
+            className="w-[280px] h-[340px] md:w-[340px] md:h-[400px] lg:w-[420px] lg:h-[500px]"
             style={{
-              borderRadius: "50%",
               objectFit: "cover",
               objectPosition: "center top",
               flexShrink: 0,
-              boxShadow: "0 8px 32px rgba(74,48,104,0.12)",
+              WebkitMaskImage: "radial-gradient(ellipse 85% 88% at 50% 50%, black 55%, transparent 100%)",
+              maskImage: "radial-gradient(ellipse 85% 88% at 50% 50%, black 55%, transparent 100%)",
             }}
           />
         </div>
