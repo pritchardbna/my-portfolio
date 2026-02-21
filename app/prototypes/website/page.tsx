@@ -12,35 +12,8 @@ export default function WebsiteCaseStudy() {
           ← Back to AI Projects
         </Link>
 
-        {/* Summary stats */}
-        <div className="flex flex-wrap items-center justify-center gap-12 py-8">
-          <div className="text-center">
-            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">15</p>
-            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
-              Hours to Build
-            </p>
-          </div>
-          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
-          <div className="text-center">
-            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">~$96</p>
-            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
-              First Month Cost
-            </p>
-          </div>
-          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
-          <div className="text-center">
-            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">1</p>
-            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
-              Site I&apos;m Proud Of
-            </p>
-          </div>
-        </div>
-        <p className="font-inter text-sm text-[#9B89B4] italic mt-4 text-center">
-          A year ago, this would have meant months of learning or hundreds in developer fees.
-        </p>
-
-        {/* Page header (above card) */}
-        <header className="mb-8 mt-8">
+        {/* Page header */}
+        <header className="mb-0">
           <p className="font-playfair text-xs uppercase tracking-[0.2em] text-[#4A3068] mb-2">
             AI PROJECTS
           </p>
@@ -50,14 +23,41 @@ export default function WebsiteCaseStudy() {
           <p className="font-inter text-base text-[#666666] italic mt-1">
             With Zero Coding Experience
           </p>
-          <p className="font-inter text-sm text-[#9B89B4] mt-2">
+          <p className="font-inter text-sm text-[#666666] mt-2">
             By Thays Pritchard • February 2026
           </p>
-          <div className="mt-4 w-16 h-0.5 bg-[#4A3068] rounded-full" aria-hidden />
+          <div className="mt-6 mb-6 w-16 h-0.5 bg-[#4A3068] rounded-full" aria-hidden />
         </header>
 
+        {/* Summary stats */}
+        <div className="flex flex-wrap items-center justify-center gap-12 py-6">
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">15</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              Hours to Build
+            </p>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">~$44</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              Per Year All-In
+            </p>
+          </div>
+          <div className="hidden sm:block w-px h-10 bg-[#E8E0F0] shrink-0" aria-hidden />
+          <div className="text-center">
+            <p className="font-playfair text-2xl font-extrabold text-[#4A3068]">$0</p>
+            <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-1">
+              Developer Fees
+            </p>
+          </div>
+        </div>
+        <p className="font-inter text-sm text-[#9B89B4] italic mt-4 text-center mb-8">
+          $52 domain covers 5 years — about $10/year + $22/month tools
+        </p>
+
         {/* White article card */}
-        <article className="bg-white max-w-[800px] mx-auto p-12 shadow-md rounded-sm">
+        <article className="bg-white max-w-[800px] mx-auto pt-6 px-12 pb-12 shadow-md rounded-sm">
           {/* Intro paragraph */}
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D]">
             A few weeks ago, I decided to build a professional portfolio website. Not with Squarespace or Wix — I wanted something custom, something that would actually showcase AI prototypes I&apos;d built. There was just one problem: I don&apos;t know how to code.
