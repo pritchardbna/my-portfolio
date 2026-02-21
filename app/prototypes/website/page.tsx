@@ -45,7 +45,6 @@ export default function WebsiteCaseStudy() {
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mb-4">
             The Use Case
           </h2>
-          <div className="w-16 h-0.5 bg-[#4A3068] rounded-full mb-4" aria-hidden />
           {/* Intro paragraphs */}
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D]">
             A few weeks ago, I decided to build a professional portfolio website. Not with Squarespace or Wix — I wanted something custom, something that would actually showcase AI prototypes I&apos;d built. There was just one problem: I don&apos;t know how to code.
@@ -58,7 +57,6 @@ export default function WebsiteCaseStudy() {
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
             The Toolkit
           </h2>
-          <div className="w-16 h-0.5 bg-[#4A3068] rounded-full mb-6" aria-hidden />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white border border-[#E8E0F0] rounded-lg p-6">
               <p className="text-2xl mb-2">🧠</p>
@@ -114,7 +112,6 @@ export default function WebsiteCaseStudy() {
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
             What Surprised Me
           </h2>
-          <div className="w-16 h-0.5 bg-[#4A3068] rounded-full mb-6" aria-hidden />
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D]">
             The first homepage took maybe two hours, including installing Node.js and figuring out where Cursor&apos;s AI chat panel was hidden (it&apos;s Cmd+L). By the end of day one, I had a live URL I could share.
           </p>
@@ -126,7 +123,6 @@ export default function WebsiteCaseStudy() {
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
             The Hard Parts
           </h2>
-          <div className="w-16 h-0.5 bg-[#4A3068] rounded-full mb-6" aria-hidden />
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D]">
             Mobile responsiveness was the biggest time sink. Hero image cropping, hamburger navigation, full-width sections — each took multiple attempts.
           </p>
@@ -138,7 +134,6 @@ export default function WebsiteCaseStudy() {
           <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
             What I&apos;d Do Differently
           </h2>
-          <div className="w-16 h-0.5 bg-[#4A3068] rounded-full mb-6" aria-hidden />
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D]">
             Design mobile-first. Most of my rework came from building for desktop and retrofitting for smaller screens.
           </p>
