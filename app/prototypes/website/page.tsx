@@ -29,34 +29,15 @@ export default function WebsiteCaseStudy() {
           <div className="mt-6 mb-6 w-16 h-0.5 bg-[#4A3068] rounded-full" aria-hidden />
         </header>
 
-        {/* Summary stats — compact */}
-        <div className="py-4">
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            <div className="text-center">
-              <p className="font-playfair text-xl font-extrabold text-[#4A3068]">15</p>
-              <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-0.5">
-                Hours to Build
-              </p>
-            </div>
-            <div className="hidden sm:block w-px h-[30px] bg-[#E8E0F0] shrink-0" aria-hidden />
-            <div className="text-center">
-              <p className="font-playfair text-xl font-extrabold text-[#4A3068]">~$44</p>
-              <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-0.5">
-                Per Year All-In
-              </p>
-            </div>
-            <div className="hidden sm:block w-px h-[30px] bg-[#E8E0F0] shrink-0" aria-hidden />
-            <div className="text-center">
-              <p className="font-playfair text-xl font-extrabold text-[#4A3068]">$0</p>
-              <p className="font-inter text-xs uppercase tracking-[0.15em] text-[#666666] mt-0.5">
-                Developer Fees
-              </p>
-            </div>
-          </div>
-          <p className="font-inter text-xs text-[#9B89B4] italic mt-2 text-center">
-            $52 domain covers 5 years — about $10/year + $22/month tools
-          </p>
-        </div>
+        {/* Stats — single line */}
+        <p className="font-inter text-sm text-[#666666] text-center mt-4">
+          <span className="font-bold text-[#4A3068]">15 hrs</span>
+          <span className="px-3" aria-hidden>·</span>
+          <span className="font-bold text-[#4A3068]">~$75</span>/setup cost
+          <span className="font-inter text-xs text-[#9B89B4] italic ml-1">(domain $52/5 yrs + tools)</span>
+          <span className="px-3" aria-hidden>·</span>
+          <span className="font-bold text-[#4A3068]">$0</span> developer fees
+        </p>
 
         {/* White article card */}
         <article className="bg-white max-w-[800px] mx-auto pt-6 px-12 pb-12 shadow-md rounded-sm mt-8">
