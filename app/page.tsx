@@ -98,7 +98,7 @@ export default function Home() {
       {/* SECTION 1 — HERO */}
       <section
         ref={heroRef}
-        className="fade-in min-h-[88vh] overflow-hidden flex flex-col lg:flex-row"
+        className="fade-in min-h-[70vh] overflow-hidden flex flex-col lg:flex-row"
       >
         {/* Left column — 50% on desktop, white bg, vertically centered */}
         <div
@@ -135,37 +135,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right column */}
-        <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-[88vh]">
-          {/* Mobile image — top fade */}
+        {/* Right column — circle headshot */}
+        <div className="lg:w-1/2 bg-white flex items-center justify-center py-12 lg:py-0">
           <img
             src="/images/thays-headshot.jpg"
             alt="Thays Pritchard"
-            className="lg:hidden w-full h-full object-cover object-[center_20%] block"
+            className="w-[200px] h-[200px] md:w-[260px] md:h-[260px] lg:w-[340px] lg:h-[340px]"
             style={{
-              WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)",
-              height: "300px",
-              width: "100%",
-            }}
-          />
-          {/* Desktop image — left fade, right margin */}
-          <img
-            src="/images/thays-headshot.jpg"
-            alt="Thays Pritchard"
-            className="hidden lg:block"
-            style={{
-              position: "absolute",
-              top: "60px",
-              left: "40px",
-              right: "80px",
-              bottom: "60px",
-              width: "calc(100% - 120px)",
-              height: "calc(100% - 120px)",
+              borderRadius: "50%",
               objectFit: "cover",
               objectPosition: "center top",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 100%)",
+              flexShrink: 0,
+              boxShadow: "0 8px 32px rgba(74,48,104,0.12)",
             }}
           />
         </div>
