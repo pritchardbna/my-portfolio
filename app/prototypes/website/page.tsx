@@ -30,7 +30,7 @@ export default function WebsiteCaseStudy() {
         </header>
 
         {/* Stats — single line */}
-        <p className="font-inter text-sm text-[#666666] text-center mt-4">
+        <p className="font-inter text-sm text-[#666666] text-left mt-4">
           <span className="font-bold text-[#4A3068]">15 hrs</span>
           <span className="px-3" aria-hidden>·</span>
           <span className="font-bold text-[#4A3068]">~$75</span>/setup cost
