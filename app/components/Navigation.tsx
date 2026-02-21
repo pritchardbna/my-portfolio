@@ -7,50 +7,6 @@ import { useState } from "react";
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = (
-    <>
-      <Link
-        href="/"
-        className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter md:py-0 py-4"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        Home
-      </Link>
-      <Link
-        href="/prototypes"
-        className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter md:py-0 py-4"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        AI Projects
-      </Link>
-      <Link
-        href="/resume"
-        className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter md:py-0 py-4"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        Resume
-      </Link>
-      <a
-        href="mailto:pritchardbna@gmail.com"
-        className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors md:py-0 py-4"
-        aria-label="Email"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <Mail size={20} />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors md:py-0 py-4"
-        aria-label="LinkedIn"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <Linkedin size={20} />
-      </a>
-    </>
-  );
-
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-gray-100 relative">
       <div className="w-full px-4 md:px-8 py-4">
@@ -62,19 +18,57 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Right — Desktop: Links and Icons; Mobile: Hamburger */}
-          <div className="hidden lg:flex flex-row items-center gap-6 flex-shrink-0">
-            {navLinks}
+          {/* Right — Desktop: all links; Mobile: Mail + LinkedIn left of hamburger */}
+          <div className="flex flex-row items-center gap-6 flex-shrink-0">
+            <div className="hidden lg:flex flex-row items-center gap-6">
+              <Link
+                href="/"
+                className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                href="/prototypes"
+                className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                AI Projects
+              </Link>
+              <Link
+                href="/resume"
+                className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Resume
+              </Link>
+            </div>
+            <a
+              href="mailto:pritchardbna@gmail.com"
+              className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors p-1"
+              aria-label="Email"
+            >
+              <Mail size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/thays-pritchard-37062bna/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#2D2D2D] hover:text-[#4A3068] transition-colors p-1"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((o) => !o)}
+              className="lg:hidden flex-shrink-0 p-2 text-[#4A3068] text-xl leading-none transition-colors"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              ☰
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen((o) => !o)}
-            className="lg:hidden flex-shrink-0 p-2 text-[#4A3068] text-xl leading-none transition-colors"
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            ☰
-          </button>
         </div>
       </div>
 
