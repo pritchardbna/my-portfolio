@@ -86,7 +86,7 @@ export default function Prototypes() {
               </span>
             </Link>
 
-            {/* I Built a Website in 15 Hours */}
+            {/* I Built a Website in 10 Hours */}
             <Link
               href="/prototypes/website"
               className="group block rounded-lg bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_8px_30px_rgba(155,137,180,0.25)] hover:-translate-y-0.5"
@@ -95,7 +95,7 @@ export default function Prototypes() {
                 Case Study • February 2026
               </p>
               <h3 className="font-playfair text-xl font-bold text-[#2D2D2D] mb-1">
-                I Built a Website in 15 Hours
+                I Built a Website in 10 Hours
               </h3>
               <p className="font-inter text-sm text-[#666666] italic mb-2">
                 With Zero Coding Experience
