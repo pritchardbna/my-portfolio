@@ -91,97 +91,66 @@ export default function Home() {
               opacity: 1;
               transform: translateY(0);
             }
-            .hero-img-position {
-              object-position: right center;
-            }
-            @media (min-width: 768px) {
-              .hero-img-position {
-                object-position: center 60%;
-              }
-            }
           `,
         }}
       />
 
       {/* SECTION 1 — HERO */}
-      <section ref={heroRef} className="fade-in bg-white pt-0 pb-0 md:py-16 px-0 md:px-10 lg:px-16">
-        {/* Desktop: title above image */}
-        <div className="hidden md:block text-center mb-6">
-          <h1 className="hero-title-fade text-[#4A3068] text-3xl font-bold font-playfair">
-            Hey, I&apos;m Thays
-          </h1>
-        </div>
-
-        {/* Profile photo: between title and hero banner */}
-        <div
-          className="relative w-[120px] h-[120px] md:w-[160px] md:h-[160px] mx-auto mb-4"
-          style={{
-            WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
-            maskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
-            borderRadius: "4px",
-            overflow: "hidden",
-          }}
-        >
-          <Image
-            src="/images/thays-headshot.jpg"
-            alt="Thays Pritchard"
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 120px, 160px"
-          />
-        </div>
-
-        {/* Mobile: full-width hero with overlay title + tagline */}
-        <div className="relative w-full h-[70vh] min-h-[500px] md:h-[80vh] md:min-h-0">
-          <div className="absolute inset-0 w-full h-full">
-            <Image
-              src="/images/thays2.jpg"
-              alt="Thays Pritchard"
-              fill
-              className="object-cover hero-img-position"
-              priority
-              sizes="100vw"
-            />
+      <section
+        ref={heroRef}
+        className="fade-in bg-white min-h-0 md:min-h-[85vh] flex flex-col md:flex-row md:items-center md:justify-center px-8 py-12 md:py-16"
+      >
+        <div className="max-w-[1100px] w-full mx-auto flex flex-col md:flex-row md:items-center gap-10 md:gap-12">
+          {/* Mobile: photo on top, centered */}
+          <div className="flex flex-col items-center md:order-2 md:w-[40%] md:flex-shrink-0">
+            <div
+              className="relative w-full max-w-[260px] h-[320px] md:w-[320px] md:h-[380px] md:max-w-none"
+              style={{
+                WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
+                maskImage: "radial-gradient(ellipse 85% 85% at 50% 45%, black 55%, transparent 100%)",
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src="/images/thays-headshot.jpg"
+                alt="Thays Pritchard"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 260px, 320px"
+                priority
+              />
+            </div>
           </div>
-          <div
-            className="absolute inset-0 w-full h-full"
-            style={{
-              background: "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 55%, transparent 100%)",
-            }}
-          />
-          {/* Mobile: Hey I'm Thays overlay on image */}
-          <h1 className="hero-title-fade absolute top-6 left-4 z-10 text-white text-2xl font-bold font-playfair md:hidden drop-shadow-md">
-            Hey, I&apos;m Thays
-          </h1>
-          {/* Tagline block: overlay on image, left-aligned (mobile pl-6, desktop pl-8/16) */}
-          <div className="absolute inset-0 flex items-center pl-6 pr-4 md:pl-8 lg:pl-16">
-            <div className="max-w-[480px]">
-              <h2 className="text-white uppercase text-2xl lg:text-3xl font-[800] leading-[1.1] font-raleway flex flex-col lg:flex-row lg:items-baseline lg:gap-x-2">
-                <span>SENIOR PRODUCT</span>
-                <span>MANAGER</span>
-              </h2>
-              <div className="mt-8 font-raleway text-white not-italic" style={{ lineHeight: "1.6" }}>
-                {TAGLINE_LINES.map((line, i) => {
-                  const notStarted = typewriterLineIndex < i;
-                  const isActive = typewriterLineIndex === i;
-                  const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
-                  const showCursor = isActive && !typewriterComplete;
-                  const lineClass =
-                    i === 0 || i === 3
-                      ? "text-xl font-[700] min-h-[1.6em]"
-                      : "text-lg font-[400] min-h-[1.6em]";
-                  return (
-                    <p
-                      key={i}
-                      className={lineClass}
-                      style={{ opacity: notStarted ? 0 : 1 }}
-                    >
-                      {text}
-                      {showCursor && <span className="animate-pulse opacity-50">|</span>}
-                    </p>
-                  );
-                })}
-              </div>
+
+          {/* Left column: text (60%) — on mobile appears below photo */}
+          <div className="flex flex-col md:w-[60%] md:order-1">
+            <h1 className="hero-title-fade font-playfair text-3xl font-extrabold text-[#4A3068] mb-6">
+              Hey, I&apos;m Thays
+            </h1>
+            <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
+              SENIOR PRODUCT MANAGER
+            </h2>
+            <div className="font-raleway text-[#2D2D2D] not-italic" style={{ lineHeight: "1.6" }}>
+              {TAGLINE_LINES.map((line, i) => {
+                const notStarted = typewriterLineIndex < i;
+                const isActive = typewriterLineIndex === i;
+                const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
+                const showCursor = isActive && !typewriterComplete;
+                const lineClass =
+                  i === 0 || i === 3
+                    ? "text-xl font-bold min-h-[1.6em]"
+                    : "text-lg font-light min-h-[1.6em]";
+                return (
+                  <p
+                    key={i}
+                    className={lineClass}
+                    style={{ opacity: notStarted ? 0 : 1 }}
+                  >
+                    {text}
+                    {showCursor && <span className="animate-pulse opacity-50">|</span>}
+                  </p>
+                );
+              })}
             </div>
           </div>
         </div>
