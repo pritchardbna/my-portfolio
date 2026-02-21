@@ -140,6 +140,125 @@ export default function WebsiteCaseStudy() {
           <p className="font-inter text-base leading-[1.9] text-[#2D2D2D] mt-4">
             Keep prompts short. Asking Cursor for one thing at a time produced more reliable results than long, multi-section requests.
           </p>
+
+          {/* The Challenge */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
+            The Challenge
+          </h2>
+          <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
+            <li>I needed a professional portfolio site to showcase my PM skills and AI prototypes.</li>
+            <li>I didn&apos;t know how to code.</li>
+            <li>I wanted something custom — not a generic template.</li>
+            <li>Budget: minimal (free tools where possible).</li>
+          </ul>
+
+          {/* The Tools — quick reference */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
+            The Tools
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
+              <span className="text-2xl">🧠</span>
+              <div>
+                <p className="font-playfair text-base font-bold text-[#4A3068]">Claude</p>
+                <p className="font-inter text-sm text-[#666666]">AI assistant for guidance and prompts</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
+              <span className="text-2xl">✨</span>
+              <div>
+                <p className="font-playfair text-base font-bold text-[#4A3068]">Cursor</p>
+                <p className="font-inter text-sm text-[#666666]">AI-powered code editor</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
+              <span className="text-2xl">🚀</span>
+              <div>
+                <p className="font-playfair text-base font-bold text-[#4A3068]">Vercel</p>
+                <p className="font-inter text-sm text-[#666666]">Free hosting and deployment</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 rounded-lg border border-[#E8E0F0] p-4 bg-white">
+              <span className="text-2xl">🌐</span>
+              <div>
+                <p className="font-playfair text-base font-bold text-[#4A3068]">Cloudflare</p>
+                <p className="font-inter text-sm text-[#666666]">Domain registration</p>
+              </div>
+            </div>
+          </div>
+
+          {/* The Prompts That Built It */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-2">
+            The Prompts That Built It
+          </h2>
+          <p className="font-inter text-base text-[#666666] italic mb-6">
+            The magic wasn&apos;t in writing code — it was in describing what I wanted clearly. Here are the actual prompts I used at key moments:
+          </p>
+          <div className="space-y-6">
+            <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🚀 THE STARTER — Your First Homepage</h3>
+              <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
+                This was the very first prompt I gave Cursor after creating my project. It built the entire homepage structure in one go.
+              </p>
+              <pre className="bg-[#1f2937] text-gray-200 font-mono text-sm p-4 rounded-lg overflow-x-auto"><code>{`Please replace the contents of app/page.tsx with a professional portfolio homepage for a Senior Product Manager named Thays Pritchard. Include: a hero section with my name and title, a short bio about being an experienced PM with Agile expertise who builds AI-powered prototypes, 4 prototype cards (PRD Generator, User Interview Analyzer, Feature Prioritization Assistant, AI Roadmap Planner), and a contact section. Use Tailwind CSS with a purple and white color scheme. Make it look modern and professional.`}</code></pre>
+            </div>
+            <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🧭 ADDING STRUCTURE — Navigation & Pages</h3>
+              <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
+                Once the homepage existed, I needed to add multiple pages. This prompt created the full site architecture.
+              </p>
+              <pre className="bg-[#1f2937] text-gray-200 font-mono text-sm p-4 rounded-lg overflow-x-auto"><code>{`Please update my portfolio to add navigation with 4 pages: About, Prototypes, Case Studies, and Resume. Create a navigation bar at the top of the homepage with links to each page. Create separate pages for each section: app/about/page.tsx, app/prototypes/page.tsx, app/case-studies/page.tsx, and app/resume/page.tsx. Add placeholder content to each page that matches the purple and white color scheme. Make the navigation look clean and professional.`}</code></pre>
+            </div>
+            <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">✨ ADDING INTERACTIVITY — Tabbed Skills Section</h3>
+              <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
+                I wanted something that felt dynamic, not just static text. This prompt created clickable tabs that show different skill categories.
+              </p>
+              <pre className="bg-[#1f2937] text-gray-200 font-mono text-sm p-4 rounded-lg overflow-x-auto"><code>{`Replace the skills section in app/resume/page.tsx with a clean interactive tabbed skills section titled 'My Skills'. Display 5 tab buttons: Product & Strategy, Automation & Tech, AI Tools, Leadership & Collaboration, Languages. When a tab is clicked, the bullet points for that category animate in below. First tab is active by default. Active tab should be filled with accent color, others are outline style. Use React useState for the interaction.`}</code></pre>
+            </div>
+            <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">📱 FIXING MOBILE — Responsive Layout</h3>
+              <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
+                The site looked great on desktop but broken on phones. This prompt tackled multiple mobile issues at once.
+              </p>
+              <pre className="bg-[#1f2937] text-gray-200 font-mono text-sm p-4 rounded-lg overflow-x-auto"><code>{`Fix mobile layout issues across the entire site. NAVIGATION: Convert to hamburger menu on mobile — hide nav links, show hamburger icon, open full-screen overlay when tapped. HERO IMAGE: Make full viewport width on mobile, use object-cover, position so the person appears on the right side of the frame. GLOBAL: On mobile, content should be full-width with small padding. Apply these fixes to ALL pages.`}</code></pre>
+            </div>
+            <div className="rounded-lg border border-[#E8E0F0] p-6 shadow-md bg-white">
+              <h3 className="font-playfair text-base font-bold text-[#4A3068] mb-2">🔧 QUICK FIXES — Single-Purpose Prompts</h3>
+              <p className="font-inter text-sm text-[#2D2D2D] leading-[1.8] mb-4">
+                I learned that shorter, focused prompts worked better than long ones.
+              </p>
+              <pre className="bg-[#1f2937] text-gray-200 font-mono text-sm p-4 rounded-lg overflow-x-auto"><code>{`Add Resume to the navigation bar between AI Projects and the email icon.
+
+Update the header text to say 'Where Product Meets AI' with subtext 'These aren't just prototypes — they're proof of concept.'
+
+Shorten the typewriter animation delay from 100ms to 50ms so it feels snappier.`}</code></pre>
+            </div>
+          </div>
+
+          {/* What I Learned */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
+            💡 What Made Prompts Work
+          </h2>
+          <div className="rounded-lg border-2 border-[#E8E0F0] bg-[#F5F5F5] p-6 shadow-md">
+            <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
+              <li>Be specific about file names (<code className="bg-white/80 px-1 rounded text-sm">app/page.tsx</code>, not &quot;the homepage&quot;).</li>
+              <li>Describe the visual outcome, not just the feature (&quot;purple accent color&quot; not &quot;make it pretty&quot;).</li>
+              <li>One thing at a time worked better than mega-prompts.</li>
+              <li>When something broke, I&apos;d paste the error message and ask Claude to explain it.</li>
+            </ul>
+          </div>
+
+          {/* Results */}
+          <h2 className="font-playfair text-xl font-bold text-[#4A3068] mt-10 mb-6">
+            Results
+          </h2>
+          <ul className="font-inter text-base leading-[1.9] text-[#2D2D2D] space-y-2 list-disc pl-6">
+            <li>Built and deployed in ~10 hours total.</li>
+            <li>$10/year total cost (just the domain).</li>
+            <li>Fully responsive on mobile and desktop.</li>
+            <li>Custom design, not a template.</li>
+          </ul>
         </article>
       </div>
     </div>
