@@ -96,49 +96,55 @@ export default function Home() {
       />
 
       <div className="mx-auto max-w-[900px] px-4 md:px-6">
-      {/* SECTION 1 — HERO — stacked: image then text */}
-      <section ref={heroRef} className="fade-in overflow-hidden flex flex-col bg-[#F5F5F5]">
-        <img
-          src="/images/thays-headshot.jpg"
-          alt="Thays Pritchard"
-          className="mx-auto mb-8 block"
-          style={{
-            width: "180px",
-            height: "180px",
-            borderRadius: "50%",
-            objectFit: "cover",
-            objectPosition: "center top",
-            boxShadow: "0 4px 20px rgba(74,48,104,0.12)",
-          }}
-        />
-        <div className="text-center pt-8 pb-4">
-          <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
-            Hey, I&apos;m Thays
-          </h1>
-          <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
-            SENIOR PRODUCT MANAGER
-          </h2>
-          <div className="font-raleway text-[#2D2D2D] not-italic text-center" style={{ lineHeight: "1.6" }}>
-            {TAGLINE_LINES.map((line, i) => {
-              const notStarted = typewriterLineIndex < i;
-              const isActive = typewriterLineIndex === i;
-              const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
-              const showCursor = isActive && !typewriterComplete;
-              const lineClass =
-                i === 0 || i === 3
-                  ? "text-xl font-bold min-h-[1.6em]"
-                  : "text-lg font-light min-h-[1.6em]";
-              return (
-                <p
-                  key={i}
-                  className={lineClass}
-                  style={{ opacity: notStarted ? 0 : 1 }}
-                >
-                  {text}
-                  {showCursor && <span className="animate-pulse opacity-50">|</span>}
-                </p>
-              );
-            })}
+      {/* SECTION 1 — HERO — two columns: text left, image right */}
+      <section ref={heroRef} className="fade-in">
+        <div className="flex flex-col lg:flex-row items-center gap-8 py-12">
+          {/* Left — 60% — text */}
+          <div className="lg:w-[60%] flex flex-col justify-center">
+            <h1 className="hero-title-fade font-playfair text-4xl font-extrabold text-[#4A3068] mb-4">
+              Hey, I&apos;m Thays
+            </h1>
+            <h2 className="font-raleway text-2xl font-extrabold uppercase text-[#2D2D2D] mb-8">
+              SENIOR PRODUCT MANAGER
+            </h2>
+            <div className="font-raleway text-[#2D2D2D] not-italic" style={{ lineHeight: "1.6" }}>
+              {TAGLINE_LINES.map((line, i) => {
+                const notStarted = typewriterLineIndex < i;
+                const isActive = typewriterLineIndex === i;
+                const text = isActive ? line.slice(0, typewriterCharIndex) : notStarted ? "" : line;
+                const showCursor = isActive && !typewriterComplete;
+                const lineClass =
+                  i === 0 || i === 3
+                    ? "text-xl font-bold min-h-[1.6em]"
+                    : "text-lg font-light min-h-[1.6em]";
+                return (
+                  <p
+                    key={i}
+                    className={lineClass}
+                    style={{ opacity: notStarted ? 0 : 1 }}
+                  >
+                    {text}
+                    {showCursor && <span className="animate-pulse opacity-50">|</span>}
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right — 40% — image */}
+          <div className="lg:w-[40%] flex items-center justify-center">
+            <img
+              src="/images/thays-headshot.jpg"
+              alt="Thays Pritchard"
+              className="mx-auto block w-[200px] h-[240px] lg:w-full lg:max-w-[320px] lg:h-[380px]"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+                borderRadius: "12px",
+                WebkitMaskImage: "radial-gradient(ellipse 88% 92% at 50% 48%, black 55%, transparent 100%)",
+                maskImage: "radial-gradient(ellipse 88% 92% at 50% 48%, black 55%, transparent 100%)",
+              }}
+            />
           </div>
         </div>
       </section>
