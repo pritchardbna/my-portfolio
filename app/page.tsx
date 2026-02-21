@@ -169,35 +169,35 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — ABOUT ME */}
-      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-16 pb-8 px-4 md:px-10 lg:px-16">
-        <div className="max-w-[1000px] mx-auto">
+      <section ref={aboutRef} className="fade-in bg-[#F5F5F5] pt-16 pb-8 px-8 md:px-10 lg:px-16">
+        <div className="w-full">
           <h2 className="text-[#4A3068] text-3xl font-bold font-playfair text-center mb-12">
             About Me
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div ref={card1Ref} className="fade-in rounded-lg bg-white p-8 shadow-md">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+            <div ref={card1Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
               <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">Experience</h3>
               <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
                 A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
               </p>
             </div>
 
-            <div ref={card2Ref} className="fade-in rounded-lg bg-white p-8 shadow-md">
+            <div ref={card2Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
               <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">Skillset</h3>
               <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
                 Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
               </p>
             </div>
 
-            <div ref={card3Ref} className="fade-in rounded-lg bg-white p-8 shadow-md">
+            <div ref={card3Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
               <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">My Goals</h3>
               <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
                 I&apos;m drawn to teams that build with purpose — where technology serves people and innovation is grounded in real human needs. I want to bring my background in automation, cross-functional leadership, and customer experience to a team building something that truly matters, keep pushing the boundaries of what GenAI makes possible in product management, and help the people around me grow along the way.
               </p>
             </div>
 
-            <div ref={card4Ref} className="fade-in rounded-lg bg-white p-8 shadow-md">
+            <div ref={card4Ref} className="fade-in rounded-lg bg-white p-8 shadow-md h-full">
               <h3 className="text-[#4A3068] text-xl font-bold font-playfair mb-4">What I Do for Fun</h3>
               <p className="text-[#2D2D2D] text-base leading-[1.8] font-inter">
                 When I step away from the screen, I trade roadmaps for mountain trails. You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
