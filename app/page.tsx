@@ -25,6 +25,11 @@ export default function Home() {
   const [typewriterCharIndex, setTypewriterCharIndex] = useState(0);
   const [typewriterComplete, setTypewriterComplete] = useState(false);
 
+  const [card1Open, setCard1Open] = useState(false);
+  const [card2Open, setCard2Open] = useState(false);
+  const [card3Open, setCard3Open] = useState(false);
+  const [card4Open, setCard4Open] = useState(false);
+
   useEffect(() => {
     const initialDelay = 3200;
     const charDelay = 85;
@@ -147,35 +152,154 @@ export default function Home() {
 
         <div className="w-full h-px bg-[#E8E0F0]" />
 
-        {/* ABOUT ME */}
+        {/* ABOUT ME — accordion cards */}
         <section ref={aboutRef} className="fade-in py-12">
           <h2 className="font-playfair text-3xl font-bold text-[#4A3068] text-center mb-8">
             About Me
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div ref={card1Ref} className="fade-in rounded-lg bg-white p-6 shadow-sm">
-              <h3 className="font-playfair text-lg font-bold text-[#4A3068] mb-3">Experience</h3>
-              <p className="font-inter text-base leading-[1.8] text-[#2D2D2D]">
-                A goal-driven Senior Product Manager with 9+ years of experience delivering automation solutions and customer-facing products for Fortune 100 clients including AT&T and Verizon. Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
+          <div className="max-w-[800px] mx-auto flex flex-col gap-4">
+            <div
+              ref={card1Ref}
+              className="fade-in rounded-lg bg-white px-7 py-6 shadow-sm border border-transparent transition-all duration-200 hover:shadow-md hover:border-[#E8E0F0] hover:-translate-y-1"
+            >
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => setCard1Open((o) => !o)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setCard1Open((o) => !o)}
+                aria-expanded={card1Open}
+              >
+                <h3 className="font-playfair text-lg font-bold text-[#4A3068]">Experience</h3>
+                <svg
+                  className={`w-5 h-5 text-[#9B89B4] transition-transform duration-200 flex-shrink-0 ${card1Open ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <p className="font-inter text-sm text-[#666] leading-[1.8] mt-3">
+                A goal-driven Senior Product Manager with 9+ years delivering automation solutions for Fortune 100 clients.
               </p>
+              <div
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight: card1Open ? "500px" : "0" }}
+              >
+                <p className="font-inter text-base text-[#2D2D2D] leading-[1.9] mt-2">
+                  Proven track record owning the full product lifecycle — from discovery through deployment — partnering with Engineering, Data Science, Legal, and Supply Chain to bring new capabilities to market. Known for translating complex business challenges into elegant, scalable solutions that drive measurable outcomes.
+                </p>
+              </div>
             </div>
-            <div ref={card2Ref} className="fade-in rounded-lg bg-white p-6 shadow-sm">
-              <h3 className="font-playfair text-lg font-bold text-[#4A3068] mb-3">Skillset</h3>
-              <p className="font-inter text-base leading-[1.8] text-[#2D2D2D]">
-                Expert in product strategy, backlog management, sprint planning, and Agile methodologies. Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
+
+            <div
+              ref={card2Ref}
+              className="fade-in rounded-lg bg-white px-7 py-6 shadow-sm border border-transparent transition-all duration-200 hover:shadow-md hover:border-[#E8E0F0] hover:-translate-y-1"
+            >
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => setCard2Open((o) => !o)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setCard2Open((o) => !o)}
+                aria-expanded={card2Open}
+              >
+                <h3 className="font-playfair text-lg font-bold text-[#4A3068]">Skillset</h3>
+                <svg
+                  className={`w-5 h-5 text-[#9B89B4] transition-transform duration-200 flex-shrink-0 ${card2Open ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <p className="font-inter text-sm text-[#666] leading-[1.8] mt-3">
+                Expert in product strategy, backlog management, sprint planning, and Agile methodologies.
               </p>
+              <div
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight: card2Open ? "500px" : "0" }}
+              >
+                <p className="font-inter text-base text-[#2D2D2D] leading-[1.9] mt-2">
+                  Skilled in workflow automation using low-code platforms, AI/GenAI integration, and data-driven decision making. Proficient with Jira, Confluence, and GenAI tools including ChatGPT, Claude, VO, and Perplexity. Brings a rare combination of product thinking and operational depth — equally comfortable defining a roadmap and getting into the details that make execution work.
+                </p>
+              </div>
             </div>
-            <div ref={card3Ref} className="fade-in rounded-lg bg-white p-6 shadow-sm">
-              <h3 className="font-playfair text-lg font-bold text-[#4A3068] mb-3">My Goals</h3>
-              <p className="font-inter text-base leading-[1.8] text-[#2D2D2D]">
-                I&apos;m drawn to teams that build with purpose — where technology serves people and innovation is grounded in real human needs. I want to bring my background in automation, cross-functional leadership, and customer experience to a team building something that truly matters, keep pushing the boundaries of what GenAI makes possible in product management, and help the people around me grow along the way.
+
+            <div
+              ref={card3Ref}
+              className="fade-in rounded-lg bg-white px-7 py-6 shadow-sm border border-transparent transition-all duration-200 hover:shadow-md hover:border-[#E8E0F0] hover:-translate-y-1"
+            >
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => setCard3Open((o) => !o)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setCard3Open((o) => !o)}
+                aria-expanded={card3Open}
+              >
+                <h3 className="font-playfair text-lg font-bold text-[#4A3068]">My Goals</h3>
+                <svg
+                  className={`w-5 h-5 text-[#9B89B4] transition-transform duration-200 flex-shrink-0 ${card3Open ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <p className="font-inter text-sm text-[#666] leading-[1.8] mt-3">
+                I&apos;m drawn to teams that build with purpose — where technology serves people.
               </p>
+              <div
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight: card3Open ? "500px" : "0" }}
+              >
+                <p className="font-inter text-base text-[#2D2D2D] leading-[1.9] mt-2">
+                  I want to bring my background in automation, cross-functional leadership, and customer experience to a team building something that truly matters, keep pushing the boundaries of what GenAI makes possible in product management, and help the people around me grow along the way.
+                </p>
+              </div>
             </div>
-            <div ref={card4Ref} className="fade-in rounded-lg bg-white p-6 shadow-sm">
-              <h3 className="font-playfair text-lg font-bold text-[#4A3068] mb-3">What I Do for Fun</h3>
-              <p className="font-inter text-base leading-[1.8] text-[#2D2D2D]">
-                When I step away from the screen, I trade roadmaps for mountain trails. You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
+
+            <div
+              ref={card4Ref}
+              className="fade-in rounded-lg bg-white px-7 py-6 shadow-sm border border-transparent transition-all duration-200 hover:shadow-md hover:border-[#E8E0F0] hover:-translate-y-1"
+            >
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => setCard4Open((o) => !o)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && setCard4Open((o) => !o)}
+                aria-expanded={card4Open}
+              >
+                <h3 className="font-playfair text-lg font-bold text-[#4A3068]">What I Do for Fun</h3>
+                <svg
+                  className={`w-5 h-5 text-[#9B89B4] transition-transform duration-200 flex-shrink-0 ${card4Open ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <p className="font-inter text-sm text-[#666] leading-[1.8] mt-3">
+                When I step away from the screen, I trade roadmaps for mountain trails.
               </p>
+              <div
+                className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                style={{ maxHeight: card4Open ? "500px" : "0" }}
+              >
+                <p className="font-inter text-base text-[#2D2D2D] leading-[1.9] mt-2">
+                  You&apos;ll find me hiking or riding motorcycles with my husband through winding roads in the mountains — always chasing the next view. Back home, I channel that same focus into decorative sewing, finding joy in the details and the craft of making something beautiful by hand.
+                </p>
+              </div>
             </div>
           </div>
         </section>
