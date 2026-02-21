@@ -85,6 +85,28 @@ export default function Prototypes() {
                 View Project →
               </span>
             </Link>
+
+            {/* I Built a Website in 15 Hours */}
+            <Link
+              href="/prototypes/website"
+              className="group block rounded-lg bg-white p-8 shadow-md transition-all duration-300 hover:shadow-[0_8px_30px_rgba(155,137,180,0.25)] hover:-translate-y-0.5"
+            >
+              <p className="font-inter text-xs text-[#9B89B4] mb-2">
+                Case Study • February 2026
+              </p>
+              <h3 className="font-playfair text-xl font-bold text-[#2D2D2D] mb-1">
+                I Built a Website in 15 Hours
+              </h3>
+              <p className="font-inter text-sm text-[#666666] italic mb-2">
+                With Zero Coding Experience
+              </p>
+              <p className="font-inter text-sm text-[#666666] leading-[1.8] mb-4">
+                A real account of building a professional portfolio site using Claude, Cursor, Vercel, and Cloudflare — no coding background required.
+              </p>
+              <span className="font-inter text-sm font-medium text-[#4A3068] group-hover:underline">
+                View Project →
+              </span>
+            </Link>
           </div>
         </div>
       </section>
