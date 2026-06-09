@@ -104,13 +104,13 @@ const footnote = (s, txt, y = SH - 0.62) =>
   // Hero statement bar
   s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.38, w: CW, h: 0.72, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
   s.addText([
-    { text: "Inventory is a ", options: { color: G7 } },
-    { text: "~$609M asset", options: { color: P, bold: true } },
-    { text: " moving across ", options: { color: G7 } },
+    { text: "Asurion manages approximately ", options: { color: G7 } },
+    { text: "~$609M in inventory", options: { color: P, bold: true } },
+    { text: " across ", options: { color: G7 } },
     { text: "~890 locations", options: { color: P, bold: true } },
-    { text: " every day. Today, ", options: { color: G7 } },
-    { text: "$207M of it lives outside our ERP", options: { color: P, bold: true } },
-    { text: " — creating financial blind spots, reconciliation gaps, and operational risk. This session explains what we have, what's broken, and the plan to fix it.", options: { color: G7 } },
+    { text: " spanning every fulfillment program. Of that, ", options: { color: G7 } },
+    { text: "$207M remains on legacy systems outside D365 F&O", options: { color: P, bold: true } },
+    { text: " — introducing financial exposure, reconciliation gaps, and limited operational visibility. This review outlines the current state, the systemic risk, and the consolidation path to a single source of truth.", options: { color: G7 } },
   ], { x: ML + 0.3, y: 1.44, w: CW - 0.6, h: 0.6, fontSize: 11, fontFace: "Calibri", valign: "middle" });
 
   // 3 story boxes
