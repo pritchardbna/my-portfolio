@@ -321,123 +321,106 @@ const footnote = (s, txt, y = SH - 0.62) =>
 }
 
 // ══════════════════════════════════════════════════════════════════════════
-// SLIDE 05 — Mechanism / Centerpiece
+// SLIDE 05 — Mechanism + Future State (COMBINED)
 // ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
   s.background = { color: W };
 
-  sectionLabel(s, "03 — MECHANISM · CENTERPIECE");
-  t(s, "Fulfillment systems connect inventory movement to\nfinancial accountability", ML, 0.55, CW, 1.2, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
-  t(s, "Every unit travels a single chain — from a physical movement to a financial record. The goal isn't inventory in one place; it's keeping that chain unbroken across every system it touches.", ML, 1.82, CW, 0.44, { fontSize: 10.5, color: G6 });
+  sectionLabel(s, "03 — MECHANISM · FUTURE STATE");
+  t(s, "Fulfillment systems connect every movement\nto one operating model", ML, 0.54, CW, 1.0, { fontSize: 26, color: G9, fontFace: "Calibri Light" });
+
+  // ── Zone 1: Flow diagram ────────────────────────────────────────────────
+  const flowY = 1.65;
 
   // Axis labels
-  t(s, "PHYSICAL INVENTORY MOVEMENT", ML, 2.48, 5.5, 0.22, { fontSize: 8, bold: true, color: G4, charSpacing: 2, valign: "middle" });
-  t(s, "BECOMES  →", 6.0, 2.48, 2.5, 0.22, { fontSize: 8, bold: true, color: G4, charSpacing: 2, valign: "middle", align: "center" });
-  t(s, "FINANCIAL ACCOUNTABILITY", 9.5, 2.48, 3.8, 0.22, { fontSize: 8, bold: true, color: P, charSpacing: 2, valign: "middle", align: "right" });
-  s.addShape(pptx.ShapeType.line, { x: ML, y: 2.74, w: CW, h: 0, line: { color: G2, width: 0.75 } });
+  t(s, "PHYSICAL INVENTORY MOVEMENT", ML, flowY, 5.2, 0.2, { fontSize: 7.5, bold: true, color: G4, charSpacing: 2, valign: "middle" });
+  t(s, "BECOMES  →", 5.8, flowY, 2.2, 0.2, { fontSize: 7.5, bold: true, color: G4, charSpacing: 1, valign: "middle", align: "center" });
+  t(s, "FINANCIAL ACCOUNTABILITY", 9.2, flowY, 4.0, 0.2, { fontSize: 7.5, bold: true, color: P, charSpacing: 2, valign: "middle", align: "right" });
+  s.addShape(pptx.ShapeType.line, { x: ML, y: flowY + 0.22, w: CW, h: 0, line: { color: G2, width: 0.75 } });
 
-  // Flow boxes — 7 steps, progressive purple
   const steps = [
-    { label: "Procurement",             light: true,  mid: false, dark: false },
-    { label: "Warehouse",               light: true,  mid: false, dark: false },
-    { label: "Field Location\n/ Store", light: true,  mid: false, dark: false },
-    { label: "Customer\nFulfillment",   light: true,  mid: false, dark: false },
-    { label: "Inventory\nConsumption",  light: false, mid: true,  dark: false },
-    { label: "Financial\nReconciliation", light: false, mid: false, dark: true  },
-    { label: "Client Billing",          light: false, mid: false, dark: true  },
+    { label: "Procurement",              mid: false, dark: false },
+    { label: "Warehouse",                mid: false, dark: false },
+    { label: "Field Location\n/ Store",  mid: false, dark: false },
+    { label: "Customer\nFulfillment",    mid: false, dark: false },
+    { label: "Inventory\nConsumption",   mid: true,  dark: false },
+    { label: "Financial\nReconciliation",mid: false, dark: true  },
+    { label: "Client Billing",           mid: false, dark: true  },
   ];
 
   const bW = 1.56;
   const bGap = (CW - steps.length * bW) / (steps.length - 1);
-  const bY = 2.86;
-  const bH = 1.24;
+  const bY = flowY + 0.3;
+  const bH = 0.96;
 
   steps.forEach((step, i) => {
     const x = ML + i * (bW + bGap);
-    const bg = step.dark ? P : step.mid ? "7B4FBA" : PL;
-    const border = step.dark ? P : step.mid ? "7B4FBA" : PM;
-    const tc = (step.dark || step.mid) ? W : P;
+    const bg     = step.dark ? P      : step.mid ? "7B4FBA" : PL;
+    const border  = step.dark ? P      : step.mid ? "7B4FBA" : PM;
+    const tc      = (step.dark || step.mid) ? W : P;
+    const iconBg  = step.dark ? "7B4FBA" : step.mid ? "9B72CC" : PL;
     s.addShape(pptx.ShapeType.roundRect, { x, y: bY, w: bW, h: bH, fill: { color: bg }, line: { color: border, width: 0.75 }, rectRadius: 0.08 });
-    // Icon circle placeholder
-    s.addShape(pptx.ShapeType.ellipse, { x: x + bW / 2 - 0.2, y: bY + 0.14, w: 0.4, h: 0.4, fill: { color: step.dark ? "7B4FBA" : step.mid ? "9B72CC" : PL }, line: { color: step.dark ? "7B4FBA" : step.mid ? "9B72CC" : PM } });
-    t(s, step.label, x, bY + 0.62, bW, bH - 0.68, { fontSize: 9.5, bold: true, color: tc, align: "center", valign: "middle" });
+    s.addShape(pptx.ShapeType.ellipse,   { x: x + bW / 2 - 0.18, y: bY + 0.1, w: 0.36, h: 0.36, fill: { color: iconBg }, line: { color: iconBg } });
+    t(s, step.label, x, bY + 0.52, bW, bH - 0.56, { fontSize: 8.5, bold: true, color: tc, align: "center", valign: "middle" });
     if (i < steps.length - 1) {
-      t(s, "→", x + bW + 0.02, bY + 0.46, bGap, 0.32, { fontSize: 14, bold: true, color: G3, align: "center", valign: "middle" });
+      t(s, "→", x + bW + 0.02, bY + 0.34, bGap, 0.28, { fontSize: 13, bold: true, color: G3, align: "center", valign: "middle" });
     }
   });
 
-  // Below-flow note
-  t(s, "Every arrow is a system handoff. When those systems are fragmented, the chain breaks at the seams — and that's where inventory and dollars go unaccounted for.",
-    ML, bY + bH + 0.18, CW, 0.4, { fontSize: 9.5, color: G6, align: "center" });
+  // Separator between zones
+  s.addShape(pptx.ShapeType.line, { x: ML, y: bY + bH + 0.18, w: CW, h: 0, line: { color: G2, width: 0.5 } });
 
-  // Purple callout
-  purpleCallout(s, [
-    { text: "The goal is not inventory in one system — it is maintaining ", options: { color: W } },
-    { text: "accountability from procurement through financial close.", options: { color: W, bold: true } },
-    { text: " Every inventory movement eventually becomes a financial event.", options: { color: W } },
-  ], 5.42, 0.88);
-
-  footnote(s, "Key message: Every inventory movement eventually becomes a financial event — accountability must hold across every system handoff.", SH - 0.6);
-  footer(s, "THE MECHANISM", 5);
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-// SLIDE 06 — Future State
-// ══════════════════════════════════════════════════════════════════════════
-{
-  const s = pptx.addSlide();
-  s.background = { color: W };
-
-  sectionLabel(s, "04 — FUTURE STATE");
-  t(s, "One operating model improves visibility,\ncontrol, and scale", ML, 0.55, CW, 1.25, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
-
-  const colW = 5.8;
-  const todayX = ML;
+  // ── Zone 2: TODAY / FUTURE columns ──────────────────────────────────────
+  const colY  = bY + bH + 0.28;
+  const colH  = 3.06;
+  const colW  = 5.78;
+  const todayX  = ML;
   const futureX = SW - MR - colW;
-  const colY = 1.95;
-  const colH = 4.3;
 
-  // TODAY column
+  // TODAY
   s.addShape(pptx.ShapeType.roundRect, { x: todayX, y: colY, w: colW, h: colH, fill: { color: GBB }, line: { color: G2, width: 0.75 }, rectRadius: 0.07 });
-  t(s, "TODAY", todayX + 0.22, colY + 0.2, 1.5, 0.26, { fontSize: 9, bold: true, color: G4, charSpacing: 2, valign: "middle" });
-  s.addShape(pptx.ShapeType.roundRect, { x: todayX + 2.0, y: colY + 0.17, w: 3.55, h: 0.3, fill: { color: G2 }, line: { color: G2 }, rectRadius: 0.04 });
-  t(s, "Multiple disconnected systems", todayX + 2.05, colY + 0.17, 3.45, 0.3, { fontSize: 9, color: G6, align: "center", valign: "middle" });
+  t(s, "TODAY", todayX + 0.2, colY + 0.16, 1.4, 0.24, { fontSize: 8.5, bold: true, color: G4, charSpacing: 2, valign: "middle" });
+  s.addShape(pptx.ShapeType.roundRect, { x: todayX + 1.9, y: colY + 0.14, w: 3.65, h: 0.28, fill: { color: G2 }, line: { color: G2 }, rectRadius: 0.04 });
+  t(s, "Multiple disconnected systems", todayX + 1.94, colY + 0.14, 3.57, 0.28, { fontSize: 8.5, color: G6, align: "center", valign: "middle" });
 
   const todayItems = ["Inventory synchronization", "Manual reconciliation", "Billing disputes", "Delayed visibility", "Platform maintenance", "Custom integrations"];
+  const tRowH = (colH - 0.56) / todayItems.length;
   todayItems.forEach((item, i) => {
-    const iy = colY + 0.64 + i * 0.58;
-    if (i > 0) s.addShape(pptx.ShapeType.line, { x: todayX + 0.16, y: iy - 0.06, w: colW - 0.32, h: 0, line: { color: G2, width: 0.35 } });
-    t(s, item, todayX + 0.22, iy, colW - 0.4, 0.3, { fontSize: 11, color: G7, valign: "middle" });
+    const iy = colY + 0.52 + i * tRowH;
+    if (i > 0) s.addShape(pptx.ShapeType.line, { x: todayX + 0.14, y: iy - 0.04, w: colW - 0.28, h: 0, line: { color: G2, width: 0.35 } });
+    t(s, item, todayX + 0.2, iy, colW - 0.36, tRowH - 0.06, { fontSize: 10, color: G7, valign: "middle" });
   });
 
-  // Arrow circle between columns
-  const arrowX = todayX + colW + 0.22;
-  s.addShape(pptx.ShapeType.ellipse, { x: arrowX, y: colY + colH / 2 - 0.28, w: 0.56, h: 0.56, fill: { color: P }, line: { color: P } });
-  t(s, "→", arrowX, colY + colH / 2 - 0.28, 0.56, 0.56, { fontSize: 14, bold: true, color: W, align: "center", valign: "middle" });
+  // Arrow circle
+  const arrowX = todayX + colW + 0.2;
+  s.addShape(pptx.ShapeType.ellipse, { x: arrowX, y: colY + colH / 2 - 0.26, w: 0.52, h: 0.52, fill: { color: P }, line: { color: P } });
+  t(s, "→", arrowX, colY + colH / 2 - 0.26, 0.52, 0.52, { fontSize: 13, bold: true, color: W, align: "center", valign: "middle" });
 
-  // FUTURE column
+  // FUTURE
   s.addShape(pptx.ShapeType.roundRect, { x: futureX, y: colY, w: colW, h: colH, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.07 });
-  t(s, "FUTURE", futureX + 0.22, colY + 0.2, 1.5, 0.26, { fontSize: 9, bold: true, color: P, charSpacing: 2, valign: "middle" });
-  s.addShape(pptx.ShapeType.roundRect, { x: futureX + 2.1, y: colY + 0.17, w: 3.45, h: 0.3, fill: { color: P }, line: { color: P }, rectRadius: 0.04 });
-  t(s, "Unified operating model", futureX + 2.15, colY + 0.17, 3.35, 0.3, { fontSize: 9, color: W, align: "center", valign: "middle" });
+  t(s, "FUTURE", futureX + 0.2, colY + 0.16, 1.4, 0.24, { fontSize: 8.5, bold: true, color: P, charSpacing: 2, valign: "middle" });
+  s.addShape(pptx.ShapeType.roundRect, { x: futureX + 2.0, y: colY + 0.14, w: 3.55, h: 0.28, fill: { color: P }, line: { color: P }, rectRadius: 0.04 });
+  t(s, "Unified operating model", futureX + 2.04, colY + 0.14, 3.47, 0.28, { fontSize: 8.5, color: W, align: "center", valign: "middle" });
 
   const futureItems = ["Inventory and finance move together", "Real-time visibility", "Explainable inventory movement", "Explainable dollars", "Unified fulfillment", "Faster product launches", "Better AI foundation"];
+  const fRowH = (colH - 0.56) / futureItems.length;
   futureItems.forEach((item, i) => {
-    const iy = colY + 0.64 + i * 0.52;
-    if (i > 0) s.addShape(pptx.ShapeType.line, { x: futureX + 0.16, y: iy - 0.06, w: colW - 0.32, h: 0, line: { color: PM, width: 0.35 } });
-    t(s, item, futureX + 0.22, iy, colW - 0.4, 0.3, { fontSize: 11, color: G7, valign: "middle" });
+    const iy = colY + 0.52 + i * fRowH;
+    if (i > 0) s.addShape(pptx.ShapeType.line, { x: futureX + 0.14, y: iy - 0.04, w: colW - 0.28, h: 0, line: { color: PM, width: 0.35 } });
+    t(s, item, futureX + 0.2, iy, colW - 0.36, fRowH - 0.06, { fontSize: 10, color: G7, valign: "middle" });
   });
 
-  // Accent callout
+  // ── Zone 3: Callout ─────────────────────────────────────────────────────
+  const calloutY = colY + colH + 0.14;
   accentCallout(s, [
     { text: "Inventory and financial records should remain ", options: { color: G7 } },
     { text: "connected throughout the fulfillment lifecycle", options: { color: G7, bold: true } },
     { text: " — reconciliation becomes a natural outcome, not a separate activity.", options: { color: G7 } },
-  ], 6.4, 0.52);
+  ], calloutY, 0.5);
 
-  footnote(s, "Key message: Inventory accountability and financial accountability should be inseparable.", SH - 0.58);
-  footer(s, "FUTURE STATE", 6);
+  footnote(s, "Key message: Every inventory movement eventually becomes a financial event — accountability must hold across every system handoff. Inventory accountability and financial accountability should be inseparable.", SH - 0.6);
+  footer(s, "MECHANISM & FUTURE STATE", 5);
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -447,7 +430,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   const s = pptx.addSlide();
   s.background = { color: W };
 
-  sectionLabel(s, "05 — ROADMAP");
+  sectionLabel(s, "04 — ROADMAP");
   t(s, "A phased path to consolidate every inventory\nprogram onto a single ERP", ML, 0.55, 9.5, 1.15, { fontSize: 28, color: G9, fontFace: "Calibri Light" });
 
   // Legend top right
@@ -544,7 +527,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   });
 
   footnote(s, "Per the UBIF inventory SSoT roadmap: each phase consolidates a legacy source system (Mobility Warehouse DAX, DES/NDES & SUR field inventory in ServiceBench, Store Inventory BAU Portal, in-house Distro) into the Dynamics 365 F&O ERP as the single source of truth. Phases 2 (SUR) and 3 (UBIF Next Gen Portal) run in parallel in 2026; Phase 4 (UBIF Distro) is slotted for 2027 and completes warehouse-to-store traceability.", SH - 0.6);
-  footer(s, "ROADMAP", 7);
+  footer(s, "ROADMAP", 6);
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -554,7 +537,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   const s = pptx.addSlide();
   s.background = { color: W };
 
-  sectionLabel(s, "06 — WHY DISTRO MATTERS", 0.3);
+  sectionLabel(s, "05 — WHY DISTRO MATTERS", 0.3);
   t(s, "PHASE 4 — UBIF DISTRO MIGRATION, SLOTTED FOR 2027", ML, 0.52, CW, 0.2, { fontSize: 8, color: P, bold: true, charSpacing: 1.5, valign: "middle" });
   t(s, "Distro is the last system standing — and the most\nstrategic to retire", ML, 0.74, CW, 1.3, { fontSize: 28, color: G9, fontFace: "Calibri Light" });
 
@@ -622,7 +605,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   ], 6.0, 0.72);
 
   footnote(s, "Distro review: no single technical blocker — Distro's tech stack is stable and could run on Asurion infrastructure. The 2027 migration case is structural, not a stability fire drill.\nDrivers surfaced in review: intercompany financial reconciliation, inter-system inventory loss, key-person operational risk, and vendor (UPS) request for a common platform.", SH - 0.62);
-  footer(s, "WHY DISTRO MATTERS", 8);
+  footer(s, "WHY DISTRO MATTERS", 7);
 }
 
 // ── Write ──────────────────────────────────────────────────────────────────
