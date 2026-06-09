@@ -102,13 +102,23 @@ const footnote = (s, txt, y = SH - 0.62) =>
   t(s, "From Fragmented Systems to a Single Source of Truth", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
 
   // Hero statement bar
-  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 0.76, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
-  s.addText([
-    { text: "Inventory is the foundation every service program runs on. It runs behind the scenes, unseen — but customers always feel it when something goes wrong. Inventory makes the service promise possible. This review is about making sure we can always keep it.", options: { color: G7 } },
-  ], { x: ML + 0.3, y: 1.34, w: CW - 0.6, h: 0.68, fontSize: 13, fontFace: "Calibri", valign: "middle" });
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 1.1, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+  const talkingPoints = [
+    "Inventory is the foundation every service program runs on.",
+    "It runs behind the scenes, unseen — but customers always feel it when something goes wrong.",
+    "Inventory makes the service promise possible.",
+    "This review is about making sure we can always keep it.",
+  ];
+  s.addText(
+    talkingPoints.map((pt, i) => ([
+      { text: "—", options: { color: P, bold: true } },
+      { text: "  " + pt + (i < talkingPoints.length - 1 ? "\n" : ""), options: { color: G7 } },
+    ])).flat(),
+    { x: ML + 0.3, y: 1.36, w: CW - 0.6, h: 1.0, fontSize: 11.5, fontFace: "Calibri", valign: "middle", paraSpaceAfter: 4 }
+  );
 
   // "We will take a look at" label
-  t(s, "In this review, we will take a look at:", ML, 2.2, CW, 0.3, { fontSize: 11, color: G4, italic: true, valign: "middle" });
+  t(s, "In this review, we will take a look at:", ML, 2.54, CW, 0.3, { fontSize: 11, color: G4, italic: true, valign: "middle" });
 
   // 3 story boxes
   const boxes = [
@@ -136,8 +146,8 @@ const footnote = (s, txt, y = SH - 0.62) =>
   ];
 
   const bW = (CW - 0.4) / 3;
-  const bY = 2.58;
-  const bH = 3.4;
+  const bY = 2.92;
+  const bH = 3.0;
 
   boxes.forEach((box, i) => {
     const x = ML + i * (bW + 0.2);
