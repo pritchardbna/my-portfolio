@@ -192,10 +192,12 @@ const footnote = (s, txt, y = SH - 0.62) =>
   const goalY = bY + bH + 0.18;
   s.addShape(pptx.ShapeType.roundRect, { x: ML, y: goalY, w: CW, h: 0.52, fill: { color: P }, line: { color: P }, rectRadius: 0.06 });
   s.addText([
-    { text: "At the end of this review, I hope that ", options: { color: "C4AEED", italic: true } },
-    { text: "you leave with a clear understanding of the role inventory plays across every service program we run", options: { color: W, italic: true } },
-    { text: " — and why managing it with a single source of truth is not just an operational improvement, but a ", options: { color: "C4AEED", italic: true } },
-    { text: "strategic capability that enables Asurion to move faster, reduce financial risk, and scale with confidence.", options: { color: W, italic: true } },
+    { text: "At the end of this review, I hope you leave with a clear picture of ", options: { color: "C4AEED", italic: true } },
+    { text: "how inventory moves across Asurion", options: { color: W, italic: true } },
+    { text: ", the scale it operates at, ", options: { color: "C4AEED", italic: true } },
+    { text: "where fragmentation creates real risk", options: { color: W, italic: true } },
+    { text: ", and why ", options: { color: "C4AEED", italic: true } },
+    { text: "a single source of truth for inventory management matters.", options: { color: W, italic: true } },
   ], { x: ML + 0.28, y: goalY + 0.02, w: CW - 0.56, h: 0.48, fontSize: 11.5, fontFace: "Calibri", valign: "middle" });
 
   footer(s, "AGENDA", 2);
