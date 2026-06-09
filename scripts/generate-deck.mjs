@@ -117,21 +117,21 @@ const footnote = (s, txt, y = SH - 0.62) =>
       num: "01",
       tag: "THE ASSET",
       title: "Inventory powers every\nservice motion we run",
-      narrative: "From advance exchange to same-unit repair to reverse logistics, inventory is present at every step. Understanding its scale — where it lives, how it moves, and what programs it supports — is the foundation for everything else in this review.",
+      narrative: "A ~$609M asset across ~890 locations, present at every step — from advance exchange to reverse logistics. Scale and complexity demand a system built to match.",
       slides: "Slides 03 – 04",
     },
     {
       num: "02",
       tag: "THE PROBLEM",
       title: "Fragmented systems create\nfinancial and operational risk",
-      narrative: "A significant portion of our inventory is managed across legacy platforms that are disconnected from our ERP. This fragmentation makes it difficult to trace units, close financial records accurately, and respond to issues before they compound into larger losses.",
+      narrative: "Legacy platforms outside our ERP make it difficult to trace units, reconcile financials, and catch issues early. The gap compounds over time.",
       slides: "Slide 05",
     },
     {
       num: "03",
       tag: "THE PATH FORWARD",
       title: "A proven model, scaling\nprogram by program",
-      narrative: "We have a tested, phased approach to consolidating every inventory program into a single source of truth. The model is already working — and this review outlines what remains, why it matters, and what full consolidation makes possible.",
+      narrative: "We have a tested, phased approach to a single source of truth. The model is working — this review outlines what remains and what full consolidation makes possible.",
       slides: "Slides 06 – 07",
     },
   ];
@@ -166,7 +166,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
     t(s, box.title, x + 0.2, bY + topH + 0.2, bW - 0.4, 0.72, { fontSize: 13, bold: true, color: G9, fontFace: "Calibri Light", valign: "top" });
 
     // Narrative
-    t(s, box.narrative, x + 0.2, bY + topH + 1.02, bW - 0.4, 2.4, { fontSize: 10, color: G6, valign: "top", paraSpaceBefore: 2 });
+    t(s, box.narrative, x + 0.2, bY + topH + 1.02, bW - 0.4, 2.4, { fontSize: 12, color: G6, valign: "top", paraSpaceBefore: 2 });
 
     // Slide reference tag at bottom
     s.addShape(pptx.ShapeType.roundRect, { x: x + 0.2, y: bY + bH - 0.38, w: bW - 0.4, h: 0.26, fill: { color: GB }, line: { color: G2, width: 0.5 }, rectRadius: 0.04 });
