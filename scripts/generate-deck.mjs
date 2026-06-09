@@ -90,46 +90,97 @@ const footnote = (s, txt, y = SH - 0.62) =>
 }
 
 // ══════════════════════════════════════════════════════════════════════════
-// SLIDE 02 — Agenda
+// SLIDE 02 — Agenda (leadership narrative version)
 // ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
   s.background = { color: W };
 
-  sectionLabel(s, "TODAY'S DISCUSSION", 0.35);
-  t(s, "Agenda", ML, 0.6, 8, 1.0, { fontSize: 44, color: G9, fontFace: "Calibri Light" });
+  sectionLabel(s, "TODAY'S DISCUSSION", 0.32);
 
-  // 2-column card layout: cards [0,2,4] on left, [1,3] on right
-  const cards = [
-    { num: 1, title: "Inventory Supports Every Fulfillment Motion Across Asurion's Service Network", sub: "What inventory is, where it lives, and the service motions it enables" },
-    { num: 2, title: "Inventory Is Split Across Multiple Systems of Record",                          sub: "Why consolidating into one source of truth is a financial control, not just an operational one" },
-    { num: 3, title: "Fulfillment Systems Connect Inventory Movement to Financial Accountability",     sub: "How systems tie each physical move to a financial record" },
-    { num: 4, title: "One Operating Model Improves Visibility, Control, and Scale",                   sub: "Moving from fragmented tools to a single, governed operating model" },
-    { num: 5, title: "Scaling the Proven Inventory Model Across Every Program",                       sub: "The DES single-source-of-truth playbook, extended phase by phase" },
+  // Title
+  t(s, "What we're covering — and why it matters", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
+
+  // Hero statement bar
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.38, w: CW, h: 0.72, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+  s.addText([
+    { text: "Inventory is a ", options: { color: G7 } },
+    { text: "~$609M asset", options: { color: P, bold: true } },
+    { text: " moving across ", options: { color: G7 } },
+    { text: "~890 locations", options: { color: P, bold: true } },
+    { text: " every day. Today, ", options: { color: G7 } },
+    { text: "$207M of it lives outside our ERP", options: { color: P, bold: true } },
+    { text: " — creating financial blind spots, reconciliation gaps, and operational risk. This session explains what we have, what's broken, and the plan to fix it.", options: { color: G7 } },
+  ], { x: ML + 0.3, y: 1.44, w: CW - 0.6, h: 0.6, fontSize: 11, fontFace: "Calibri", valign: "middle" });
+
+  // 3 story boxes
+  const boxes = [
+    {
+      num: "01",
+      tag: "THE ASSET",
+      title: "What inventory is\nand where it lives",
+      body: "~$609M across replacement, repair, and reverse logistics — touching every service motion Asurion runs.",
+      slides: "Slides 03 – 04",
+    },
+    {
+      num: "02",
+      tag: "THE PROBLEM",
+      title: "Why fragmented systems\ncreate financial risk",
+      body: "$207M sits on legacy platforms outside D365 F&O. Every split system is a gap where inventory and dollars go untraced.",
+      slides: "Slide 05",
+    },
+    {
+      num: "03",
+      tag: "THE PLAN",
+      title: "How we consolidate —\nand what it delivers",
+      body: "A phased ERP consolidation already delivering results. Phase 1 beat forecast by $5.7M. Three phases remain.",
+      slides: "Slides 06 – 07",
+    },
   ];
 
-  const cardW = (CW - 0.3) / 2;
-  const leftX  = ML;
-  const rightX = ML + cardW + 0.3;
+  const bW = (CW - 0.4) / 3;
+  const bY = 2.3;
+  const bH = 3.8;
 
-  // Left column: cards 1, 3, 5
-  // Right column: cards 2, 4
-  const leftCards  = [cards[0], cards[2], cards[4]];
-  const rightCards = [cards[1], cards[3]];
+  boxes.forEach((box, i) => {
+    const x = ML + i * (bW + 0.2);
 
-  const drawCard = (card, x, y, h) => {
-    s.addShape(pptx.ShapeType.roundRect, { x, y, w: cardW, h, fill: { color: W }, line: { color: G2, width: 0.75 }, rectRadius: 0.06 });
+    // Card
+    s.addShape(pptx.ShapeType.roundRect, { x, y: bY, w: bW, h: bH, fill: { color: W }, line: { color: G2, width: 0.75 }, rectRadius: 0.07 });
+
+    // Colored top band
+    const topH = 0.62;
+    const topBg = i === 1 ? "F5EEF8" : i === 2 ? PL : GB;
+    s.addShape(pptx.ShapeType.roundRect, { x, y: bY, w: bW, h: topH + 0.1, fill: { color: topBg }, line: { color: topBg }, rectRadius: 0.07 });
+    // cover bottom curve of top band
+    s.addShape(pptx.ShapeType.rect, { x, y: bY + topH - 0.1, w: bW, h: 0.2, fill: { color: topBg }, line: { color: topBg } });
+
     // Number badge
-    s.addShape(pptx.ShapeType.roundRect, { x: x + 0.16, y: y + h / 2 - 0.28, w: 0.5, h: 0.5, fill: { color: P }, line: { color: P }, rectRadius: 0.08 });
-    t(s, String(card.num), x + 0.16, y + h / 2 - 0.28, 0.5, 0.5, { fontSize: 13, bold: true, color: W, align: "center", valign: "middle" });
-    // Title
-    t(s, card.title, x + 0.82, y + 0.14, cardW - 0.98, h * 0.48, { fontSize: 11, bold: true, color: G9, valign: "top" });
-    // Subtitle
-    t(s, card.sub,   x + 0.82, y + h * 0.52, cardW - 0.98, h * 0.4, { fontSize: 9, color: G4, valign: "top" });
-  };
+    s.addShape(pptx.ShapeType.ellipse, { x: x + 0.2, y: bY + 0.1, w: 0.42, h: 0.42, fill: { color: P }, line: { color: P } });
+    t(s, box.num, x + 0.2, bY + 0.1, 0.42, 0.42, { fontSize: 11, bold: true, color: W, align: "center", valign: "middle" });
 
-  leftCards.forEach((card, i)  => drawCard(card, leftX,  1.82 + i * 0.94, 0.84));
-  rightCards.forEach((card, i) => drawCard(card, rightX, 1.82 + i * 0.94, 0.84));
+    // Tag
+    t(s, box.tag, x + 0.76, bY + 0.18, bW - 0.9, 0.26, { fontSize: 8, bold: true, color: P, charSpacing: 1.5, valign: "middle" });
+
+    // Divider
+    s.addShape(pptx.ShapeType.line, { x: x + 0.2, y: bY + topH + 0.12, w: bW - 0.4, h: 0, line: { color: G2, width: 0.5 } });
+
+    // Title
+    t(s, box.title, x + 0.2, bY + topH + 0.22, bW - 0.4, 0.72, { fontSize: 13, bold: true, color: G9, fontFace: "Calibri Light", valign: "top" });
+
+    // Body
+    t(s, box.body, x + 0.2, bY + topH + 1.04, bW - 0.4, 1.65, { fontSize: 10.5, color: G6, valign: "top" });
+
+    // Slide reference tag at bottom
+    s.addShape(pptx.ShapeType.roundRect, { x: x + 0.2, y: bY + bH - 0.42, w: bW - 0.4, h: 0.28, fill: { color: GB }, line: { color: G2, width: 0.5 }, rectRadius: 0.04 });
+    t(s, box.slides, x + 0.2, bY + bH - 0.42, bW - 0.4, 0.28, { fontSize: 8, color: G4, align: "center", valign: "middle" });
+  });
+
+  // Connector arrows between boxes
+  [0, 1].forEach((i) => {
+    const ax = ML + (i + 1) * (bW + 0.2) - 0.18;
+    t(s, "→", ax, bY + bH / 2 - 0.18, 0.32, 0.36, { fontSize: 16, bold: true, color: PM, align: "center", valign: "middle" });
+  });
 
   footer(s, "AGENDA", 2);
 }
