@@ -102,14 +102,17 @@ const footnote = (s, txt, y = SH - 0.62) =>
   t(s, "What we're covering — and why it matters", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
 
   // Hero statement bar
-  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.38, w: CW, h: 0.72, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 0.62, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
   s.addText([
     { text: "Inventory is a ", options: { color: G7 } },
     { text: "~$609M asset", options: { color: P, bold: true } },
     { text: " moving across ", options: { color: G7 } },
     { text: "~890 locations", options: { color: P, bold: true } },
-    { text: " every day — powering every service motion Asurion runs. This review examines how it is managed, where complexity lives, and what it will take to operate it with full visibility and control.", options: { color: G7 } },
-  ], { x: ML + 0.3, y: 1.44, w: CW - 0.6, h: 0.6, fontSize: 11, fontFace: "Calibri", valign: "middle" });
+    { text: " every day — powering every service motion Asurion runs.", options: { color: G7 } },
+  ], { x: ML + 0.3, y: 1.34, w: CW - 0.6, h: 0.54, fontSize: 13, fontFace: "Calibri", valign: "middle" });
+
+  // "We will take a look at" label
+  t(s, "In this review, we will take a look at:", ML, 2.06, CW, 0.3, { fontSize: 11, color: G4, italic: true, valign: "middle" });
 
   // 3 story boxes
   const boxes = [
@@ -137,8 +140,8 @@ const footnote = (s, txt, y = SH - 0.62) =>
   ];
 
   const bW = (CW - 0.4) / 3;
-  const bY = 2.2;
-  const bH = 3.6;
+  const bY = 2.44;
+  const bH = 3.4;
 
   boxes.forEach((box, i) => {
     const x = ML + i * (bW + 0.2);
@@ -187,7 +190,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
     { text: "you leave with a clear understanding of the role inventory plays across every service program we run", options: { color: W, italic: true } },
     { text: " — and why managing it with a single source of truth is not just an operational improvement, but a ", options: { color: "C4AEED", italic: true } },
     { text: "strategic capability that enables Asurion to move faster, reduce financial risk, and scale with confidence.", options: { color: W, italic: true } },
-  ], { x: ML + 0.28, y: goalY + 0.01, w: CW - 0.56, h: 0.5, fontSize: 9.5, fontFace: "Calibri", valign: "middle" });
+  ], { x: ML + 0.28, y: goalY + 0.02, w: CW - 0.56, h: 0.48, fontSize: 11.5, fontFace: "Calibri", valign: "middle" });
 
   footer(s, "AGENDA", 2);
 }
