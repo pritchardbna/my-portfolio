@@ -102,17 +102,13 @@ const footnote = (s, txt, y = SH - 0.62) =>
   t(s, "What we're covering — and why it matters", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
 
   // Hero statement bar
-  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 0.62, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 0.76, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
   s.addText([
-    { text: "Inventory is a ", options: { color: G7 } },
-    { text: "~$609M asset", options: { color: P, bold: true } },
-    { text: " moving across ", options: { color: G7 } },
-    { text: "~890 locations", options: { color: P, bold: true } },
-    { text: " every day — powering every service motion Asurion runs.", options: { color: G7 } },
-  ], { x: ML + 0.3, y: 1.34, w: CW - 0.6, h: 0.54, fontSize: 13, fontFace: "Calibri", valign: "middle" });
+    { text: "Inventory is the foundation every service program runs on. It runs behind the scenes, unseen — but customers always feel it when something goes wrong. Inventory makes the service promise possible. This review is about making sure we can always keep it.", options: { color: G7 } },
+  ], { x: ML + 0.3, y: 1.34, w: CW - 0.6, h: 0.68, fontSize: 13, fontFace: "Calibri", valign: "middle" });
 
   // "We will take a look at" label
-  t(s, "In this review, we will take a look at:", ML, 2.06, CW, 0.3, { fontSize: 11, color: G4, italic: true, valign: "middle" });
+  t(s, "In this review, we will take a look at:", ML, 2.2, CW, 0.3, { fontSize: 11, color: G4, italic: true, valign: "middle" });
 
   // 3 story boxes
   const boxes = [
@@ -140,7 +136,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   ];
 
   const bW = (CW - 0.4) / 3;
-  const bY = 2.44;
+  const bY = 2.58;
   const bH = 3.4;
 
   boxes.forEach((box, i) => {
