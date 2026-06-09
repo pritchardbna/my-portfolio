@@ -145,7 +145,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
     },
     {
       num: "03",
-      tag: "THE PLAN",
+      tag: "THE PATH FORWARD",
       title: "How we consolidate —\nand what it delivers",
       stat: "$5.7M",
       statLabel: "better than forecast — Phase 1",
