@@ -118,50 +118,29 @@ const footnote = (s, txt, y = SH - 0.62) =>
     {
       num: "01",
       tag: "THE ASSET",
-      title: "What inventory is\nand where it lives",
-      stat: "~$609M",
-      statLabel: "total inventory value",
-      body: "Inventory is Asurion's operational backbone — every service motion depends on it being in the right place at the right time.",
-      bullets: [
-        "$401.8M in Replacement (AE, DES, NDES, ISP)",
-        "$207M in Repair (uBreakiFix, SUR, UROC)",
-        "~890 locations: warehouses, FSLs, stores & vendors",
-      ],
+      title: "Inventory powers every\nservice motion we run",
+      narrative: "From advance exchange to same-unit repair to reverse logistics, inventory is present at every step. Understanding its scale — where it lives, how it moves, and what programs it supports — is the foundation for everything else in this review.",
       slides: "Slides 03 – 04",
     },
     {
       num: "02",
       tag: "THE PROBLEM",
-      title: "Why fragmented systems\ncreate financial risk",
-      stat: "$207M",
-      statLabel: "outside D365 F&O today",
-      body: "When inventory and financials live in separate systems, every unit and dollar becomes harder to trace — and risk grows with volume.",
-      bullets: [
-        "3 legacy systems: PRISM, Distro, SBX Cycle Count",
-        "Manual reconciliation, billing disputes, delayed visibility",
-        "Financial exposure compounds as programs scale",
-      ],
+      title: "Fragmented systems create\nfinancial and operational risk",
+      narrative: "A significant portion of our inventory is managed across legacy platforms that are disconnected from our ERP. This fragmentation makes it difficult to trace units, close financial records accurately, and respond to issues before they compound into larger losses.",
       slides: "Slide 05",
     },
     {
       num: "03",
       tag: "THE PATH FORWARD",
-      title: "How we consolidate —\nand what it delivers",
-      stat: "$5.7M",
-      statLabel: "better than forecast — Phase 1",
-      body: "A 4-phase ERP consolidation moves every program into D365 F&O. Phase 1 is done and already proving the model.",
-      bullets: [
-        "Phase 1 (2024–25): DES / NDES / ISP — complete",
-        "Phases 2–3 (2026): UBIF Portal + SUR — in progress",
-        "Phase 4 (2027): Distro → 100% of inventory in one ERP",
-      ],
+      title: "A proven model, scaling\nprogram by program",
+      narrative: "We have a tested, phased approach to consolidating every inventory program into a single source of truth. The model is already working — and this review outlines what remains, why it matters, and what full consolidation makes possible.",
       slides: "Slides 06 – 07",
     },
   ];
 
   const bW = (CW - 0.4) / 3;
   const bY = 2.3;
-  const bH = 4.42;
+  const bH = 3.9;
 
   boxes.forEach((box, i) => {
     const x = ML + i * (bW + 0.2);
@@ -185,24 +164,11 @@ const footnote = (s, txt, y = SH - 0.62) =>
     // Divider
     s.addShape(pptx.ShapeType.line, { x: x + 0.2, y: bY + topH + 0.1, w: bW - 0.4, h: 0, line: { color: G2, width: 0.5 } });
 
-    // Stat callout
-    t(s, box.stat,      x + 0.2, bY + topH + 0.18, bW - 0.4, 0.52, { fontSize: 26, bold: true, color: P, fontFace: "Calibri Light", valign: "middle" });
-    t(s, box.statLabel, x + 0.2, bY + topH + 0.68, bW - 0.4, 0.22, { fontSize: 8,  color: G4,  valign: "middle" });
-
-    // Thin divider under stat
-    s.addShape(pptx.ShapeType.line, { x: x + 0.2, y: bY + topH + 0.96, w: bW - 0.4, h: 0, line: { color: G2, width: 0.4 } });
-
     // Title
-    t(s, box.title, x + 0.2, bY + topH + 1.04, bW - 0.4, 0.65, { fontSize: 12, bold: true, color: G9, fontFace: "Calibri", valign: "top" });
+    t(s, box.title, x + 0.2, bY + topH + 0.2, bW - 0.4, 0.72, { fontSize: 13, bold: true, color: G9, fontFace: "Calibri Light", valign: "top" });
 
-    // Body sentence
-    t(s, box.body, x + 0.2, bY + topH + 1.74, bW - 0.4, 0.62, { fontSize: 9, color: G6, valign: "top" });
-
-    // Bullet points
-    box.bullets.forEach((b, j) => {
-      s.addShape(pptx.ShapeType.ellipse, { x: x + 0.2, y: bY + topH + 2.44 + j * 0.4 + 0.09, w: 0.08, h: 0.08, fill: { color: P }, line: { color: P } });
-      t(s, b, x + 0.36, bY + topH + 2.44 + j * 0.4, bW - 0.56, 0.36, { fontSize: 9, color: G7, valign: "middle" });
-    });
+    // Narrative
+    t(s, box.narrative, x + 0.2, bY + topH + 1.02, bW - 0.4, 2.4, { fontSize: 10, color: G6, valign: "top", paraSpaceBefore: 2 });
 
     // Slide reference tag at bottom
     s.addShape(pptx.ShapeType.roundRect, { x: x + 0.2, y: bY + bH - 0.38, w: bW - 0.4, h: 0.26, fill: { color: GB }, line: { color: G2, width: 0.5 }, rectRadius: 0.04 });
