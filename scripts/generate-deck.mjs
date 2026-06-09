@@ -137,8 +137,8 @@ const footnote = (s, txt, y = SH - 0.62) =>
   ];
 
   const bW = (CW - 0.4) / 3;
-  const bY = 2.3;
-  const bH = 3.9;
+  const bY = 2.2;
+  const bH = 3.6;
 
   boxes.forEach((box, i) => {
     const x = ML + i * (bW + 0.2);
@@ -178,6 +178,16 @@ const footnote = (s, txt, y = SH - 0.62) =>
     const ax = ML + (i + 1) * (bW + 0.2) - 0.18;
     t(s, "→", ax, bY + bH / 2 - 0.18, 0.32, 0.36, { fontSize: 16, bold: true, color: PM, align: "center", valign: "middle" });
   });
+
+  // Goal statement
+  const goalY = bY + bH + 0.18;
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: goalY, w: CW, h: 0.52, fill: { color: P }, line: { color: P }, rectRadius: 0.06 });
+  s.addText([
+    { text: "At the end of this review, I hope that ", options: { color: "C4AEED", italic: true } },
+    { text: "you leave with a clear understanding of the role inventory plays across every service program we run", options: { color: W, italic: true } },
+    { text: " — and why managing it with a single source of truth is not just an operational improvement, but a ", options: { color: "C4AEED", italic: true } },
+    { text: "strategic capability that enables Asurion to move faster, reduce financial risk, and scale with confidence.", options: { color: W, italic: true } },
+  ], { x: ML + 0.28, y: goalY + 0.01, w: CW - 0.56, h: 0.5, fontSize: 9.5, fontFace: "Calibri", valign: "middle" });
 
   footer(s, "AGENDA", 2);
 }
