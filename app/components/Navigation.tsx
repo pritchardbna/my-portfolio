@@ -36,6 +36,13 @@ export default function Navigation() {
                 AI Projects
               </Link>
               <Link
+                href="/case-studies"
+                className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Case Studies
+              </Link>
+              <Link
                 href="/resume"
                 className="text-[#2D2D2D] text-sm font-[500] hover:text-[#4A3068] transition-colors font-inter"
                 onClick={() => setMobileMenuOpen(false)}
@@ -92,6 +99,13 @@ export default function Navigation() {
             onClick={() => setMobileMenuOpen(false)}
           >
             AI Projects
+          </Link>
+          <Link
+            href="/case-studies"
+            className="block py-2.5 px-5 font-inter text-sm font-medium text-[#2D2D2D] hover:bg-[#F5F5F5] hover:text-[#4A3068] transition-all duration-150 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Case Studies
           </Link>
           <Link
             href="/resume"

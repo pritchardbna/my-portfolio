@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CaseStudies() {
   return (
     <div className="min-h-screen bg-white">
@@ -17,6 +19,44 @@ export default function CaseStudies() {
       <section className="px-4 md:px-6 py-16 md:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="space-y-12">
+            {/* Featured: Inventory at Asurion */}
+            <Link href="/case-studies/inventory-at-asurion" className="block group">
+              <div className="rounded-2xl bg-white p-8 shadow-lg border border-gray-100 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="inline-block rounded-full bg-purple-100 px-4 py-1 text-sm font-semibold text-purple-700">
+                    Asurion · D2M Fulfillment
+                  </span>
+                  <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-500">
+                    Monthly Product Review
+                  </span>
+                </div>
+                <h2 className="mb-4 text-3xl font-bold text-gray-900 group-hover:text-[#4A3068] transition-colors">
+                  Inventory at Asurion
+                </h2>
+                <p className="mb-6 text-lg text-gray-600">
+                  An 8-slide executive deep dive into how fulfillment systems enable inventory visibility, accountability, and scale across Asurion&apos;s service network — covering a ~$517M inventory asset across ~890 locations, a phased ERP consolidation roadmap, and the strategic case for retiring Distro.
+                </p>
+                <div className="grid gap-4 md:grid-cols-4">
+                  <div className="rounded-lg bg-purple-50 p-4">
+                    <div className="text-2xl font-bold text-purple-600">~$517M</div>
+                    <div className="text-sm text-gray-600">Inventory Value</div>
+                  </div>
+                  <div className="rounded-lg bg-purple-50 p-4">
+                    <div className="text-2xl font-bold text-purple-600">~890</div>
+                    <div className="text-sm text-gray-600">Locations</div>
+                  </div>
+                  <div className="rounded-lg bg-purple-50 p-4">
+                    <div className="text-2xl font-bold text-purple-600">4 Phases</div>
+                    <div className="text-sm text-gray-600">ERP Consolidation</div>
+                  </div>
+                  <div className="rounded-lg bg-purple-50 p-4">
+                    <div className="text-2xl font-bold text-purple-600">8 Slides</div>
+                    <div className="text-sm text-gray-600">View Full Deck →</div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
             {/* Case Study 1 */}
             <div className="rounded-2xl bg-white p-8 shadow-lg border border-gray-100">
               <div className="mb-4">
