@@ -99,7 +99,7 @@ const footnote = (s, txt, y = SH - 0.62) =>
   sectionLabel(s, "TODAY'S DISCUSSION", 0.32);
 
   // Title
-  t(s, "What we're covering — and why it matters", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
+  t(s, "From Fragmented Systems to a Single Source of Truth", ML, 0.55, CW, 0.7, { fontSize: 30, color: G9, fontFace: "Calibri Light" });
 
   // Hero statement bar
   s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.32, w: CW, h: 0.76, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
