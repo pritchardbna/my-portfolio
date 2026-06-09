@@ -194,8 +194,8 @@ const footnote = (s, txt, y = SH - 0.62) =>
   s.addText([
     { text: "At the end of this review, I hope you leave understanding ", options: { color: "C4AEED", italic: true } },
     { text: "the role inventory plays across Fulfillment", options: { color: W, italic: true } },
-    { text: ", where we are in the SSOT journey, and why it's a ", options: { color: "C4AEED", italic: true } },
-    { text: "strategic capability — not just an operational fix.", options: { color: W, italic: true } },
+    { text: ", where we are in our single-source-of-truth journey, and its ", options: { color: "C4AEED", italic: true } },
+    { text: "strategic value to the way we serve customers and run the business.", options: { color: W, italic: true } },
   ], { x: ML + 0.28, y: goalY + 0.02, w: CW - 0.56, h: 0.48, fontSize: 11.5, fontFace: "Calibri", valign: "middle" });
 
   footer(s, "AGENDA", 2);
