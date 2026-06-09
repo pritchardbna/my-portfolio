@@ -1,101 +1,108 @@
 import PptxGenJS from "pptxgenjs";
 
 const pptx = new PptxGenJS();
+pptx.layout = "LAYOUT_WIDE"; // 13.33 × 7.5 in
 
-// ── Theme ──────────────────────────────────────────────────────────────────
-const PURPLE   = "5B2C8D";
-const PURPLE_L = "EDE8F5";
-const PURPLE_M = "C4AEED";
-const WHITE    = "FFFFFF";
-const GRAY_9   = "111111";
-const GRAY_6   = "555555";
-const GRAY_4   = "999999";
-const GRAY_2   = "DDDDDD";
-const GRAY_BG  = "F8F7FA";
-const GREEN    = "2E7D32";
-const GREEN_L  = "E8F5E9";
-const RED      = "C62828";
-const RED_L    = "FFEBEE";
-const AMBER_L  = "FFF8E1";
-const AMBER    = "F57F17";
+// ── Palette ────────────────────────────────────────────────────────────────
+const P  = "5B2C8D";   // Asurion purple
+const PL = "EDE8F5";   // light purple bg
+const PM = "C4AEED";   // medium purple border
+const W  = "FFFFFF";
+const G9 = "111111";
+const G6 = "555555";
+const G4 = "888888";
+const G2 = "DDDDDD";
+const GB = "F5F4F8";   // light bg
+const GN = "1B6B2B";   // green
+const GL = "E6F4EA";   // green light
+const RD = "B71C1C";   // red
+const RL = "FDECEA";   // red light
+const AM = "E65100";   // amber
+const AL = "FFF3E0";   // amber light
 
-pptx.layout = "LAYOUT_WIDE"; // 13.33 x 7.5 in
+const SW = 13.33;  // slide width
+const SH = 7.5;    // slide height
+const ML = 0.5;    // margin left
+const MR = 0.5;    // margin right
+const CW = SW - ML - MR; // content width = 12.33
 
-const W = 13.33;
-const H = 7.5;
+// ── Helpers ────────────────────────────────────────────────────────────────
+const H1 = (s, txt, y, w = CW) =>
+  s.addText(txt, { x: ML, y, w, h: 0.9, fontSize: 26, bold: true, color: G9, fontFace: "Calibri Light", valign: "top" });
 
-function label(slide, text, x, y) {
-  slide.addText(text, {
-    x, y, w: 4, h: 0.2,
-    fontSize: 7, bold: true, color: PURPLE,
-    charSpacing: 3,
-    fontFace: "Arial",
+const H2 = (s, txt, y, w = CW) =>
+  s.addText(txt, { x: ML, y, w, h: 1.1, fontSize: 22, bold: true, color: G9, fontFace: "Calibri Light", valign: "top" });
+
+const chip = (s, txt, x, y, bgColor = PL, txtColor = P, w = 3.0) => {
+  s.addShape(pptx.ShapeType.roundRect, { x, y, w, h: 0.26, fill: { color: bgColor }, line: { color: bgColor }, rectRadius: 0.05 });
+  s.addText(txt, { x: x + 0.1, y: y + 0.02, w: w - 0.2, h: 0.22, fontSize: 7.5, bold: true, color: txtColor, charSpacing: 1.5, fontFace: "Calibri", valign: "middle" });
+};
+
+const sectionLabel = (s, txt, y) =>
+  s.addText(txt, { x: ML, y, w: 6, h: 0.18, fontSize: 7.5, bold: true, color: P, charSpacing: 3, fontFace: "Calibri", valign: "middle" });
+
+const callout = (s, txt, y, h = 0.6, bgColor = P, txtColor = W, fontSize = 10) => {
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y, w: CW, h, fill: { color: bgColor }, line: { color: bgColor }, rectRadius: 0.05 });
+  s.addText(txt, { x: ML + 0.2, y: y + 0.05, w: CW - 0.4, h: h - 0.1, fontSize, color: txtColor, fontFace: "Calibri", valign: "middle" });
+};
+
+const footer = (s, num, title) => {
+  s.addShape(pptx.ShapeType.rect, { x: 0, y: SH - 0.32, w: SW, h: 0.32, fill: { color: GB }, line: { color: G2, width: 0.5 } });
+  s.addText(`${String(num).padStart(2, "0")}   ${title}`, {
+    x: 0.4, y: SH - 0.28, w: SW - 0.8, h: 0.22,
+    fontSize: 7.5, color: G4, fontFace: "Calibri",
   });
-}
+};
 
-function slideFooter(slide, num, title) {
-  slide.addShape(pptx.ShapeType.rect, {
-    x: 0, y: H - 0.35, w: W, h: 0.35,
-    fill: { color: GRAY_BG },
-    line: { color: GRAY_2, width: 0.5 },
-  });
-  slide.addText(`${String(num).padStart(2, "0")}  ${title}`, {
-    x: 0.3, y: H - 0.3, w: W - 0.6, h: 0.25,
-    fontSize: 8, color: GRAY_4, fontFace: "Arial",
-  });
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 01 — Title
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  // Top bar
-  s.addText("asurion", { x: 0.4, y: 0.3, w: 2, h: 0.35, fontSize: 20, bold: true, color: PURPLE, fontFace: "Arial" });
-  s.addText("MONTHLY PRODUCT REVIEW", { x: W - 3.5, y: 0.35, w: 3.2, h: 0.2, fontSize: 7, color: GRAY_4, bold: true, charSpacing: 2, fontFace: "Arial", align: "right" });
+  // Header bar
+  s.addText("asurion", { x: ML, y: 0.28, w: 2.5, h: 0.4, fontSize: 22, bold: true, color: P, fontFace: "Calibri" });
+  s.addText("MONTHLY PRODUCT REVIEW", { x: SW - 3.8, y: 0.32, w: 3.5, h: 0.24, fontSize: 7.5, color: G4, bold: true, charSpacing: 1.5, fontFace: "Calibri", align: "right" });
+  s.addShape(pptx.ShapeType.line, { x: ML, y: 0.78, w: CW, h: 0, line: { color: G2, width: 0.75 } });
 
-  // Divider
-  s.addShape(pptx.ShapeType.line, { x: 0.4, y: 0.85, w: W - 0.8, h: 0, line: { color: GRAY_2, width: 0.5 } });
+  // Label
+  chip(s, "MONTHLY PRODUCT REVIEW DEEP DIVE", ML, 1.05, PL, P, 3.2);
 
-  // Label chip
-  s.addShape(pptx.ShapeType.rect, { x: 0.4, y: 1.1, w: 2.8, h: 0.28, fill: { color: PURPLE_L }, rounding: true });
-  s.addText("MONTHLY PRODUCT REVIEW DEEP DIVE", { x: 0.42, y: 1.12, w: 2.76, h: 0.24, fontSize: 7, bold: true, color: PURPLE, charSpacing: 1.5, fontFace: "Arial" });
-
-  // Title
-  s.addText("Inventory at Asurion", { x: 0.4, y: 1.6, w: 9, h: 1.4, fontSize: 52, bold: true, color: GRAY_9, fontFace: "Georgia" });
+  // Main title
+  s.addText("Inventory at Asurion", { x: ML, y: 1.5, w: 10, h: 1.6, fontSize: 48, bold: true, color: G9, fontFace: "Calibri Light", valign: "middle" });
   s.addText("How fulfillment systems enable visibility, accountability, and scale", {
-    x: 0.4, y: 3.1, w: 8, h: 0.4,
-    fontSize: 14, color: GRAY_6, fontFace: "Arial",
+    x: ML, y: 3.15, w: 9, h: 0.4,
+    fontSize: 14, color: G6, fontFace: "Calibri", valign: "middle",
   });
 
   // Divider
-  s.addShape(pptx.ShapeType.line, { x: 0.4, y: 4.0, w: 5, h: 0, line: { color: GRAY_2, width: 0.5 } });
+  s.addShape(pptx.ShapeType.line, { x: ML, y: 3.75, w: 5.5, h: 0, line: { color: G2, width: 0.75 } });
 
   // Presenters
-  s.addText("PRESENTED BY", { x: 0.4, y: 4.15, w: 3, h: 0.2, fontSize: 7, color: GRAY_4, bold: true, charSpacing: 2, fontFace: "Arial" });
-  s.addText("Bryant Mayne", { x: 0.4, y: 4.4, w: 3, h: 0.26, fontSize: 12, bold: true, color: GRAY_9, fontFace: "Arial" });
-  s.addText("Director, D2M Fulfillment & Finance", { x: 0.4, y: 4.68, w: 3.5, h: 0.2, fontSize: 9, color: GRAY_6, fontFace: "Arial" });
+  const presX = [ML, 4.0];
+  const names = ["Bryant Mayne", "Thays Pritchard"];
+  const titles = ["Director, D2M Fulfillment & Finance", "Product Management"];
+  presX.forEach((x, i) => {
+    s.addText("PRESENTED BY", { x, y: 3.95, w: 3.5, h: 0.2, fontSize: 7, color: G4, bold: true, charSpacing: 2, fontFace: "Calibri" });
+    s.addText(names[i],  { x, y: 4.18, w: 3.5, h: 0.3, fontSize: 13, bold: true, color: G9, fontFace: "Calibri" });
+    s.addText(titles[i], { x, y: 4.5,  w: 3.5, h: 0.24, fontSize: 9.5, color: G6, fontFace: "Calibri" });
+  });
 
-  s.addText("PRESENTED BY", { x: 4.0, y: 4.15, w: 3, h: 0.2, fontSize: 7, color: GRAY_4, bold: true, charSpacing: 2, fontFace: "Arial" });
-  s.addText("Thays Pritchard", { x: 4.0, y: 4.4, w: 3, h: 0.26, fontSize: 12, bold: true, color: GRAY_9, fontFace: "Arial" });
-  s.addText("Product Management", { x: 4.0, y: 4.68, w: 3, h: 0.2, fontSize: 9, color: GRAY_6, fontFace: "Arial" });
+  s.addText("CONFIDENTIAL", { x: SW - 2.0, y: SH - 0.55, w: 1.8, h: 0.22, fontSize: 7, color: G4, bold: true, charSpacing: 2, fontFace: "Calibri", align: "right" });
 
-  s.addText("CONFIDENTIAL", { x: W - 1.8, y: H - 0.65, w: 1.6, h: 0.2, fontSize: 7, color: GRAY_4, bold: true, charSpacing: 2, fontFace: "Arial", align: "right" });
-
-  slideFooter(s, 1, "Inventory at Asurion");
+  footer(s, 1, "Inventory at Asurion");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 02 — Agenda
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  s.addText("TODAY'S DISCUSSION", { x: 0.5, y: 0.4, w: 4, h: 0.2, fontSize: 8, bold: true, color: PURPLE, charSpacing: 3, fontFace: "Arial" });
-  s.addText("Agenda", { x: 0.5, y: 0.7, w: 8, h: 0.9, fontSize: 44, color: GRAY_9, fontFace: "Georgia" });
+  sectionLabel(s, "TODAY'S DISCUSSION", 0.38);
+  s.addText("Agenda", { x: ML, y: 0.62, w: 8, h: 1.0, fontSize: 44, color: G9, fontFace: "Calibri Light", valign: "top" });
 
   const items = [
     "Inventory Supports Every Fulfillment Motion Across Asurion's Service Network",
@@ -106,37 +113,35 @@ function slideFooter(slide, num, title) {
   ];
 
   items.forEach((text, i) => {
-    const y = 1.9 + i * 0.9;
-    // Number circle
-    s.addShape(pptx.ShapeType.ellipse, { x: 0.5, y: y, w: 0.38, h: 0.38, fill: { color: PURPLE } });
-    s.addText(String(i + 1), { x: 0.5, y: y + 0.02, w: 0.38, h: 0.34, fontSize: 11, bold: true, color: WHITE, align: "center", fontFace: "Arial" });
-    s.addText(text, { x: 1.1, y: y + 0.03, w: 10, h: 0.32, fontSize: 13, color: GRAY_9, fontFace: "Arial" });
+    const y = 1.85 + i * 0.88;
+    // Number bullet
+    s.addShape(pptx.ShapeType.ellipse, { x: ML, y, w: 0.36, h: 0.36, fill: { color: P }, line: { color: P } });
+    s.addText(String(i + 1), { x: ML, y: y + 0.02, w: 0.36, h: 0.32, fontSize: 11, bold: true, color: W, align: "center", fontFace: "Calibri", valign: "middle" });
+    s.addText(text, { x: 1.05, y: y + 0.02, w: 11.5, h: 0.36, fontSize: 13, color: G9, fontFace: "Calibri", valign: "middle" });
   });
 
-  slideFooter(s, 2, "Agenda — Today's Discussion");
+  footer(s, 2, "Agenda — Today's Discussion");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 03 — Scale
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "01 · SCALE", 0.5, 0.4);
-  s.addText("Inventory supports every fulfillment motion\nacross Asurion's service network", {
-    x: 0.5, y: 0.65, w: 12, h: 1.1, fontSize: 28, bold: true, color: GRAY_9, fontFace: "Georgia",
-  });
+  sectionLabel(s, "01 · SCALE", 0.38);
+  H2(s, "Inventory supports every fulfillment motion across\nAsurion's service network", 0.6);
 
-  // Big stats
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 1.9, w: 3.5, h: 1.3, fill: { color: PURPLE }, rounding: true });
-  s.addText("INVENTORY VALUE ACROSS PROGRAMS", { x: 0.55, y: 1.95, w: 3.4, h: 0.25, fontSize: 7, color: "C4AEED", bold: true, charSpacing: 1.5, fontFace: "Arial" });
-  s.addText("~$517M", { x: 0.55, y: 2.2, w: 3.4, h: 0.85, fontSize: 38, bold: true, color: WHITE, fontFace: "Georgia" });
+  // Stat cards
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.88, w: 3.6, h: 1.35, fill: { color: P }, line: { color: P }, rectRadius: 0.06 });
+  s.addText("INVENTORY VALUE ACROSS PROGRAMS", { x: ML + 0.15, y: 1.96, w: 3.3, h: 0.22, fontSize: 7, color: PM, bold: true, charSpacing: 1, fontFace: "Calibri" });
+  s.addText("~$517M", { x: ML + 0.1, y: 2.18, w: 3.4, h: 0.9, fontSize: 36, bold: true, color: W, fontFace: "Calibri Light", valign: "middle" });
 
-  s.addShape(pptx.ShapeType.rect, { x: 4.3, y: 1.9, w: 3.5, h: 1.3, fill: { color: GRAY_BG }, line: { color: GRAY_2, width: 0.5 }, rounding: true });
-  s.addText("LOCATIONS HOLDING INVENTORY", { x: 4.35, y: 1.95, w: 3.4, h: 0.25, fontSize: 7, color: GRAY_4, bold: true, charSpacing: 1.5, fontFace: "Arial" });
-  s.addText("~890", { x: 4.35, y: 2.2, w: 3.4, h: 0.65, fontSize: 38, bold: true, color: GRAY_9, fontFace: "Georgia" });
-  s.addText("locations", { x: 4.35, y: 2.85, w: 3.4, h: 0.2, fontSize: 10, color: GRAY_6, fontFace: "Arial" });
+  s.addShape(pptx.ShapeType.roundRect, { x: 4.4, y: 1.88, w: 3.2, h: 1.35, fill: { color: GB }, line: { color: G2, width: 0.75 }, rectRadius: 0.06 });
+  s.addText("LOCATIONS HOLDING INVENTORY", { x: 4.55, y: 1.96, w: 3.0, h: 0.22, fontSize: 7, color: G4, bold: true, charSpacing: 1, fontFace: "Calibri" });
+  s.addText("~890", { x: 4.5, y: 2.16, w: 3.0, h: 0.7, fontSize: 36, bold: true, color: G9, fontFace: "Calibri Light", valign: "middle" });
+  s.addText("locations", { x: 4.5, y: 2.9, w: 3.0, h: 0.24, fontSize: 11, color: G6, fontFace: "Calibri", valign: "middle" });
 
   // Three columns
   const cols = [
@@ -144,321 +149,299 @@ function slideFooter(slide, num, title) {
     { title: "Same-Unit Repair",        items: ["Corporate Stores", "uBreakiFix", "Mail-In Repair", "Third-Party Repair Providers"] },
     { title: "Revenue Logistics",       items: ["Insurance Devices", "Return Parts", "Recovery & Disposition"] },
   ];
-
+  const colW3 = (CW - 0.2) / 3;
   cols.forEach((col, i) => {
-    const x = 0.5 + i * 4.27;
-    s.addShape(pptx.ShapeType.rect, { x, y: 3.45, w: 4.0, h: 2.2, fill: { color: GRAY_BG }, line: { color: GRAY_2, width: 0.5 }, rounding: true });
-    s.addText(col.title, { x: x + 0.15, y: 3.55, w: 3.7, h: 0.3, fontSize: 10, bold: true, color: GRAY_9, fontFace: "Arial" });
-    s.addText(col.items.map(it => `• ${it}`).join("\n"), {
-      x: x + 0.15, y: 3.92, w: 3.7, h: 1.6,
-      fontSize: 9, color: GRAY_6, fontFace: "Arial", paraSpaceBefore: 4,
+    const x = ML + i * (colW3 + 0.1);
+    s.addShape(pptx.ShapeType.roundRect, { x, y: 3.4, w: colW3, h: 2.55, fill: { color: GB }, line: { color: G2, width: 0.75 }, rectRadius: 0.06 });
+    s.addText(col.title, { x: x + 0.15, y: 3.5, w: colW3 - 0.3, h: 0.32, fontSize: 10.5, bold: true, color: G9, fontFace: "Calibri", valign: "middle" });
+    s.addShape(pptx.ShapeType.line, { x: x + 0.15, y: 3.85, w: colW3 - 0.3, h: 0, line: { color: G2, width: 0.5 } });
+    s.addText(col.items.map(it => `•  ${it}`).join("\n"), {
+      x: x + 0.15, y: 3.95, w: colW3 - 0.3, h: 1.85,
+      fontSize: 9.5, color: G6, fontFace: "Calibri", paraSpaceBefore: 5, valign: "top",
     });
   });
 
-  // Bottom callout
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 5.8, w: 12.3, h: 0.55, fill: { color: GRAY_BG }, line: { color: GRAY_2, width: 0.5 }, rounding: true });
+  // Callout
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 6.1, w: CW, h: 0.62, fill: { color: GB }, line: { color: G2, width: 0.75 }, rectRadius: 0.05 });
   s.addText("Inventory is a material business asset — constantly moving across warehouses, field locations, stores, partners, and customer channels. Every movement requires visibility and accountability.", {
-    x: 0.65, y: 5.85, w: 12.0, h: 0.44,
-    fontSize: 8.5, color: GRAY_6, fontFace: "Arial",
+    x: ML + 0.2, y: 6.15, w: CW - 0.4, h: 0.52,
+    fontSize: 9, color: G6, fontFace: "Calibri", valign: "middle",
   });
 
-  slideFooter(s, 3, "Inventory supports every fulfillment motion");
+  footer(s, 3, "Inventory supports every fulfillment motion");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 04 — Systems of Record
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "02 · HIDE", 0.5, 0.4);
-  s.addText("Inventory is split across multiple systems of record", {
-    x: 0.5, y: 0.65, w: 12, h: 0.8, fontSize: 26, bold: true, color: GRAY_9, fontFace: "Georgia",
-  });
+  sectionLabel(s, "02 · HIDE", 0.35);
+  H2(s, "Inventory is split across multiple systems of record", 0.56);
   s.addText("When a program's inventory and finances live in one system, every unit and dollar is traceable — $366M is already reconciled. $346 F&O is remaining in Distro; $13.9M sits on legacy systems.", {
-    x: 0.5, y: 1.5, w: 12, h: 0.4, fontSize: 9, color: GRAY_6, fontFace: "Arial",
+    x: ML, y: 1.55, w: CW, h: 0.38,
+    fontSize: 9.5, color: G6, fontFace: "Calibri", valign: "top",
   });
 
   // Table header
-  const hdrY = 2.05;
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: hdrY, w: 12.3, h: 0.28, fill: { color: GRAY_BG }, line: { color: GRAY_2, width: 0.5 } });
-  [["Program", 0.6], ["Inventory Value", 6.1], ["Systems of Record", 8.5], ["Status", 11.2]].forEach(([txt, x]) => {
-    s.addText(txt, { x, y: hdrY + 0.04, w: 2.5, h: 0.2, fontSize: 7.5, bold: true, color: GRAY_4, charSpacing: 1, fontFace: "Arial" });
-  });
+  const hY = 2.05;
+  s.addShape(pptx.ShapeType.rect, { x: ML, y: hY, w: CW, h: 0.3, fill: { color: GB }, line: { color: G2, width: 0.5 } });
+  [["Program", 0.6, 4.5], ["Inv. Value", 6.0, 1.8], ["System of Record", 8.0, 3.0], ["Status", 11.4, 1.2]].forEach(([t, x, w]) =>
+    s.addText(t, { x, y: hY + 0.05, w, h: 0.2, fontSize: 8, bold: true, color: G4, charSpacing: 1, fontFace: "Calibri", valign: "middle" })
+  );
 
   const rows = [
-    { section: "REPLACEMENT", name: "Advance Exchange", sub: "", value: "$206.6M", system: "D365 F&O", status: "Completed", ok: true },
-    { name: "N&S3", sub: "Next Day payment delivery w/ Setup", value: "$153M", system: "D365 F&O", status: "Completed", ok: true },
-    { name: "DXO", sub: "Delivery & Export Setup", value: "$78.9M", system: "D365 F&O", status: "Completed", ok: true },
+    { section: "REPLACEMENT" },
+    { name: "Advance Exchange", sub: "",                                value: "$206.6M", system: "D365 F&O",             ok: true  },
+    { name: "N&S3",             sub: "Next Day payment delivery w/ Setup", value: "$153M",   system: "D365 F&O",             ok: true  },
+    { name: "DXO",              sub: "Delivery & Export Setup",         value: "$78.9M",  system: "D365 F&O",             ok: true  },
     { section: "REFURB" },
-    { name: "uBreakiFix", sub: "", value: "$0", system: "ServiceBench + Distro", status: "Upcoming", ok: false },
-    { name: "Same-Unit Repair", sub: "", value: "$6.3M", system: "ServiceBench", status: "Upcoming", ok: false },
+    { name: "uBreakiFix",       sub: "",                                value: "$0",      system: "ServiceBench + Distro", ok: false },
+    { name: "Same-Unit Repair", sub: "",                                value: "$6.3M",   system: "ServiceBench",          ok: false },
   ];
 
-  let rowY = hdrY + 0.32;
+  let rY = hY + 0.32;
   rows.forEach((row) => {
     if (row.section) {
-      s.addText(row.section, { x: 0.6, y: rowY, w: 3, h: 0.22, fontSize: 7.5, bold: true, color: GRAY_4, charSpacing: 2, fontFace: "Arial" });
-      rowY += 0.25;
+      s.addText(row.section, { x: 0.6, y: rY + 0.02, w: 3, h: 0.22, fontSize: 7.5, bold: true, color: G4, charSpacing: 2, fontFace: "Calibri", valign: "middle" });
+      rY += 0.28;
       return;
     }
-    s.addShape(pptx.ShapeType.line, { x: 0.5, y: rowY + 0.44, w: 12.3, h: 0, line: { color: GRAY_2, width: 0.3 } });
-    s.addText(row.name, { x: 0.6, y: rowY + 0.02, w: 5, h: 0.22, fontSize: 10, bold: true, color: GRAY_9, fontFace: "Arial" });
-    if (row.sub) s.addText(row.sub, { x: 0.6, y: rowY + 0.22, w: 5, h: 0.18, fontSize: 8, color: GRAY_4, fontFace: "Arial" });
-    s.addText(row.value, { x: 6.1, y: rowY + 0.1, w: 2, h: 0.22, fontSize: 11, bold: true, color: GRAY_9, fontFace: "Arial" });
-    s.addText(row.system, { x: 8.5, y: rowY + 0.1, w: 2.5, h: 0.22, fontSize: 9, color: GRAY_6, fontFace: "Arial" });
-    const sc = row.ok ? GREEN : AMBER;
-    const bg = row.ok ? GREEN_L : AMBER_L;
-    s.addShape(pptx.ShapeType.rect, { x: 11.2, y: rowY + 0.06, w: 1.4, h: 0.28, fill: { color: bg }, rounding: true });
-    s.addText(row.status, { x: 11.2, y: rowY + 0.1, w: 1.4, h: 0.2, fontSize: 8, bold: true, color: sc, align: "center", fontFace: "Arial" });
-    rowY += 0.48;
+    const rowH = row.sub ? 0.54 : 0.42;
+    s.addShape(pptx.ShapeType.line, { x: ML, y: rY + rowH, w: CW, h: 0, line: { color: G2, width: 0.3 } });
+    s.addText(row.name, { x: 0.6, y: rY + 0.04, w: 5.2, h: 0.24, fontSize: 10.5, bold: true, color: G9, fontFace: "Calibri", valign: "middle" });
+    if (row.sub) s.addText(row.sub, { x: 0.6, y: rY + 0.29, w: 5.2, h: 0.2, fontSize: 8.5, color: G4, fontFace: "Calibri", valign: "middle" });
+    s.addText(row.value, { x: 6.0, y: rY + 0.08, w: 1.8, h: 0.28, fontSize: 11, bold: true, color: G9, fontFace: "Calibri", valign: "middle" });
+    s.addText(row.system, { x: 8.0, y: rY + 0.08, w: 3.2, h: 0.28, fontSize: 9.5, color: G6, fontFace: "Calibri", valign: "middle" });
+    const [sc, bg] = row.ok ? [GN, GL] : [AM, AL];
+    s.addShape(pptx.ShapeType.roundRect, { x: 11.4, y: rY + 0.09, w: 1.25, h: 0.26, fill: { color: bg }, line: { color: bg }, rectRadius: 0.04 });
+    s.addText(row.ok ? "Completed" : "Upcoming", { x: 11.4, y: rY + 0.09, w: 1.25, h: 0.26, fontSize: 8, bold: true, color: sc, align: "center", fontFace: "Calibri", valign: "middle" });
+    rY += rowH;
   });
 
-  // Bottom gap row
-  const gapY = 5.65;
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: gapY, w: 5.9, h: 0.9, fill: { color: RED_L }, line: { color: "FFCDD2", width: 0.5 }, rounding: true });
-  s.addText("Gap / Unreconciled", { x: 0.65, y: gapY + 0.1, w: 5.6, h: 0.22, fontSize: 8, color: RED, fontFace: "Arial" });
-  s.addText("~$390.8M", { x: 0.65, y: gapY + 0.3, w: 5.6, h: 0.5, fontSize: 28, bold: true, color: RED, fontFace: "Georgia" });
+  // Gap / Reconciled summary
+  const gY = 5.62;
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: gY, w: 5.9, h: 0.96, fill: { color: RL }, line: { color: "FFCDD2", width: 0.75 }, rectRadius: 0.06 });
+  s.addText("Gap / Unreconciled", { x: ML + 0.18, y: gY + 0.08, w: 5.5, h: 0.22, fontSize: 9, color: RD, fontFace: "Calibri", valign: "middle" });
+  s.addText("~$390.8M", { x: ML + 0.12, y: gY + 0.3, w: 5.5, h: 0.56, fontSize: 28, bold: true, color: RD, fontFace: "Calibri Light", valign: "middle" });
 
-  s.addShape(pptx.ShapeType.rect, { x: 6.8, y: gapY, w: 6.0, h: 0.9, fill: { color: GREEN_L }, line: { color: "C8E6C9", width: 0.5 }, rounding: true });
-  s.addText("Reconciled", { x: 6.95, y: gapY + 0.1, w: 5.6, h: 0.22, fontSize: 8, color: GREEN, fontFace: "Arial" });
-  s.addText("$126.3M", { x: 6.95, y: gapY + 0.3, w: 5.6, h: 0.5, fontSize: 28, bold: true, color: GREEN, fontFace: "Georgia" });
+  s.addShape(pptx.ShapeType.roundRect, { x: 6.6, y: gY, w: 6.2, h: 0.96, fill: { color: GL }, line: { color: "C8E6C9", width: 0.75 }, rectRadius: 0.06 });
+  s.addText("Reconciled", { x: 6.78, y: gY + 0.08, w: 5.8, h: 0.22, fontSize: 9, color: GN, fontFace: "Calibri", valign: "middle" });
+  s.addText("$126.3M", { x: 6.72, y: gY + 0.3, w: 5.8, h: 0.56, fontSize: 28, bold: true, color: GN, fontFace: "Calibri Light", valign: "middle" });
 
-  slideFooter(s, 4, "Limited traceability creates financial risk");
+  footer(s, 4, "Limited traceability creates financial risk");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 05 — Mechanism / Centerpiece
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "03 · MECHANISM · CENTERPIECE", 0.5, 0.4);
-  s.addText("Fulfillment systems connect inventory movement\nto financial accountability", {
-    x: 0.5, y: 0.65, w: 12, h: 1.1, fontSize: 28, bold: true, color: GRAY_9, fontFace: "Georgia",
-  });
+  sectionLabel(s, "03 · MECHANISM · CENTERPIECE", 0.35);
+  H2(s, "Fulfillment systems connect inventory movement\nto financial accountability", 0.56);
   s.addText("Every unit travels a single chain — from a physical movement to a financial record. The goal isn't inventory in one place; it's keeping that chain unbroken across every system it touches.", {
-    x: 0.5, y: 1.82, w: 12, h: 0.5, fontSize: 10, color: GRAY_6, fontFace: "Arial",
+    x: ML, y: 1.72, w: CW, h: 0.44,
+    fontSize: 10, color: G6, fontFace: "Calibri", valign: "top",
   });
 
-  // Flow axis labels
-  s.addText("PHYSICAL INVENTORY MOVEMENT", { x: 0.5, y: 2.5, w: 5, h: 0.2, fontSize: 7, bold: true, color: GRAY_4, charSpacing: 2, fontFace: "Arial" });
-  s.addText("FINANCIAL ACCOUNTABILITY", { x: 8.5, y: 2.5, w: 4.3, h: 0.2, fontSize: 7, bold: true, color: PURPLE, charSpacing: 2, fontFace: "Arial", align: "right" });
-  s.addShape(pptx.ShapeType.line, { x: 0.5, y: 2.72, w: 12.3, h: 0, line: { color: GRAY_2, width: 0.4 } });
+  // Axis labels
+  s.addText("PHYSICAL INVENTORY MOVEMENT", { x: ML, y: 2.35, w: 5.5, h: 0.2, fontSize: 7.5, bold: true, color: G4, charSpacing: 2, fontFace: "Calibri" });
+  s.addText("FINANCIAL ACCOUNTABILITY", { x: 7.5, y: 2.35, w: 5.3, h: 0.2, fontSize: 7.5, bold: true, color: P, charSpacing: 2, fontFace: "Calibri", align: "right" });
+  s.addShape(pptx.ShapeType.line, { x: ML, y: 2.58, w: CW, h: 0, line: { color: G2, width: 0.75 } });
 
-  // Flow boxes
+  // Flow diagram
   const steps = [
-    { label: "Procurement", purple: false },
-    { label: "Warehouse", purple: false },
+    { label: "Procurement",   purple: false },
+    { label: "Warehouse",     purple: false },
     { label: "Field Location\n/ Store", purple: false },
     { label: "Customer\nFulfillment", purple: false },
     { label: "Inventory\nControl", purple: true },
     { label: "Financial\nAccountability", purple: true },
     { label: "Close /\nBilling", purple: true },
   ];
-
-  const totalW = 12.3;
-  const boxW = 1.6;
-  const gap = (totalW - steps.length * boxW) / (steps.length - 1);
-  const boxY = 2.85;
+  const bW = 1.56;
+  const bG = (CW - steps.length * bW) / (steps.length - 1);
+  const bY = 2.72;
+  const bH = 1.1;
 
   steps.forEach((step, i) => {
-    const x = 0.5 + i * (boxW + gap);
-    s.addShape(pptx.ShapeType.rect, {
-      x, y: boxY, w: boxW, h: 0.9,
-      fill: { color: step.purple ? PURPLE : PURPLE_L },
-      line: { color: step.purple ? PURPLE : PURPLE_M, width: 0.5 },
-      rounding: true,
-    });
-    s.addText(step.label, {
-      x, y: boxY + 0.1, w: boxW, h: 0.7,
-      fontSize: 9.5, bold: true, color: step.purple ? WHITE : PURPLE,
-      align: "center", fontFace: "Arial",
-    });
+    const x = ML + i * (bW + bG);
+    const bg = step.purple ? P : PL;
+    const border = step.purple ? P : PM;
+    const tc = step.purple ? W : P;
+    s.addShape(pptx.ShapeType.roundRect, { x, y: bY, w: bW, h: bH, fill: { color: bg }, line: { color: border, width: 0.75 }, rectRadius: 0.06 });
+    s.addText(step.label, { x, y: bY + 0.1, w: bW, h: bH - 0.2, fontSize: 9.5, bold: true, color: tc, align: "center", fontFace: "Calibri", valign: "middle" });
     if (i < steps.length - 1) {
-      s.addText("→", { x: x + boxW + 0.03, y: boxY + 0.3, w: gap, h: 0.3, fontSize: 12, color: GRAY_4, align: "center", fontFace: "Arial" });
+      s.addText(">", { x: x + bW + 0.02, y: bY + 0.38, w: bG, h: 0.34, fontSize: 14, bold: true, color: G4, align: "center", fontFace: "Calibri", valign: "middle" });
     }
   });
 
-  // Bottom callout
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 4.3, w: 12.3, h: 0.9, fill: { color: PURPLE }, rounding: true });
-  s.addText("The goal is not inventory in one system — it is maintaining accountability from procurement through financial close. Every inventory movement eventually becomes a financial event.", {
-    x: 0.7, y: 4.38, w: 11.9, h: 0.74,
-    fontSize: 11, color: WHITE, fontFace: "Arial",
-  });
+  // Callout
+  callout(s, "The goal is not inventory in one system — it is maintaining accountability from procurement through financial close. Every inventory movement eventually becomes a financial event.", 4.08, 0.72, P, W, 11);
 
-  slideFooter(s, 5, "Fulfillment systems connect movement to accountability");
+  footer(s, 5, "Fulfillment systems connect movement to accountability");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 06 — Future State
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "04 · FUTURE STATE", 0.5, 0.4);
-  s.addText("One operating model improves visibility, control, and scale", {
-    x: 0.5, y: 0.65, w: 12, h: 0.9, fontSize: 28, bold: true, color: GRAY_9, fontFace: "Georgia",
+  sectionLabel(s, "04 · FUTURE STATE", 0.35);
+  H2(s, "One operating model improves visibility, control, and scale", 0.56);
+
+  const colW2 = (CW - 0.3) / 2;
+
+  // TODAY
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: 1.68, w: colW2, h: 4.72, fill: { color: GB }, line: { color: G2, width: 0.75 }, rectRadius: 0.06 });
+  s.addText("TODAY", { x: ML + 0.2, y: 1.8, w: 2, h: 0.26, fontSize: 9, bold: true, color: G4, charSpacing: 2, fontFace: "Calibri", valign: "middle" });
+  chip(s, "Disconnected systems", ML + 2.4, 1.8, G2, G6, 2.5);
+
+  ["Inventory synchronization", "Manual reconciliation", "Billing disputes", "Financial visibility gaps", "Partner traceability", "Custom integrations"].forEach((item, i) => {
+    const iy = 2.26 + i * 0.55;
+    s.addShape(pptx.ShapeType.roundRect, { x: ML + 0.2, y: iy + 0.05, w: 0.26, h: 0.26, fill: { color: RL }, line: { color: RL }, rectRadius: 0.04 });
+    s.addText("x", { x: ML + 0.2, y: iy + 0.05, w: 0.26, h: 0.26, fontSize: 9, bold: true, color: RD, align: "center", fontFace: "Calibri", valign: "middle" });
+    s.addText(item, { x: ML + 0.6, y: iy + 0.04, w: colW2 - 0.75, h: 0.3, fontSize: 11, color: G9, fontFace: "Calibri", valign: "middle" });
   });
 
-  // TODAY column
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 1.75, w: 5.9, h: 4.5, fill: { color: GRAY_BG }, line: { color: GRAY_2, width: 0.5 }, rounding: true });
-  s.addText("TODAY", { x: 0.7, y: 1.9, w: 2, h: 0.25, fontSize: 9, bold: true, color: GRAY_4, charSpacing: 2, fontFace: "Arial" });
-  s.addShape(pptx.ShapeType.rect, { x: 2.8, y: 1.88, w: 2.2, h: 0.28, fill: { color: GRAY_2 }, rounding: true });
-  s.addText("Disconnected systems", { x: 2.82, y: 1.9, w: 2.16, h: 0.22, fontSize: 8, color: GRAY_6, align: "center", bold: true, fontFace: "Arial" });
+  // FUTURE
+  const fx = ML + colW2 + 0.3;
+  s.addShape(pptx.ShapeType.roundRect, { x: fx, y: 1.68, w: colW2, h: 4.72, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+  s.addText("FUTURE", { x: fx + 0.2, y: 1.8, w: 2, h: 0.26, fontSize: 9, bold: true, color: P, charSpacing: 2, fontFace: "Calibri", valign: "middle" });
+  chip(s, "Unified operating model", fx + 2.4, 1.8, P, W, 2.7);
 
-  const todayItems = ["Inventory synchronization", "Manual reconciliation", "Billing disputes", "Financial visibility gaps", "Partner traceability", "Custom integrations"];
-  todayItems.forEach((item, i) => {
-    s.addText("✕", { x: 0.7, y: 2.35 + i * 0.52, w: 0.3, h: 0.3, fontSize: 10, color: RED, fontFace: "Arial" });
-    s.addText(item, { x: 1.1, y: 2.37 + i * 0.52, w: 5.0, h: 0.28, fontSize: 10.5, color: GRAY_9, fontFace: "Arial" });
-  });
-
-  // FUTURE column
-  s.addShape(pptx.ShapeType.rect, { x: 7.0, y: 1.75, w: 5.8, h: 4.5, fill: { color: PURPLE_L }, line: { color: PURPLE_M, width: 0.5 }, rounding: true });
-  s.addText("FUTURE", { x: 7.2, y: 1.9, w: 2, h: 0.25, fontSize: 9, bold: true, color: PURPLE, charSpacing: 2, fontFace: "Arial" });
-  s.addShape(pptx.ShapeType.rect, { x: 9.3, y: 1.88, w: 2.8, h: 0.28, fill: { color: PURPLE }, rounding: true });
-  s.addText("Unified operating model", { x: 9.32, y: 1.9, w: 2.76, h: 0.22, fontSize: 8, color: WHITE, align: "center", bold: true, fontFace: "Arial" });
-
-  const futureItems = ["Inventory and finance move together", "Near-line visibility", "Sustainable inventory movement", "Explainable actions", "Unified fulfillment", "Flexible product bundles", "Better AI foundation"];
-  futureItems.forEach((item, i) => {
-    s.addText("✓", { x: 7.2, y: 2.35 + i * 0.48, w: 0.3, h: 0.28, fontSize: 10, color: GREEN, fontFace: "Arial" });
-    s.addText(item, { x: 7.6, y: 2.37 + i * 0.48, w: 5.0, h: 0.26, fontSize: 10.5, color: GRAY_9, fontFace: "Arial" });
+  ["Inventory and finance move together", "Near-line visibility", "Sustainable inventory movement", "Explainable actions", "Unified fulfillment", "Flexible product bundles", "Better AI foundation"].forEach((item, i) => {
+    const iy = 2.26 + i * 0.48;
+    s.addShape(pptx.ShapeType.roundRect, { x: fx + 0.2, y: iy + 0.04, w: 0.26, h: 0.26, fill: { color: GL }, line: { color: GL }, rectRadius: 0.04 });
+    s.addText("v", { x: fx + 0.2, y: iy + 0.04, w: 0.26, h: 0.26, fontSize: 9, bold: true, color: GN, align: "center", fontFace: "Calibri", valign: "middle" });
+    s.addText(item, { x: fx + 0.6, y: iy + 0.03, w: colW2 - 0.75, h: 0.3, fontSize: 11, color: G9, fontFace: "Calibri", valign: "middle" });
   });
 
   // Bottom callout
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 6.4, w: 12.3, h: 0.65, fill: { color: PURPLE_L }, line: { color: PURPLE_M, width: 0.5 }, rounding: true });
-  s.addText("Inventory and financial records should remain connected throughout the fulfillment lifecycle — reconciliation becomes a natural outcome, not a separate activity.", {
-    x: 0.7, y: 6.47, w: 11.9, h: 0.5, fontSize: 9.5, color: PURPLE, fontFace: "Arial",
-  });
+  callout(s, "Inventory and financial records should remain connected throughout the fulfillment lifecycle — reconciliation becomes a natural outcome, not a separate activity.", 6.52, 0.58, PL, P, 9.5);
 
-  slideFooter(s, 6, "One operating model improves visibility & scale");
+  footer(s, 6, "One operating model improves visibility & scale");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 07 — Roadmap
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "05 · ROADMAP", 0.5, 0.4);
-  s.addText("A phased path to consolidate every inventory\nprogram onto a single ERP", {
-    x: 0.5, y: 0.65, w: 12, h: 1.0, fontSize: 26, bold: true, color: GRAY_9, fontFace: "Georgia",
-  });
+  sectionLabel(s, "05 · ROADMAP", 0.35);
+  H2(s, "A phased path to consolidate every inventory program onto a single ERP", 0.56);
   s.addText("Moving inventory and finances across separate systems creates reconciliation gaps where loss accumulates. Each phase consolidates one fragmented system into D365 F&O, establishing a single source of truth that exposes financial controls and visibility across every program.", {
-    x: 0.5, y: 1.72, w: 12, h: 0.5, fontSize: 9, color: GRAY_6, fontFace: "Arial",
+    x: ML, y: 1.55, w: CW, h: 0.45, fontSize: 9.5, color: G6, fontFace: "Calibri", valign: "top",
   });
 
-  const phases = [
-    { year: "2024", label: "Phase 1" },
-    { year: "2025", label: "Phase 2" },
-    { year: "2026", label: "Phase 3" },
-    { year: "2027", label: "Phase 4" },
-  ];
-  const colX = [2.6, 4.75, 7.0, 9.25];
-  const colW = 2.0;
+  // Column grid: row label (2.1) + 4 phase cols
+  const labelW = 2.0;
+  const phaseW = (CW - labelW - 0.3) / 4;
+  const phaseX = (i) => ML + labelW + 0.1 + i * (phaseW + 0.08);
 
   // Phase headers
-  phases.forEach((p, i) => {
-    s.addText(p.label, { x: colX[i], y: 2.35, w: colW, h: 0.2, fontSize: 8, color: GRAY_4, align: "center", fontFace: "Arial" });
-    s.addText(p.year, { x: colX[i], y: 2.55, w: colW, h: 0.3, fontSize: 14, bold: true, color: GRAY_9, align: "center", fontFace: "Georgia" });
+  [{ year: "2024", lbl: "Phase 1" }, { year: "2025", lbl: "Phase 2" }, { year: "2026", lbl: "Phase 3" }, { year: "2027", lbl: "Phase 4" }].forEach((p, i) => {
+    const x = phaseX(i);
+    s.addText(p.lbl, { x, y: 2.18, w: phaseW, h: 0.2, fontSize: 8, color: G4, align: "center", fontFace: "Calibri", valign: "middle" });
+    s.addText(p.year, { x, y: 2.38, w: phaseW, h: 0.3, fontSize: 15, bold: true, color: G9, align: "center", fontFace: "Calibri Light", valign: "middle" });
   });
 
-  // Row label
-  s.addText("PHASE", { x: 0.5, y: 2.35, w: 2.0, h: 0.5, fontSize: 8, bold: true, color: GRAY_4, charSpacing: 1.5, fontFace: "Arial" });
-
-  const consolidation = [
-    "Inventory ERP for\nD365 / N&S3",
-    "UBIF Non-Portal\nIntegration",
-    "Inventory ERP\nfor SLIR",
-    "UBIF Distro\nMigration",
-  ];
-  const benefits = [
-    "$2.1M billing gap gains\n$4.8M+ trailing gains\nFoundation for SUR repair ERP",
-    "uBreakiFix inventory\nmoves to D365 F&O\nD365 Coord recovered by D&S",
-    "Store inventory in D365 F&O\n100% of inventory in one ERP",
-    "One platform for one ERP\nOne operating model,\naccountable in one ledger",
-  ];
-
   // Consolidation row
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 3.0, w: 2.0, h: 0.7, fill: { color: PURPLE }, rounding: true });
-  s.addText("Consolidation", { x: 0.5, y: 3.05, w: 2.0, h: 0.6, fontSize: 9.5, bold: true, color: WHITE, align: "center", fontFace: "Arial" });
-  consolidation.forEach((txt, i) => {
-    s.addShape(pptx.ShapeType.rect, { x: colX[i], y: 3.0, w: colW, h: 0.7, fill: { color: PURPLE_L }, line: { color: PURPLE_M, width: 0.3 }, rounding: true });
-    s.addText(txt, { x: colX[i] + 0.05, y: 3.02, w: colW - 0.1, h: 0.66, fontSize: 8.5, color: PURPLE, bold: true, align: "center", fontFace: "Arial" });
+  const cY = 2.82;
+  const cH = 0.75;
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: cY, w: labelW, h: cH, fill: { color: P }, line: { color: P }, rectRadius: 0.05 });
+  s.addText("Consolidation", { x: ML, y: cY, w: labelW, h: cH, fontSize: 10, bold: true, color: W, align: "center", fontFace: "Calibri", valign: "middle" });
+
+  ["Inventory ERP\nD365 / N&S3", "UBIF Non-Portal\nIntegration", "Inventory ERP\nfor SLIR", "UBIF Distro\nMigration"].forEach((txt, i) => {
+    const x = phaseX(i);
+    s.addShape(pptx.ShapeType.roundRect, { x, y: cY, w: phaseW, h: cH, fill: { color: PL }, line: { color: PM, width: 0.5 }, rectRadius: 0.05 });
+    s.addText(txt, { x, y: cY + 0.06, w: phaseW, h: cH - 0.12, fontSize: 9, bold: true, color: P, align: "center", fontFace: "Calibri", valign: "middle" });
   });
 
   // Benefits row
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 3.85, w: 2.0, h: 2.3, fill: { color: GREEN }, rounding: true });
-  s.addText("Delivered\nBenefits", { x: 0.5, y: 4.4, w: 2.0, h: 0.7, fontSize: 9.5, bold: true, color: WHITE, align: "center", fontFace: "Arial" });
-  benefits.forEach((txt, i) => {
-    s.addShape(pptx.ShapeType.rect, { x: colX[i], y: 3.85, w: colW, h: 2.3, fill: { color: GREEN_L }, line: { color: "C8E6C9", width: 0.3 }, rounding: true });
-    s.addText(txt, { x: colX[i] + 0.1, y: 3.95, w: colW - 0.2, h: 2.1, fontSize: 8.5, color: GRAY_9, fontFace: "Arial", paraSpaceBefore: 3 });
+  const bY = 3.66;
+  const bH = 2.5;
+  s.addShape(pptx.ShapeType.roundRect, { x: ML, y: bY, w: labelW, h: bH, fill: { color: GN }, line: { color: GN }, rectRadius: 0.05 });
+  s.addText("Delivered\nBenefits", { x: ML, y: bY, w: labelW, h: bH, fontSize: 10, bold: true, color: W, align: "center", fontFace: "Calibri", valign: "middle" });
+
+  [
+    "$2.1M billing gap gains\n$4.8M+ trailing gains\nFoundation for SUR repair ERP",
+    "uBreakiFix inventory moves to D365 F&O\nD365 Coord recovered by D&S",
+    "Store inventory in D365 F&O\n100% of inventory in one ERP",
+    "One platform for one ERP\nOne operating model, accountable in one ledger",
+  ].forEach((txt, i) => {
+    const x = phaseX(i);
+    s.addShape(pptx.ShapeType.roundRect, { x, y: bY, w: phaseW, h: bH, fill: { color: GL }, line: { color: "C8E6C9", width: 0.5 }, rectRadius: 0.05 });
+    s.addText(txt, { x: x + 0.1, y: bY + 0.1, w: phaseW - 0.2, h: bH - 0.2, fontSize: 9, color: G9, fontFace: "Calibri", valign: "top", paraSpaceBefore: 5 });
   });
 
   // Legend
-  [{ color: GREEN, label: "Completed" }, { color: PURPLE, label: "In Progress" }, { color: GRAY_4, label: "Planned" }].forEach((l, i) => {
-    const lx = 0.5 + i * 2.0;
-    s.addShape(pptx.ShapeType.ellipse, { x: lx, y: 6.52, w: 0.18, h: 0.18, fill: { color: l.color } });
-    s.addText(l.label, { x: lx + 0.24, y: 6.5, w: 1.6, h: 0.22, fontSize: 8, color: GRAY_6, fontFace: "Arial" });
+  [{ color: GN, lbl: "Completed" }, { color: P, lbl: "In Progress" }, { color: G4, lbl: "Planned" }].forEach((l, i) => {
+    const lx = ML + i * 2.2;
+    s.addShape(pptx.ShapeType.ellipse, { x: lx, y: 6.46, w: 0.2, h: 0.2, fill: { color: l.color }, line: { color: l.color } });
+    s.addText(l.lbl, { x: lx + 0.28, y: 6.46, w: 1.8, h: 0.22, fontSize: 8.5, color: G6, fontFace: "Calibri", valign: "middle" });
   });
 
-  slideFooter(s, 7, "Scaling the proven inventory model");
+  footer(s, 7, "Scaling the proven inventory model");
 }
 
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 // SLIDE 08 — Why Distro Matters
-// ═══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
 {
   const s = pptx.addSlide();
-  s.background = { color: WHITE };
+  s.background = { color: W };
 
-  label(s, "06 · WHY DISTRO MATTERS", 0.5, 0.3);
-  s.addText("PHASE 4 · UBIF DISTRO MIGRATION: SLOTTED FOR 2027", { x: 0.5, y: 0.52, w: 9, h: 0.2, fontSize: 7.5, color: GRAY_4, charSpacing: 1.5, bold: true, fontFace: "Arial" });
-  s.addText("Distro is the last system standing —\nand the most strategic to retire", {
-    x: 0.5, y: 0.76, w: 12, h: 1.1, fontSize: 26, bold: true, color: GRAY_9, fontFace: "Georgia",
-  });
+  sectionLabel(s, "06 · WHY DISTRO MATTERS", 0.3);
+  s.addText("PHASE 4 · UBIF DISTRO MIGRATION: SLOTTED FOR 2027", { x: ML, y: 0.5, w: CW, h: 0.2, fontSize: 7.5, color: G4, charSpacing: 1.5, bold: true, fontFace: "Calibri", valign: "middle" });
+  H2(s, "Distro is the last system standing — and the most strategic to retire", 0.72);
   s.addText("There's no single technical blocker — Distro is stable and could run on our stack indefinitely. The case for moving in 2027 is structural: keeping the in-house warehouse platform separate cannibalizes financial, operational, and commercial risk as we scale.", {
-    x: 0.5, y: 1.92, w: 12, h: 0.5, fontSize: 9, color: GRAY_6, fontFace: "Arial",
+    x: ML, y: 1.72, w: CW, h: 0.45, fontSize: 9.5, color: G6, fontFace: "Calibri", valign: "top",
   });
 
   const pillars = [
-    { icon: "📊", title: "Financial single source of truth",
+    { icon: "#", title: "Financial single\nsource of truth",
       body: "Inventory becomes fully accessible across Portal + integrations between Portal and Distro. Inventory in Distro activates the activity that flows outside the ERP.",
       goal: "Transactions and financials update automatically in one ledger — every dollar reconciled." },
-    { icon: "🛡️", title: "Designed-out loss exposure",
-      body: "Powered systems and handoffs remain integrated where inventory is handled by handoffs so that flows across the business.",
+    { icon: "S", title: "Designed-out\nloss exposure",
+      body: "Powered systems and handoffs remain integrated where inventory is handled so that flows across the business are protected and traceable.",
       goal: "One platform and one ERP — a clean slate that flows across the business." },
-    { icon: "⚙️", title: "Operational resilience",
-      body: "Distro is a separate application optimized for a couple of operations — the D&S tool kit for logistics from Distro.",
-      goal: "2 partners (D365) platform our processes are asking us to standardize on." },
-    { icon: "🤝", title: "Vendor-driven request",
-      body: "UPS as a carrier vendor is retiring all their mapping on Distro. The D&S tool is integrated with it — it's already the SDK for mobile units.",
-      goal: "2 partners (D365) platform our processes are asking us to standardize on." },
+    { icon: "O", title: "Operational\nresilience",
+      body: "Distro is a separate application optimized for a couple of operations. The D&S toolkit for logistics already runs on D365.",
+      goal: "2 partners (D365) whose platform our processes are standardizing on." },
+    { icon: "H", title: "Vendor-driven\nrequest",
+      body: "UPS as a carrier vendor is retiring all mapping on Distro. The D&S tool is integrated with it — it's already the SDK for mobile units.",
+      goal: "2 partners (D365) whose platform our processes are standardizing on." },
   ];
 
+  const pW = (CW - 0.3) / 4;
   pillars.forEach((p, i) => {
-    const x = 0.5 + i * 3.2;
-    s.addShape(pptx.ShapeType.rect, { x, y: 2.6, w: 3.0, h: 3.3, fill: { color: PURPLE_L }, line: { color: PURPLE_M, width: 0.5 }, rounding: true });
-    s.addText(p.icon, { x, y: 2.7, w: 3.0, h: 0.4, fontSize: 18, align: "center", fontFace: "Segoe UI Emoji" });
-    s.addText(p.title, { x: x + 0.12, y: 3.15, w: 2.76, h: 0.55, fontSize: 9.5, bold: true, color: GRAY_9, fontFace: "Arial" });
-    s.addText(p.body, { x: x + 0.12, y: 3.73, w: 2.76, h: 1.05, fontSize: 8, color: GRAY_6, fontFace: "Arial", paraSpaceBefore: 2 });
-    s.addShape(pptx.ShapeType.line, { x: x + 0.12, y: 4.8, w: 2.76, h: 0, line: { color: PURPLE_M, width: 0.4 } });
-    s.addText(`Goal: ${p.goal}`, { x: x + 0.12, y: 4.86, w: 2.76, h: 0.85, fontSize: 8, bold: true, color: PURPLE, fontFace: "Arial", paraSpaceBefore: 2 });
+    const x = ML + i * (pW + 0.1);
+    s.addShape(pptx.ShapeType.roundRect, { x, y: 2.35, w: pW, h: 3.5, fill: { color: PL }, line: { color: PM, width: 0.75 }, rectRadius: 0.06 });
+    // Icon circle
+    s.addShape(pptx.ShapeType.ellipse, { x: x + pW / 2 - 0.22, y: 2.45, w: 0.44, h: 0.44, fill: { color: P }, line: { color: P } });
+    // Title
+    s.addText(p.title, { x: x + 0.1, y: 3.0, w: pW - 0.2, h: 0.6, fontSize: 10, bold: true, color: G9, fontFace: "Calibri", valign: "top", align: "left" });
+    // Body
+    s.addText(p.body, { x: x + 0.1, y: 3.65, w: pW - 0.2, h: 1.05, fontSize: 8.5, color: G6, fontFace: "Calibri", valign: "top", paraSpaceBefore: 2 });
+    // Divider + goal
+    s.addShape(pptx.ShapeType.line, { x: x + 0.1, y: 4.72, w: pW - 0.2, h: 0, line: { color: PM, width: 0.5 } });
+    s.addText(`Goal: ${p.goal}`, { x: x + 0.1, y: 4.78, w: pW - 0.2, h: 0.95, fontSize: 8.5, bold: true, color: P, fontFace: "Calibri", valign: "top", paraSpaceBefore: 2 });
   });
 
-  // Bottom callout
-  s.addShape(pptx.ShapeType.rect, { x: 0.5, y: 6.1, w: 12.3, h: 0.95, fill: { color: PURPLE }, rounding: true });
-  s.addText("The end state retiring Distro puts every unit and every dollar in one ERP — explainable movement, explainable finances, a resilient team, and a client-ready foundation to scale and build AI on.", {
-    x: 0.7, y: 6.18, w: 11.9, h: 0.8, fontSize: 11, color: WHITE, fontFace: "Arial",
-  });
+  callout(s, "The end state retiring Distro puts every unit and every dollar in one ERP — explainable movement, explainable finances, a resilient team, and a client-ready foundation to scale and build AI on.", 6.04, 0.72, P, W, 11);
 
-  slideFooter(s, 8, "Why simplifying systems matters");
+  footer(s, 8, "Why simplifying systems matters");
 }
 
-// ── Write file ──────────────────────────────────────────────────────────────
+// ── Write ──────────────────────────────────────────────────────────────────
 await pptx.writeFile({ fileName: "public/Inventory-at-Asurion.pptx" });
 console.log("✅  public/Inventory-at-Asurion.pptx generated");
